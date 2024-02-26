@@ -1,30 +1,41 @@
 import {useState} from 'react'
 import italiaLogo from '../../images/Italia_logo_only.svg'
+import FormInput from '../FormInput/FormInput';
 
 
 export default function SignIn(){
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('password')
     const [formData, setFormData] = useState({
-        name: '',
-        passwword: '', 
-        confirmPassword: '',
+        username: '',
+        password: '', 
     })
 
-    const handleInput = (e) => {
+    const inputs = [
+        {
+            id: 1, 
+            name: 'username',
+            type: 'text',
+            placeholder: 'Username', 
+            label: 'Username'
+        },
+        {
+            id: 2, 
+            name: 'password',
+            type: 'password',
+            placeholder: 'Password', 
+            label: 'Password'
+        },
+
+    ]
+
+    const onChange = (e) => {
         setFormData({
           ...formData,
-          [e.name]: e.value,
+          [e.target.name]: e.target.value,
         });
         console.log(formData)
       };
 
-    function handleInputEmail(email){
-        console.log(email)
-        setEmail(email)
-    }
-
-    function handleFormSubmit(e){
+    function handleSubmit(e){
         e.preventDefault()
         console.log(email)
     }
@@ -35,11 +46,14 @@ export default function SignIn(){
                 <img src={italiaLogo} alt="italia restaurant logo" />
                 <div className='sign-in__modal'>
                     <h2>Enter your Account</h2>
-                    <form onSubmit={handleFormSubmit}>
-                        <input type="e-mail" name="email" id="email" placeholder='Email' onChange={(e)=>{
-                            handleInput(e.target)
-                        }} value={email}/>
-                        <input type="password" name="password" id="password" placeholder='PassWord' />
+                    <form onSubmit={handleSubmit}>
+                        {inputs.map(input => (
+                            <FormInput
+                            key={input.id}
+                            {...input}
+                            value={formData[input.name]}
+                            onChange={onChange} />
+                        ))}
                         <button className='sign-in__button'>Submit</button>
                     </form>
                     <p>Not a member? <a>Sign up now!</a></p>
