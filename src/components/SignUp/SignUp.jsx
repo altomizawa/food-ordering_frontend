@@ -1,36 +1,76 @@
 import {useState, useEffect} from 'react'
 import italiaLogo from '../../images/Italia_logo_only.svg'
+import FormInput from '../FormInput/FormInput'
 
 
 export default function SignUp(){
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('')
-    const [confirmPassword, setConfirmPassword] = useState('')
-    const [showPassword, setShowPassword] = useState(false)
+    const [formData, setFormData] = useState({
+        username: '',
+        password: '', 
+    })
+
+    //Validate form fields
     const [isFormValid, setIsFormValid] = useState(false);
 
-
-    function handleEmailInput(email){
-        setEmail(email)
-    }
-    function handlePasswordInput(password){
-        setPassword(password);
-        areInputsValid();
-    }
-    function handleConfirmPasswordInput(confirmPassword){
-        setConfirmPassword(confirmPassword);
-        areInputsValid();
+    const formValidation = () => {
+        if (formData.password === formData.confirmPassword && formData.password > 4) {
+            setIsFormValid(true);
+        } else {setIsFormValid(false);}
     }
 
-    function handleFormSubmit(e){
+    useEffect(formValidation),[formData]
+
+
+    //Create Input object
+    const inputs = [
+        {
+            id: 1, 
+            name: 'email',
+            type: 'text',
+            placeholder: 'Email', 
+            label: 'Email',
+            errorMessage: "It should be a valid e-mail address",
+            pattern: 'John',
+            required: true,
+
+        },
+        {
+            id: 2, 
+            name: 'password',
+            type: 'password',
+            placeholder: 'Password', 
+            label: 'Password',
+            // pattern: '12345',
+            required: true,
+            errorMessage: "Password should be 8-20 characters and include at least 1 letter, 1 number and 1 special character",
+        },
+        {
+            id: 3, 
+            name: 'confirmPassword',
+            type: 'password',
+            placeholder: 'Confirm Password', 
+            label: 'Confirm Password',
+            errorMessage: "Passwords don't match",
+            // pattern: formData.password,
+            required: true,
+
+        },
+
+    ]
+
+    //Listen to input changes
+    const onChange = (e) => {
+        setFormData({
+          ...formData,
+          [e.target.name]: e.target.value,
+        });
+      };
+
+    
+    //Send Form
+    function handleSubmit(e){
         e.preventDefault()
-        console.log(email, password, confirmPassword)
-    }
-
-    function areInputsValid(e) {
-        if(password === confirmPassword) {
-            setIsFormValid(true)
-        } else {setIsFormValid(false)}
+        console.log(formData)
     }
 
     return(
@@ -39,39 +79,19 @@ export default function SignUp(){
                 <img src={italiaLogo} alt="italia restaurant logo" />
                 <div className='sign-in__modal'>
                     <h2>Sign Up</h2>
-                    <form onSubmit={handleFormSubmit}>
-                        <input 
-                            type="e-mail" 
-                            name="e-mail"
-                            id="e-mail" 
-                            placeholder='e-mail' value={email} 
-                            onChange={
-                            (e)=>{handleEmailInput(e.target.value)}} 
-                        />
-
-                        <input 
-                            type={showPassword ? 'text' : 'password'}
-                            name="password"
-                            id="password"
-                            placeholder='password' 
-                            value={password}
-                            onChange={
-                                (e)=>{handlePasswordInput(e.target.value)}} 
-                        />
-
-                        <input type={showPassword ? 'text' : 'password'}
-                            name="password"
-                            id="confirm-password"
-                            placeholder='confirm password'
-                            value={confirmPassword}
-                            onChange={
-                                (e)=>{handleConfirmPasswordInput(e.target.value)}} 
-                        />
-
-                        <a className='sign-up__show-password'
-                            onClick={() =>{
-                            setShowPassword(prevState => !prevState)
-                        }}>Show password</a>
+                    <form onSubmit={handleSubmit}>
+                        {inputs.map((input) => 
+                            (<FormInput
+                                key={input.id}
+                                name={input.name}
+                                type={input.type}
+                                placeholder={input.placeholder}
+                                onChange={onChange}
+                                errorMessage={input.errorMessage}
+                            />)
+                        )}              
+                        {/* <a className='sign-up__show-password'
+                            onClick={showPassword}>Show password</a> */}
 
                         <button className={isFormValid ? 'sign-in__button' : 'sign-in__button sign-in__button_inactive'}>Submit</button>
                     </form>

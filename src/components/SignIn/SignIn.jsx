@@ -1,4 +1,4 @@
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
 import italiaLogo from '../../images/Italia_logo_only.svg'
 import FormInput from '../FormInput/FormInput';
 
@@ -9,20 +9,35 @@ export default function SignIn(){
         password: '', 
     })
 
+    //Validate form fields
+    const [isFormValid, setIsFormValid] = useState(false);
+
+    const formValidation = () => {
+        if (formData.username.length>3 && formData.password.length > 3) {
+            setIsFormValid(true);
+        } else {setIsFormValid(false);}
+    }
+
+    useEffect(formValidation),[formData]
+
+
+
     const inputs = [
         {
             id: 1, 
             name: 'username',
             type: 'text',
             placeholder: 'Username', 
-            label: 'Username'
+            label: 'Username',
+            required: true,
         },
         {
             id: 2, 
             name: 'password',
             type: 'password',
             placeholder: 'Password', 
-            label: 'Password'
+            label: 'Password',
+            required: true,
         },
 
     ]
@@ -32,12 +47,11 @@ export default function SignIn(){
           ...formData,
           [e.target.name]: e.target.value,
         });
-        console.log(formData)
       };
 
     function handleSubmit(e){
         e.preventDefault()
-        console.log(email)
+        console.log(formData)
     }
 
     return(
@@ -54,7 +68,7 @@ export default function SignIn(){
                             value={formData[input.name]}
                             onChange={onChange} />
                         ))}
-                        <button className='sign-in__button'>Submit</button>
+                        <button className={isFormValid ? 'sign-in__button' : 'sign-in__button sign-in__button_inactive'}>Submit</button>
                     </form>
                     <p>Not a member? <a>Sign up now!</a></p>
                 </div>
