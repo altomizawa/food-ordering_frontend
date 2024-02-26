@@ -81,7 +81,7 @@ input {
 
 span {
   color: red;
-  display: none;
+  display: block;
 }
 
 input:invalid ~ span {

@@ -18,6 +18,12 @@ export default function SignIn(){
         } else {setIsFormValid(false);}
     }
 
+    const validateEmail = (email) => {
+        if (email.length > 0) {
+        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return regex.test(email) ? '' : 'Please enter a valid email address.';}
+    }
+
     useEffect(formValidation),[formData]
 
 
@@ -30,6 +36,7 @@ export default function SignIn(){
             placeholder: 'Username', 
             label: 'Username',
             required: true,
+            errorMessage: validateEmail(formData.username)
         },
         {
             id: 2, 

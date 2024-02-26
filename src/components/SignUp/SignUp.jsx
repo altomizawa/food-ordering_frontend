@@ -5,17 +5,37 @@ import FormInput from '../FormInput/FormInput'
 
 export default function SignUp(){
     const [formData, setFormData] = useState({
-        username: '',
-        password: '', 
+        email: '',
+        password: '',
+        confirmPassword: '',
     })
 
     //Validate form fields
     const [isFormValid, setIsFormValid] = useState(false);
 
     const formValidation = () => {
-        if (formData.password === formData.confirmPassword && formData.password > 4) {
+        if (formData.password === formData.confirmPassword && formData.email.length>0) {
             setIsFormValid(true);
         } else {setIsFormValid(false);}
+    }
+
+    const validatePasswordMatch = () => {
+        if (formData.password !== formData.confirmPassword) {
+            return 'passwords do not match'
+        }
+    }
+
+    const validateEmail = (email) => {
+        if (email.length > 0) {
+        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return regex.test(email) ? '' : 'Please enter a valid e-mail address.'
+    }}
+
+    const validatePassword = (password) => {
+        if (password.length >0 ){
+        const regex = /^(?=.*\d).{4,8}$/;
+        return regex.test(password) ? '' : 'Password must be between 4 and 8 digits long and include at least one numeric digit.'
+        }
     }
 
     useEffect(formValidation),[formData]
@@ -29,10 +49,8 @@ export default function SignUp(){
             type: 'text',
             placeholder: 'Email', 
             label: 'Email',
-            errorMessage: "It should be a valid e-mail address",
-            pattern: 'John',
             required: true,
-
+            errorMessage: validateEmail(formData.email)
         },
         {
             id: 2, 
@@ -40,9 +58,8 @@ export default function SignUp(){
             type: 'password',
             placeholder: 'Password', 
             label: 'Password',
-            // pattern: '12345',
             required: true,
-            errorMessage: "Password should be 8-20 characters and include at least 1 letter, 1 number and 1 special character",
+            errorMessage: validatePassword(formData.password)
         },
         {
             id: 3, 
@@ -50,9 +67,9 @@ export default function SignUp(){
             type: 'password',
             placeholder: 'Confirm Password', 
             label: 'Confirm Password',
-            errorMessage: "Passwords don't match",
-            // pattern: formData.password,
             required: true,
+            errorMessage: validatePasswordMatch,
+
 
         },
 

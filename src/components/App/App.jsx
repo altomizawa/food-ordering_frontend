@@ -20,7 +20,7 @@ function App() {
     {orderNow && <Hero handleOrderButtonClick={handleOrderButtonClick} />}
     {orderNow && <AboutUs />}
     {orderNow && <Footer />}
-    {!orderNow && <SignIn />}
+    {!orderNow && <SignUp />}
     </>
   )
 }
