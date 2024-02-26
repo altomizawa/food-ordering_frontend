@@ -1,0 +1,66 @@
+.hero {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+
+.hero__image {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.hero__header {
+  width: 100%;
+  display: flex;
+  padding: 1rem 2rem;
+}
+
+.hero__header > img {
+  width: 5%;
+  margin: 0;
+}
+
+.hero__wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  padding-left: 4rem;
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  justify-content: center;
+  row-gap: 1.5rem;
+}
+
+.hero__title {
+  font-family: 'Tenor Sans';
+  font-size: 4vw;
+  line-height: 1;
+}
+
+.hero__paragraph {
+  font-family: 'Tenor Sans';
+  font-size: 1rem;
+}
+
+.hero__button {
+  width: max-content;
+  font-size: 0.8rem;
+  padding: 0.8rem 1.3rem;
+  border-radius: 2rem;
+  border: 1px solid white;
+  background-color: #222222;
+  transition: 300ms ease-in-out;
+}
+
+.hero__button:hover {
+  background-color: white;
+  color: #222222;
+}

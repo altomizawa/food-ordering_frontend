@@ -1,22 +1,24 @@
 import { useState } from 'react'
+import Hero from '../Hero/Hero'
+import AboutUs from '../AboutUs/AboutUs'
+import Footer from '../Footer/Footer'
+import SignIn from '../SignIn/SignIn'
+import SignUp from '../SignUp/SignUp'
+
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [orderNow, setOrderNow] = useState(true)
+  
+  const handleOrderButtonClick = () => {
+    setOrderNow(false)
+  }
 
   return (
     <>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+    {orderNow && <Hero handleOrderButtonClick={handleOrderButtonClick} />}
+    {orderNow && <AboutUs />}
+    {orderNow && <Footer />}
+    {!orderNow && <SignIn />}
     </>
   )
 }

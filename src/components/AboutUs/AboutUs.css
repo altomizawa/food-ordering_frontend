@@ -1,0 +1,38 @@
+.about-us {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  background-color: #d9d9d9;
+}
+
+.about-us__wrapper {
+  width: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 2rem;
+  margin: auto;
+  background-color: #d9d9d9;
+  color: #222222;
+  height: 100%;
+}
+
+.about-us__wrapper > h2 {
+  font-size: 4rem;
+  font-family: 'Tenor Sans';
+  width: 3ch;
+}
+
+.about-us__divider {
+  height: 50%;
+  width: 3px;
+  background-color: #222222;
+  border-radius: 2px;
+}
+
+.about-us__wrapper > p {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 1rem;
+  text-align: left;
+  width: 50%;
+}
