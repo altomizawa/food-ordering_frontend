@@ -1,17 +1,15 @@
 import FoodCard from '../FoodCard/FoodCard'
 
 
-export default function MenuItem({item, handlePopup, isPopupActive}){
+export default function MenuItem({item, handlePopup}){
     return (
         <>
-            <li key={item.id} className='menu__item'>
-            {isPopupActive && <FoodCard handlePopup={handlePopup}/>}
-
+            <li className='menu__item'>
                 <div>
                     <p>{item.name}</p>
                     <p>US${item.price}</p>
                 </div>
-                <button onClick={handlePopup}>View/Add</button>
+                <button value={item.name} onClick={()=>{handlePopup(item)}}>View/Add</button>
             </li>
             <hr />
         </>

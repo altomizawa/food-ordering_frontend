@@ -3,33 +3,49 @@ import { useState } from 'react'
 
 import backgroundImage from '../../images/joao-vitor-duarte-k4Lt0CjUnb0-unsplash.jpg'
 import bruschettaImage from '../../images/mike-van-den-bos-F4qVqfkG2Aw-unsplash.jpg'
-import italiaLogo from '../../images/Italia_logo_dark.svg'
 
 import { menuArray } from '../../utils/menuArray'
 
 import Header from '../Header/Header'
 import MenuItem from '../MenuItem/MenuItem'
+import FoodCard from '../FoodCard/FoodCard'
 
 export default function Menu({isLoggedIn}) {
 
-    const [isPopupActive, setIsPopupActive] = useState(false)
+    const filteredArray = menuArray.filter((item) => item.price>0)
 
-    const handlePopup = () => {
+    const [isPopupActive, setIsPopupActive] = useState(false)
+    const [itemData, setItemData] = useState({
+        name: '',
+        category: '',
+        description: '',
+        link: '',
+        price: 0,
+        onSale: false,
+        salePrice: 0
+    })
+
+    const handlePopup = (item) => {
+        console.log(item)
+        setItemData(item)
         setIsPopupActive(prevState => !prevState)
     }
 
     return(
         <>
+             {isPopupActive && <FoodCard handlePopup={handlePopup} item={itemData}/>}
+            
+
             <div className="menu">
                 <img className='menu__background' src={backgroundImage} alt="background image of paper texture" />
                
-                <Header isLoggedIn= {isLoggedIn}/>
+                <Header isLoggedIn = {isLoggedIn} menuArray={menuArray}/>
 
                 <div className="menu__main">
                     <ul className='menu__items'>
                         <h2>Appetizers</h2>
-                        {menuArray.map((item) => (
-                            <MenuItem item={item} handlePopup={handlePopup} isPopupActive={isPopupActive} />
+                        {filteredArray.map((item) => (
+                            <MenuItem key={item.id} item={item} handlePopup={handlePopup} isPopupActive={isPopupActive} />
                         ))}
                     </ul>
                     <div className='menu__right-column'>

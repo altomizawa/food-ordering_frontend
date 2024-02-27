@@ -29,6 +29,8 @@
 }
 .foodCard__popup > img {
   width: 100%;
+  height: 350px;
+  object-fit: cover;
 }
 
 .foodCard__popup > div > h3 {
