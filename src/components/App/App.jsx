@@ -6,7 +6,7 @@ import SignIn from '../SignIn/SignIn'
 import SignUp from '../SignUp/SignUp'
 import Menu from '../Menu/Menu'
 
-const isLoggedIn = true;
+const isLoggedIn = false;
 
 
 function App() {
