@@ -1,0 +1,40 @@
+.header {
+  width: 100vw;
+  height: 10vh;
+  display: flex;
+  padding: 1rem 2rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header > img {
+  width: 5%;
+  margin-left: 4rem;
+}
+
+.header__button {
+  width: max-content;
+  font-size: 0.8rem;
+  width: 10rem;
+  height: 3rem;
+  border-radius: 2rem;
+  border: 1px solid white;
+  background-color: #222222;
+  transition: 300ms ease-in-out;
+  text-decoration: none;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 4rem;
+}
+
+.header__button:hover {
+  background-color: white;
+  color: #222222;
+}

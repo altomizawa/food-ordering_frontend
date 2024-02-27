@@ -2,14 +2,14 @@ import { useState } from 'react'
 
 import Hero from '../Hero/Hero'
 import AboutUs from '../AboutUs/AboutUs'
-import Footer from '../Footer/Footer'
+import OurTradition from '../OurTradition/OurTradition'
 
 export default function Home() {
     return (
         <>
            <Hero /> 
            <AboutUs />
-           <Footer /> 
+           <OurTradition />
         </>
     )
 }

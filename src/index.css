@@ -12,6 +12,7 @@
 @import url(./components/SignUp/SignIn.css);
 @import url(./components/Menu/Menu.css);
 @import url(./components/FoodCard/FoodCard.css);
+@import url(./components/OurTradition/OurTradition.css);
 
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;

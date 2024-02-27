@@ -1,0 +1,30 @@
+.ourTradition {
+  width: 100vw;
+  height: 100vh;
+  z-index: 10;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+
+.ourTradition__background {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.ourTradition__container {
+  margin-right: 10%;
+  width: 40%;
+  font-family: 'Tenor Sans';
+  line-height: 2rem;
+}
+
+.ourTradition__container > h2,
+.ourTradition__container > hr {
+  margin-bottom: 2rem;
+}
