@@ -1,27 +1,20 @@
-import { useState } from 'react'
-import {createBrowserRouter, RouterProvider} from 'react-router-dom'
+import {Route, Routes} from 'react-router-dom'
+import ProtectedRoute from './ProtectedRoute/ProtectedRoute'
 
-import Hero from '../Hero/Hero'
-import AboutUs from '../AboutUs/AboutUs'
-import Footer from '../Footer/Footer'
+import Home from '../Home/Home'
 import SignIn from '../SignIn/SignIn'
 import SignUp from '../SignUp/SignUp'
+import Menu from '../Menu/Menu'
 
 
 function App() {
-  const [orderNow, setOrderNow] = useState(true)
-  
-  const handleOrderButtonClick = () => {
-    setOrderNow(false)
-  }
-
   return (
-    <>
-    {orderNow && <Hero handleOrderButtonClick={handleOrderButtonClick} />}
-    {orderNow && <AboutUs />}
-    {orderNow && <Footer />}
-    {!orderNow && <SignUp />}
-    </>
+    <Routes>
+      <Route path='/' element={<Home />}/>
+      <Route path='/signin' element={<SignIn />} />
+      <Route path='/signup' element={<SignUp />} />
+      <Route path='/menu' element={<Menu />} />
+    </Routes>
   )
 }
 

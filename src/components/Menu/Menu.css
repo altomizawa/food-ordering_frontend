@@ -1,0 +1,162 @@
+.menu {
+  margin-top: 0vh;
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  font-family: 'Tenor Sans';
+}
+
+.menu__background {
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.menu__header {
+  display: flex;
+  align-items: center;
+  width: 85%;
+  justify-content: space-between;
+  padding-top: 2rem;
+  margin: auto;
+}
+
+.menu__logo {
+  width: 100px;
+  margin-left: 2rem;
+}
+
+.menu__categories {
+  display: flex;
+  width: 50%;
+  justify-content: space-between;
+}
+
+.menu__category {
+  color: black;
+  list-style: none;
+  position: relative;
+  cursor: pointer;
+}
+
+.menu__category::after {
+  content: '';
+  width: 0;
+  transition: 200ms ease-in-out;
+}
+
+.menu__category:hover::after {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  background-color: #222222;
+  transition: 200ms ease-in-out;
+}
+
+.menu__profile-button {
+  color: black;
+  border: 1px solid #222222;
+  padding: 0.5rem 1rem;
+  border-radius: 3rem;
+  margin-right: 2rem;
+  cursor: pointer;
+}
+
+.menu__profile-button:hover {
+  background-color: white;
+  color: #222222;
+}
+
+.menu__main {
+  margin-top: 4rem;
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  color: black;
+  position: relative;
+}
+
+.menu__items {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+  margin-right: 4rem;
+}
+
+.menu__item {
+  display: flex;
+  justify-content: space-between;
+}
+
+.menu__items > h2 {
+  font-size: 4rem;
+  display: none;
+}
+
+.menu__category-image {
+  width: 100%;
+  height: 60vh;
+  object-fit: cover;
+}
+
+hr {
+  border: 1px solid grey;
+  margin-top: -0.6rem;
+}
+
+.menu__category-wrapper {
+  width: 5rem;
+  height: 50vh;
+  position: relative;
+  margin-right: 1rem;
+}
+
+.menu__category-wrapper > h2 {
+  font-size: 4rem;
+  transform: rotate(270deg) translateX(-25vh);
+  text-align: left;
+}
+
+.menu__right-column {
+  width: 50%;
+  display: flex;
+}
+.menu__footer {
+  width: 100vw;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background-color: #222222;
+}
+.menu__footer-wrapper {
+  width: 90%;
+  height: 8rem;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  column-gap: 1rem;
+
+  margin: auto;
+}
+
+.menu__footer-wrapper > button {
+  height: 2rem;
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  border: none;
+  color: white;
+  border: 1px solid white;
+  font-family: 'Tenor Sans';
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.menu__footer-wrapper > p {
+  font-family: 'Tenor Sans';
+}
