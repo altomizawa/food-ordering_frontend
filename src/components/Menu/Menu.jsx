@@ -7,13 +7,12 @@ import italiaLogo from '../../images/Italia_logo_dark.svg'
 
 import { menuArray } from '../../utils/menuArray'
 
-import FoodCard from '../FoodCard/FoodCard'
 import Header from '../Header/Header'
 import MenuItem from '../MenuItem/MenuItem'
 
 export default function Menu({isLoggedIn}) {
 
-    const [isPopupActive, setIsPopupActive] = useState(true)
+    const [isPopupActive, setIsPopupActive] = useState(false)
 
     const handlePopup = () => {
         setIsPopupActive(prevState => !prevState)
@@ -22,7 +21,6 @@ export default function Menu({isLoggedIn}) {
     return(
         <>
             <div className="menu">
-                {isPopupActive && <FoodCard handlePopup={handlePopup}/>}
                 <img className='menu__background' src={backgroundImage} alt="background image of paper texture" />
                
                 <Header isLoggedIn= {isLoggedIn}/>
@@ -31,7 +29,7 @@ export default function Menu({isLoggedIn}) {
                     <ul className='menu__items'>
                         <h2>Appetizers</h2>
                         {menuArray.map((item) => (
-                            <MenuItem item={item}/>
+                            <MenuItem item={item} handlePopup={handlePopup} isPopupActive={isPopupActive} />
                         ))}
                     </ul>
                     <div className='menu__right-column'>
