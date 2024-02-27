@@ -1,11 +1,15 @@
 import { useState } from 'react'
 
+
 import backgroundImage from '../../images/joao-vitor-duarte-k4Lt0CjUnb0-unsplash.jpg'
 import bruschettaImage from '../../images/mike-van-den-bos-F4qVqfkG2Aw-unsplash.jpg'
 import italiaLogo from '../../images/Italia_logo_dark.svg'
 
+import { menuArray } from '../../utils/menuArray'
+
 import FoodCard from '../FoodCard/FoodCard'
 import Header from '../Header/Header'
+import MenuItem from '../MenuItem/MenuItem'
 
 export default function Menu({isLoggedIn}) {
 
@@ -14,8 +18,6 @@ export default function Menu({isLoggedIn}) {
     const handlePopup = () => {
         setIsPopupActive(prevState => !prevState)
     }
-
-
 
     return(
         <>
@@ -28,26 +30,9 @@ export default function Menu({isLoggedIn}) {
                 <div className="menu__main">
                     <ul className='menu__items'>
                         <h2>Appetizers</h2>
-                        <li className='menu__item'>
-                            <div>
-                                <p>Bruschetta</p>
-                                <p>US$15</p>
-                            </div>
-                            <button>View/Add</button>
-                        </li>
-                        <hr />
-                        <li className='menu__item'><p>Arancini</p><p>US$15</p></li>
-                        {/* <hr />
-                        <li className='menu__item'><p>Caprese Salad</p><p>US$15</p></li>
-                        <hr />
-                        <li className='menu__item'><p>Carpaccio</p><p>US$15</p></li>
-                        <hr />
-                        <li className='menu__item'><p>Insalata Romana</p><p>US$15</p></li>
-                        <hr />
-                        <li className='menu__item'><p>Antipasto Platter</p><p>US$15</p></li>
-                        <hr />
-                        <li className='menu__item'><p>Suppli</p><p>US$15</p></li>
-                        <hr /> */}
+                        {menuArray.map((item) => (
+                            <MenuItem item={item}/>
+                        ))}
                     </ul>
                     <div className='menu__right-column'>
                         <div className='menu__category-wrapper'><h2>Appetizers</h2></div>

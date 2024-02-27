@@ -44,11 +44,31 @@
   flex-direction: column;
   row-gap: 1rem;
   margin-right: 4rem;
+  max-width: 40%;
+  overflow: hidden;
 }
 
 .menu__item {
   display: flex;
+  width: 40vw;
   justify-content: space-between;
+  align-items: center;
+}
+
+.menu__item > div {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin-right: 1rem;
+}
+
+.menu__item > button {
+  font-family: 'Tenor Sans';
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  background-color: #222222;
+  border: none;
+  cursor: pointer;
 }
 
 .menu__items > h2 {
@@ -81,7 +101,7 @@ hr {
 }
 
 .menu__right-column {
-  width: 50%;
+  width: 40%;
   display: flex;
 }
 .menu__footer {
