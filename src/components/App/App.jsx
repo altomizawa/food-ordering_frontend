@@ -6,14 +6,16 @@ import SignIn from '../SignIn/SignIn'
 import SignUp from '../SignUp/SignUp'
 import Menu from '../Menu/Menu'
 
+const isLoggedIn = true;
+
 
 function App() {
   return (
     <Routes>
-      <Route path='/' element={<Home />}/>
+      <Route path='/' element={<Home isLoggedIn={isLoggedIn}/>}/>
       <Route path='/signin' element={<SignIn />} />
       <Route path='/signup' element={<SignUp />} />
-      <Route path='/menu' element={<Menu />} />
+      <Route path='/menu' element={<Menu isLoggedIn={isLoggedIn} />} />
     </Routes>
   )
 }

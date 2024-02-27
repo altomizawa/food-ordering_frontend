@@ -29,51 +29,8 @@
   margin-left: 2rem;
 }
 
-.menu__categories {
-  display: flex;
-  width: 50%;
-  justify-content: space-between;
-}
-
-.menu__category {
-  color: black;
-  list-style: none;
-  position: relative;
-  cursor: pointer;
-}
-
-.menu__category::after {
-  content: '';
-  width: 0;
-  transition: 200ms ease-in-out;
-}
-
-.menu__category:hover::after {
-  width: 100%;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  height: 2px;
-  background-color: #222222;
-  transition: 200ms ease-in-out;
-}
-
-.menu__profile-button {
-  color: black;
-  border: 1px solid #222222;
-  padding: 0.5rem 1rem;
-  border-radius: 3rem;
-  margin-right: 2rem;
-  cursor: pointer;
-}
-
-.menu__profile-button:hover {
-  background-color: white;
-  color: #222222;
-}
-
 .menu__main {
-  margin-top: 4rem;
+  margin-top: 10rem;
   display: flex;
   align-items: start;
   justify-content: center;

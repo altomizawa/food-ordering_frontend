@@ -3,9 +3,11 @@ import { useState } from 'react'
 import backgroundImage from '../../images/joao-vitor-duarte-k4Lt0CjUnb0-unsplash.jpg'
 import bruschettaImage from '../../images/mike-van-den-bos-F4qVqfkG2Aw-unsplash.jpg'
 import italiaLogo from '../../images/Italia_logo_dark.svg'
-import FoodCard from '../FoodCard/FoodCard'
 
-export default function Menu() {
+import FoodCard from '../FoodCard/FoodCard'
+import Header from '../Header/Header'
+
+export default function Menu({isLoggedIn}) {
 
     const [isPopupActive, setIsPopupActive] = useState(true)
 
@@ -14,24 +16,15 @@ export default function Menu() {
     }
 
 
+
     return(
         <>
             <div className="menu">
                 {isPopupActive && <FoodCard handlePopup={handlePopup}/>}
-                <div className="menu__header">
-                    <img className='menu__background' src={backgroundImage} alt="background image of paper texture" />
-                    <img className='menu__logo' src={italiaLogo} alt="restaurant logo" />
-                    <ul className='menu__categories'>
-                        <li className='menu__category'>Appetizers</li>
-                        <li className='menu__category'>Pasta</li>
-                        <li className='menu__category'>Pizza</li>
-                        <li className='menu__category'>Dessert</li>
-                        <li className='menu__category'>Beverages</li>
-                    </ul>
-                    <div className='menu__profile-button'>
-                        <p>Hello, altomizawa</p>
-                    </div>
-                </div>
+                <img className='menu__background' src={backgroundImage} alt="background image of paper texture" />
+               
+                <Header isLoggedIn= {isLoggedIn}/>
+
                 <div className="menu__main">
                     <ul className='menu__items'>
                         <h2>Appetizers</h2>

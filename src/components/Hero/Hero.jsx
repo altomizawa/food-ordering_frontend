@@ -9,7 +9,6 @@ export default function Hero() {
 
     return (
         <>
-            <Header />
             <div className='hero'>
                 <img className='hero__image' src={backgroundImage} alt="" />
                 

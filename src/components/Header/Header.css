@@ -31,10 +31,54 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: 4rem;
+  margin-right: 5rem;
 }
 
 .header__button:hover {
+  background-color: white;
+  color: #222222;
+}
+
+
+.header__categories {
+  display: flex;
+  width: 50%;
+  justify-content: space-between;
+}
+
+.header__category {
+  color: black;
+  list-style: none;
+  position: relative;
+  cursor: pointer;
+}
+
+.header__category::after {
+  content: '';
+  width: 0;
+  transition: 200ms ease-in-out;
+}
+
+.header__category:hover::after {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  background-color: #222222;
+  transition: 200ms ease-in-out;
+}
+
+.header__profile-button {
+  color: black;
+  border: 1px solid #222222;
+  padding: 0.5rem 1rem;
+  border-radius: 3rem;
+  margin-right: 5rem;
+  cursor: pointer;
+}
+
+.header__profile-button:hover {
   background-color: white;
   color: #222222;
 }
