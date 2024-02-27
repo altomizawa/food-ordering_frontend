@@ -1,10 +1,12 @@
 import {useEffect, useState} from 'react'
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useNavigate} from 'react-router-dom';
 import italiaLogo from '../../images/Italia_logo_only.svg'
 import FormInput from '../FormInput/FormInput';
 
 
-export default function SignIn(){
+export default function SignIn({setIsLoggedIn}){
+    const navigate = useNavigate();
+
     const [formData, setFormData] = useState({
         username: '',
         password: '', 
@@ -58,8 +60,10 @@ export default function SignIn(){
       };
 
     function handleSubmit(e){
-        e.preventDefault()
-        console.log(formData)
+        e.preventDefault();
+        console.log(formData);
+        setIsLoggedIn(true);
+        navigate('/menu');
     }
 
     return(

@@ -28,10 +28,16 @@ export default function Menu({isLoggedIn}) {
                 <div className="menu__main">
                     <ul className='menu__items'>
                         <h2>Appetizers</h2>
-                        <li className='menu__item'><p>Bruschetta</p><p>US$15</p></li>
+                        <li className='menu__item'>
+                            <div>
+                                <p>Bruschetta</p>
+                                <p>US$15</p>
+                            </div>
+                            <button>View/Add</button>
+                        </li>
                         <hr />
                         <li className='menu__item'><p>Arancini</p><p>US$15</p></li>
-                        <hr />
+                        {/* <hr />
                         <li className='menu__item'><p>Caprese Salad</p><p>US$15</p></li>
                         <hr />
                         <li className='menu__item'><p>Carpaccio</p><p>US$15</p></li>
@@ -41,7 +47,7 @@ export default function Menu({isLoggedIn}) {
                         <li className='menu__item'><p>Antipasto Platter</p><p>US$15</p></li>
                         <hr />
                         <li className='menu__item'><p>Suppli</p><p>US$15</p></li>
-                        <hr />
+                        <hr /> */}
                     </ul>
                     <div className='menu__right-column'>
                         <div className='menu__category-wrapper'><h2>Appetizers</h2></div>
