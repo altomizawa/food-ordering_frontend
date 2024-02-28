@@ -3,39 +3,17 @@ import italiaLogo from '../../images/Italia_logo_only.svg'
 import italiaLogoBlack from '../../images/Italia_logo_dark.svg'
 
 export default function Header(props){
-    const {isLoggedIn, menuArray} = props;
+    const {isLoggedIn, menuArray, setCurrentCategory} = props;
 
-    const categories = [
-        {   
-            id: 0,
-            name: 'Appetizers'
+    function handleCategoryClick(category) {
+        console.log(category.items)
+        setCurrentCategory(category.items)
 
-        },
-        {   
-            id: 1,
-            name: 'Pasta'
-
-        },
-        {   
-            id: 2,
-            name: 'Pizza'
-
-        },
-        {   
-            id: 3,
-            name: 'Dessert'
-
-        },
-        {   
-            id: 4,
-            name: 'Beverages'
-
-        },
-    ];
-
+    }
+    
     const createMenu = (item) => {
         return (
-            <li key={item.id} className='header__category'>{item.name}</li>
+            <li key={item.id} onClick={() => {handleCategoryClick(item)}} className='header__category'>{item.category}</li>
         )
     }
 
@@ -43,7 +21,7 @@ export default function Header(props){
         <header className='header'>
             <img src={isLoggedIn  ? italiaLogoBlack : italiaLogo} alt="italia restaurant logo" />
             {isLoggedIn &&  <ul className='header__categories'>
-               {categories.map((item) => createMenu(item))}
+               {menuArray.map((item) => createMenu(item))}
             </ul>}
             {isLoggedIn && <div className='header__profile-button'>
                 <p>Hello, altomizawa</p>

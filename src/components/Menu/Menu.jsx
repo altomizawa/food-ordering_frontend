@@ -12,9 +12,8 @@ import MenuItem from '../MenuItem/MenuItem'
 import FoodCard from '../FoodCard/FoodCard'
 
 export default function Menu({isLoggedIn}) {
-    const[currentCategory, setCurrentCategory] = useState('Pizza')
-
-    const filteredArray = menuArray.filter((item) => item.category===currentCategory)
+    const[currentCategory, setCurrentCategory] = useState(menuArray[0].items);
+    
 
     const [isPopupActive, setIsPopupActive] = useState(false)
     const [itemData, setItemData] = useState({
@@ -54,12 +53,12 @@ export default function Menu({isLoggedIn}) {
             <div className="menu">
                 <img className='menu__background' src={backgroundImage} alt="background image of paper texture" />
                
-                <Header isLoggedIn = {isLoggedIn} menuArray={menuArray}/>
+                <Header isLoggedIn = {isLoggedIn} menuArray={menuArray} setCurrentCategory={setCurrentCategory}/>
 
                 <div className="menu__main">
                     <ul className='menu__items'>
                         <h2></h2>
-                        {filteredArray.map((item) => (
+                        {currentCategory.map((item) => (
                             <MenuItem
                                 key={item.id} 
                                 item={item} 
