@@ -1,6 +1,9 @@
+import carbonara from '../images/carbonara.jpg'
+
 const menuArray = [
   {
     category: 'Apettizers',
+    image: '',
     id: 0,
     items: [
       {
@@ -74,6 +77,7 @@ const menuArray = [
   },
   {
     category: 'Pasta',
+    image: carbonara,
     id: 1,
     items: [
       {
@@ -161,6 +165,7 @@ const menuArray = [
   },
   {
     category: 'Pizza',
+    image: '',
     id: 2,
     items: [
       {
@@ -267,6 +272,7 @@ const menuArray = [
   },
   {
     category: 'Dessert',
+    image: '',
     id: 3,
     items: [
       {
@@ -314,6 +320,7 @@ const menuArray = [
     ,
   {
     category: 'Beverages',
+    image: '',
     id: 4,
     items: [
       {

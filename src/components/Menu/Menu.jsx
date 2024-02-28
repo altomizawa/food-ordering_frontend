@@ -43,6 +43,7 @@ export default function Menu({isLoggedIn}) {
         return totalPrice;
     };
 
+    console.log(currentCategory)
 
 
     return(
@@ -70,7 +71,7 @@ export default function Menu({isLoggedIn}) {
                     <div className='menu__right-column'>
                         <div className='menu__category-wrapper'><h2>Appetizers</h2></div>
                         
-                        <img className='menu__category-image' src={bruschettaImage} alt="picture of a plate of italian bruschetta" />
+                        <img className='menu__category-image' src={currentCategory.image} alt="picture of a plate of italian bruschetta" />
                     </div>
                 </div>
                 <div className='menu__footer'>

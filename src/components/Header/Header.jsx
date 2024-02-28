@@ -6,7 +6,6 @@ export default function Header(props){
     const {isLoggedIn, menuArray, setCurrentCategory} = props;
 
     function handleCategoryClick(category) {
-        console.log(category.items)
         setCurrentCategory(category.items)
 
     }
