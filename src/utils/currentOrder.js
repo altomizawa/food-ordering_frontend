@@ -1,0 +1,3 @@
+const currentOrder = [];
+
+export {currentOrder}

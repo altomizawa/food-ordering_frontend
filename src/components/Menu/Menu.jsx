@@ -5,14 +5,16 @@ import backgroundImage from '../../images/joao-vitor-duarte-k4Lt0CjUnb0-unsplash
 import bruschettaImage from '../../images/mike-van-den-bos-F4qVqfkG2Aw-unsplash.jpg'
 
 import { menuArray } from '../../utils/menuArray'
+import { currentOrder } from '../../utils/currentOrder'
 
 import Header from '../Header/Header'
 import MenuItem from '../MenuItem/MenuItem'
 import FoodCard from '../FoodCard/FoodCard'
 
 export default function Menu({isLoggedIn}) {
+    const[currentCategory, setCurrentCategory] = useState('Pizza')
 
-    const filteredArray = menuArray.filter((item) => item.price>0)
+    const filteredArray = menuArray.filter((item) => item.category===currentCategory)
 
     const [isPopupActive, setIsPopupActive] = useState(false)
     const [itemData, setItemData] = useState({
@@ -26,14 +28,27 @@ export default function Menu({isLoggedIn}) {
     })
 
     const handlePopup = (item) => {
-        console.log(item)
         setItemData(item)
         setIsPopupActive(prevState => !prevState)
     }
 
+    function addToCart(item) {
+        currentOrder.push(item)
+    }
+
+    function calculateTotalPrice() {
+        let totalPrice = 0;
+        currentOrder.forEach(item => {
+          totalPrice += item.price;
+        });
+        return totalPrice;
+    };
+
+
+
     return(
         <>
-             {isPopupActive && <FoodCard handlePopup={handlePopup} item={itemData}/>}
+             {isPopupActive && <FoodCard handlePopup={handlePopup} item={itemData} addToCart={addToCart}/>}
             
 
             <div className="menu">
@@ -43,9 +58,14 @@ export default function Menu({isLoggedIn}) {
 
                 <div className="menu__main">
                     <ul className='menu__items'>
-                        <h2>Appetizers</h2>
+                        <h2></h2>
                         {filteredArray.map((item) => (
-                            <MenuItem key={item.id} item={item} handlePopup={handlePopup} isPopupActive={isPopupActive} />
+                            <MenuItem
+                                key={item.id} 
+                                item={item} 
+                                handlePopup={handlePopup} 
+                                isPopupActive={isPopupActive}
+                            />
                         ))}
                     </ul>
                     <div className='menu__right-column'>
@@ -56,8 +76,8 @@ export default function Menu({isLoggedIn}) {
                 </div>
                 <div className='menu__footer'>
                     <div className='menu__footer-wrapper'>
-                        <p>Current Order: 3 items</p>
-                        <p>TOTAL: US$40,00</p>
+                        <p>Current Order: {currentOrder.length} items</p>
+                        <p>TOTAL: US${calculateTotalPrice()}</p>
                         <button>Edit Cart</button>
                         <p>or</p>
                         <button>CHECKOUT</button>

@@ -9,7 +9,10 @@ export default function MenuItem({item, handlePopup}){
                     <p>{item.name}</p>
                     <p>US${item.price}</p>
                 </div>
-                <button value={item.name} onClick={()=>{handlePopup(item)}}>View/Add</button>
+                <button
+                    value={item.name}
+                    onClick={()=>{handlePopup(item)}}    
+                >View/Add</button>
             </li>
             <hr />
         </>

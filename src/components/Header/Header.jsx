@@ -4,11 +4,38 @@ import italiaLogoBlack from '../../images/Italia_logo_dark.svg'
 
 export default function Header(props){
     const {isLoggedIn, menuArray} = props;
-    console.log(menuArray)
 
-    const createCategories = (item) =>{
+    const categories = [
+        {   
+            id: 0,
+            name: 'Appetizers'
+
+        },
+        {   
+            id: 1,
+            name: 'Pasta'
+
+        },
+        {   
+            id: 2,
+            name: 'Pizza'
+
+        },
+        {   
+            id: 3,
+            name: 'Dessert'
+
+        },
+        {   
+            id: 4,
+            name: 'Beverages'
+
+        },
+    ];
+
+    const createMenu = (item) => {
         return (
-            <li className='header__category'>{item.name}</li>
+            <li key={item.id} className='header__category'>{item.name}</li>
         )
     }
 
@@ -16,11 +43,7 @@ export default function Header(props){
         <header className='header'>
             <img src={isLoggedIn  ? italiaLogoBlack : italiaLogo} alt="italia restaurant logo" />
             {isLoggedIn &&  <ul className='header__categories'>
-                <li className='header__category'>Appetizers</li>
-                <li className='header__category'>Pasta</li>
-                <li className='header__category'>Pizza</li>
-                <li className='header__category'>Dessert</li>
-                <li className='header__category'>Beverages</li>
+               {categories.map((item) => createMenu(item))}
             </ul>}
             {isLoggedIn && <div className='header__profile-button'>
                 <p>Hello, altomizawa</p>
