@@ -12,8 +12,7 @@ import MenuItem from '../MenuItem/MenuItem'
 import FoodCard from '../FoodCard/FoodCard'
 
 export default function Menu({isLoggedIn}) {
-    const[currentCategory, setCurrentCategory] = useState(menuArray[0].items);
-    
+    const[currentCategory, setCurrentCategory] = useState(menuArray[0]);
 
     const [isPopupActive, setIsPopupActive] = useState(false)
     const [itemData, setItemData] = useState({
@@ -41,10 +40,9 @@ export default function Menu({isLoggedIn}) {
           totalPrice += item.price;
         });
         return totalPrice;
-    };
+    }
 
     console.log(currentCategory)
-
 
     return(
         <>
@@ -59,7 +57,7 @@ export default function Menu({isLoggedIn}) {
                 <div className="menu__main">
                     <ul className='menu__items'>
                         <h2></h2>
-                        {currentCategory.map((item) => (
+                        {currentCategory.items.map((item) => (
                             <MenuItem
                                 key={item.id} 
                                 item={item} 
