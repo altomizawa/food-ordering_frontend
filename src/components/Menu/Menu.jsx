@@ -10,11 +10,12 @@ import { currentOrder } from '../../utils/currentOrder'
 import Header from '../Header/Header'
 import MenuItem from '../MenuItem/MenuItem'
 import FoodCard from '../FoodCard/FoodCard'
+import EditCartPopup from '../EditCartPopup/EditCartPopup'
 
 export default function Menu({isLoggedIn}) {
     const[currentCategory, setCurrentCategory] = useState(menuArray[0]);
-
-    const [isPopupActive, setIsPopupActive] = useState(false)
+    const [isPopupActive, setIsPopupActive] = useState(false);
+    const [isEditCartOpen, setIsEditCartOpen] = useState(true);
     const [itemData, setItemData] = useState({
         name: '',
         category: '',
@@ -47,16 +48,16 @@ export default function Menu({isLoggedIn}) {
     return(
         <>
              {isPopupActive && <FoodCard handlePopup={handlePopup} item={itemData} addToCart={addToCart}/>}
+             {isEditCartOpen && <EditCartPopup />}
             
 
-            <div className="menu">
+            <div className="menu"> 
                 <img className='menu__background' src={backgroundImage} alt="background image of paper texture" />
                
                 <Header isLoggedIn = {isLoggedIn} menuArray={menuArray} setCurrentCategory={setCurrentCategory}/>
 
                 <div className="menu__main">
                     <ul className='menu__items'>
-                        <h2></h2>
                         {currentCategory.items.map((item) => (
                             <MenuItem
                                 key={item.id} 
@@ -67,8 +68,7 @@ export default function Menu({isLoggedIn}) {
                         ))}
                     </ul>
                     <div className='menu__right-column'>
-                        <div className='menu__category-wrapper'><h2>Appetizers</h2></div>
-                        
+                        <h2>{currentCategory.category}</h2>
                         <img className='menu__category-image' src={currentCategory.image} alt="picture of a plate of italian bruschetta" />
                     </div>
                 </div>

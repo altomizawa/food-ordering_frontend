@@ -8,7 +8,7 @@ import SignUp from '../SignUp/SignUp'
 import Menu from '../Menu/Menu'
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   return (
     <Routes>

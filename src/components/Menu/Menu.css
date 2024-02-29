@@ -36,6 +36,7 @@
   justify-content: center;
   color: black;
   position: relative;
+  overflow: hidden;
 }
 
 .menu__items {
@@ -46,29 +47,6 @@
   margin-right: 4rem;
   max-width: 40%;
   overflow: hidden;
-}
-
-.menu__item {
-  display: flex;
-  width: 40vw;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.menu__item > div {
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-  margin-right: 1rem;
-}
-
-.menu__item > button {
-  font-family: 'Tenor Sans';
-  padding: 0.5rem 1rem;
-  border-radius: 2rem;
-  background-color: #222222;
-  border: none;
-  cursor: pointer;
 }
 
 .menu__items > h2 {
@@ -87,29 +65,28 @@ hr {
   margin-top: -0.6rem;
 }
 
-.menu__category-wrapper {
-  width: 5rem;
-  height: 50vh;
-  position: relative;
-  margin-right: 1rem;
-}
-
-.menu__category-wrapper > h2 {
-  font-size: 4rem;
-  transform: rotate(270deg) translateX(-25vh);
-  text-align: left;
-}
-
 .menu__right-column {
   width: 40%;
-  display: flex;
+  display: inline-block;
+  position: relative;
+  padding-left: 4rem;
+}
+
+.menu__right-column > h2 {
+  font-size: 4rem;
+  text-align: left;
+  position: absolute;
+  bottom: -5rem;
+  left: -1rem;
+  transform-origin: 0 0;
+  transform: rotate(270deg);
 }
 .menu__footer {
   width: 100vw;
   position: fixed;
   bottom: 0;
   left: 0;
-  background-color: #222222;
+  background-color: var(--dark-background);
 }
 .menu__footer-wrapper {
   width: 90%;

@@ -4,7 +4,7 @@ import FoodCard from '../FoodCard/FoodCard'
 export default function MenuItem({item, handlePopup}){
     return (
         <>
-            <li className='menu__item'>
+            <li className='menuItem'>
                 <div>
                     <p>{item.name}</p>
                     <p>US${item.price}</p>
@@ -14,7 +14,7 @@ export default function MenuItem({item, handlePopup}){
                     onClick={()=>{handlePopup(item)}}    
                 >View/Add</button>
             </li>
-            <hr />
+            <hr className='menuItem__line'/>
         </>
     )
 } 

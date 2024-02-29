@@ -24,7 +24,7 @@
   height: 3rem;
   border-radius: 2rem;
   border: 1px solid white;
-  background-color: #222222;
+  background-color: var(--dark-background);
   transition: 300ms ease-in-out;
   text-decoration: none;
   color: white;
@@ -36,9 +36,8 @@
 
 .header__button:hover {
   background-color: white;
-  color: #222222;
+  color: var(--dark-background);
 }
-
 
 .header__categories {
   display: flex;
@@ -65,13 +64,13 @@
   bottom: 0;
   left: 0;
   height: 2px;
-  background-color: #222222;
+  background-color: var(--dark-background);
   transition: 200ms ease-in-out;
 }
 
 .header__profile-button {
   color: black;
-  border: 1px solid #222222;
+  border: 1px solid var(--dark-background);
   padding: 0.5rem 1rem;
   border-radius: 3rem;
   margin-right: 5rem;
@@ -80,5 +79,5 @@
 
 .header__profile-button:hover {
   background-color: white;
-  color: #222222;
+  color: var(--dark-background);
 }

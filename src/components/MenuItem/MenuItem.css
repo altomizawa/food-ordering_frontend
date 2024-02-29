@@ -1,0 +1,26 @@
+.menuItem {
+  display: flex;
+  width: 40vw;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menuItem > div {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin-right: 1rem;
+}
+
+.menuItem > button {
+  font-family: 'Tenor Sans';
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  background-color: var(--dark-background);
+  border: none;
+  cursor: pointer;
+}
+
+.menuItem__line {
+  opacity: 0.3;
+}

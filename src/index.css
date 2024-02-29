@@ -14,6 +14,7 @@
 @import url(./components/FoodCard/FoodCard.css);
 @import url(./components/OurTradition/OurTradition.css);
 @import url(./components/MenuItem/MenuItem.css);
+@import url(./components/EditCartPopup/EditCartPopup.css);
 
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -23,6 +24,11 @@
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
+  --card-background-color: #d9d9d9;
+  --lighter-background: #373737;
+  --dark-button: #222222;
+  --dark-background: #222222;
+  --popup-overlay: rgba(0, 0, 0, 0.8);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;

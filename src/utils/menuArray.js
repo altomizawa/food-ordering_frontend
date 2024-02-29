@@ -277,17 +277,6 @@ const menuArray = [
         link: '',
         onSale: false,
       },
-      {
-        id: 23,
-        name: 'Sausage Pizza',
-        category: 'Pizza',
-        description:
-          "Savory sausage slices and gooey cheese on a crispy crust, a pizza lover's favorite.",
-        price: 15,
-        salePrice: 12,
-        link: '',
-        onSale: false,
-      },
     ],
   },
   {

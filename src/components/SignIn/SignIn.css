@@ -4,7 +4,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  background-color: #373737;
+  background-color: var(--lighter-background);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -26,14 +26,14 @@
   row-gap: 1.5rem;
   align-items: center;
   border: 1px solid white;
-  background-color: #d9d9d9;
+  background-color: var(--card-background-color);
   border-radius: 10px;
 }
 
 .sign-in__modal > h2 {
   text-transform: uppercase;
   font-size: 1.5rem;
-  color: #222222;
+  color: var(--dark-background);
 }
 
 form {
@@ -59,16 +59,16 @@ input {
   border-radius: 10px;
   border: none;
   padding: 0.5rem 1rem;
-  background-color: #222222;
+  background-color: var(--dark-background);
   cursor: pointer;
 }
 
 .sign-in__modal > p {
-  color: #222222;
+  color: var(--dark-background);
 }
 
 .sign-in__modal > p > a {
-  color: #222222;
+  color: var(--dark-background);
   text-decoration: underline;
   cursor: pointer;
 }
