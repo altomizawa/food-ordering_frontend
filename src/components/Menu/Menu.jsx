@@ -15,7 +15,7 @@ export default function Menu(props) {
     const {isLoggedIn} = props
     const[currentCategory, setCurrentCategory] = useState(menuArray[0]);
     const [isPopupActive, setIsPopupActive] = useState(false);
-    const [isEditCartOpen, setIsEditCartOpen] = useState(true);
+    const [isEditCartOpen, setIsEditCartOpen] = useState(false);
     const [currentOrder, setCurrentOrder] = useState([]) 
     const [itemData, setItemData] = useState({
         name: '',
