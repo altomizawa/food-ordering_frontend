@@ -1,6 +1,5 @@
 import {Route, Routes} from 'react-router-dom'
 import { useState } from 'react'
-import ProtectedRoute from './ProtectedRoute/ProtectedRoute'
 
 import Home from '../Home/Home'
 import SignIn from '../SignIn/SignIn'

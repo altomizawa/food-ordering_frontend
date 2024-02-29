@@ -2,7 +2,6 @@ import { useState } from 'react'
 
 
 import backgroundImage from '../../images/joao-vitor-duarte-k4Lt0CjUnb0-unsplash.jpg'
-import bruschettaImage from '../../images/mike-van-den-bos-F4qVqfkG2Aw-unsplash.jpg'
 
 import { menuArray } from '../../utils/menuArray'
 import { currentOrder } from '../../utils/currentOrder'
