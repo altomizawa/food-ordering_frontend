@@ -14,6 +14,7 @@
 
 .menuItem > button {
   font-family: 'Tenor Sans';
+  font-size: inherit;
   padding: 0.5rem 1rem;
   border-radius: 2rem;
   background-color: var(--dark-background);

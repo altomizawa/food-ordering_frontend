@@ -6,7 +6,7 @@ import beverage from '../images/beverage.jpg';
 
 const menuArray = [
   {
-    category: 'Apettizers',
+    category: 'Appetizers',
     image: appetizer,
     id: 0,
     items: [
