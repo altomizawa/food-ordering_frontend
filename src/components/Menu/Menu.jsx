@@ -31,22 +31,22 @@ export default function Menu(props) {
             },
             {
                 id: 2,
-                category: 'pasta',
+                category: 'pastas',
                 image: {pastaImg}
             },
             {
                 id: 3,
-                category: 'pizza',
+                category: 'pizzas',
                 image: {pizzaImg}
             },
             {
                 id: 4,
-                category: 'dessert',
+                category: 'desserts',
                 image: {dessertImg}
             },
             {
                 id: 5,
-                category: 'beverage',
+                category: 'beverages',
                 image: {beverageImg}
             },
         ]);
@@ -63,15 +63,31 @@ export default function Menu(props) {
         salePrice: 0
     })
 
+    //GET CURRENT ITEMS IN CART AND UPDATE CART
+    const updateCart = () => {
+        api.getAllCartItems()
+        .then(items => setCurrentOrder(items))
+    }
+
+    //Handle Item Detail Popup
     const handlePopup = (item) => {
         setItemData(item)
         setIsPopupActive(prevState => !prevState)
     }
 
+    //Add Item from Cart
     function addToCart(item) {
         api.addToCart(item)
+        updateCart()
     }
 
+    //Remove Item from Cart
+    const handleRemoveItem = (item) => {
+        api.removeFromCart(item)
+        .then((item) => {updateCart()}) 
+    }
+
+    //Calculate Total Price
     function calculateTotalPrice() {
         let totalPrice = 0;
         currentOrder.forEach(item => {
@@ -80,10 +96,10 @@ export default function Menu(props) {
         return totalPrice;
     }
 
+    //handle Edit Cart Popup
     const handleEditCartPopup = (item) => {
         setIsEditCartOpen(prevState => !prevState)
     }
-
 
     //Render initial menu: Appetizers
     useEffect(() => {
@@ -92,7 +108,7 @@ export default function Menu(props) {
             setCurrentCategory(menuCategories[0])
 
         });
-        api.getAllCartItems().then((items) => {setCurrentOrder(items)})
+        updateCart();
     },[]);
 
     //Fetch new Category
@@ -112,6 +128,7 @@ export default function Menu(props) {
                                 handleEditCartPopup={handleEditCartPopup}
                                 currentOrder={currentOrder}
                                 calculateTotalPrice={calculateTotalPrice()}
+                                handleRemoveItem={handleRemoveItem}
                                 />}
             
 

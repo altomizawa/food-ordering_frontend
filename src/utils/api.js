@@ -20,7 +20,7 @@ class Api {
     return fetch(url, config)
       .then((res) => {
         if (!res.ok) {
-          throw new Error('Erro: ${res.status}');
+          throw new Error(`Erro: ${res.status}`);
         }
         return res.json();
       })
@@ -48,6 +48,12 @@ class Api {
       price: item.price,
       onSale: item.onSale,
       salePrice: item.salePrice,
+    });
+  }
+
+  removeFromCart(item) {
+    return this._makeFetchRequest(`${BASE_URL}/mycart`, 'DELETE', {
+      _id: item._id,
     });
   }
 }
