@@ -9,7 +9,7 @@ import Menu from '../Menu/Menu'
 
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
 
   return (
     <Routes>
