@@ -28,7 +28,11 @@
   font-family: 'Tenor Sans';
   font-size: 3rem;
   color: var(--dark-background);
-  margin-top: 2rem;
+  margin-top: 1rem;
+  width: 100%;
+  text-align: center;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  /* border: 1px solid grey; */
 }
 
 .editCartPopup__items {

@@ -1,11 +1,22 @@
 import {useEffect, useState} from 'react'
-import { Link, Navigate, useNavigate} from 'react-router-dom';
+import { Link, useNavigate, Navigate} from 'react-router-dom';
 import italiaLogo from '../../images/Italia_logo_only.svg'
 import FormInput from '../FormInput/FormInput';
 
 
 export default function SignIn({setIsLoggedIn}){
     const navigate = useNavigate();
+
+    const [token, setToken] = useState(localStorage.getItem('token'))
+  
+    //Check if there's a token and redirect to menu if token=true
+    useEffect(()=>{
+      if ( token ) {
+        setIsLoggedIn(true);
+        navigate('/menu');
+      }
+    }),[]
+  
 
     const [formData, setFormData] = useState({
         username: '',
@@ -28,8 +39,6 @@ export default function SignIn({setIsLoggedIn}){
     }
 
     useEffect(formValidation),[formData]
-
-
 
     const inputs = [
         {
@@ -61,9 +70,9 @@ export default function SignIn({setIsLoggedIn}){
 
     function handleSubmit(e){
         e.preventDefault();
-        console.log(formData);
+        console.log(formData);   
         setIsLoggedIn(true);
-        navigate('/menu');
+        navigate('/menu')
     }
 
     return(

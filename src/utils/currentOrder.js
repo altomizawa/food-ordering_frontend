@@ -1,3 +1,0 @@
-const currentOrder = [];
-
-export {currentOrder}
