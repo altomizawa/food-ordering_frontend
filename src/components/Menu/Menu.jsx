@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import myCart from '../../database/mycart.json'
-import menu from '../../database/menu.json'
+// import menu from '../../database/menu.json'
 
 import backgroundImage from '../../images/joao-vitor-duarte-k4Lt0CjUnb0-unsplash.jpg';
 import appetizersImg from '../../images/appetizers.jpg';
@@ -110,6 +110,7 @@ export default function Menu(props) {
     //Render initial menu: Appetizers
     useEffect(() => {
         api.getCurrentCategoryMenu('appetizers').then((items) => {
+            console.log(items)
             setCurrentCategoryItems(items);
             setCurrentCategory(menuCategories[0])
 

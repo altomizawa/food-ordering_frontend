@@ -1,4 +1,4 @@
-import { useNavigate, Link} from "react-router-dom";
+import { Link} from "react-router-dom";
 import { useState } from "react";
 
 import myCart from "../../database/mycart.json"
@@ -14,7 +14,6 @@ import gpayLogo from '../../images/gpay-logo.png'
 
 
 export default function Checkout() {
-    const navigate = useNavigate();
 
     const [isOrderComplete, setIsOrderComplete] = useState(false)
 

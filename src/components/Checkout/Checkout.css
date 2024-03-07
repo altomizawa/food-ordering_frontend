@@ -1,67 +1,68 @@
-.checkout{
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    column-gap: 4rem;
+.checkout {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 4rem;
+  font-family: 'Tenor Sans';
 }
 
 .checkout__background {
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    position: absolute;
-    top: 0;
-    left: 0;
-  }
-
-.checkout__left-column{
-    width: 30%;
-    color: black;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
-.checkout__payment-logos{
-    display: flex;
+.checkout__left-column {
+  width: 30%;
+  color: black;
 }
 
-.checkout__payment-logo{
-    width: 100px;
-    height: 50px;
-    object-fit: contain;
+.checkout__payment-logos {
+  display: flex;
 }
 
-.checkout__right-column{
-    color: var(--lighter-background);
-    width: 40%;
+.checkout__payment-logo {
+  width: 100px;
+  height: 50px;
+  object-fit: contain;
 }
 
-.checkout__payment-line{
-    display: flex;
-    column-gap: 1rem;
+.checkout__right-column {
+  color: var(--lighter-background);
+  width: 40%;
 }
 
-.checkout__button{
-    background-color: rgba(0,0,0,0);
-    border: 1px solid var(--dark-button);
-    border-radius: 20px;
-    font-weight: 200;
-    color: var(--dark-button);
-    width: 50%;
-    height: 50px;
-    cursor: pointer;
+.checkout__payment-line {
+  display: flex;
+  column-gap: 1rem;
 }
 
-.checkout__button-submit{
-    background-color: var(--dark-button);
-    color: white;
-}
-.checkout__link{
-    width: 50%;
-    display: flex;
-    justify-content: center;
+.checkout__button {
+  background-color: rgba(0, 0, 0, 0);
+  border: 1px solid var(--dark-button);
+  border-radius: 20px;
+  font-weight: 200;
+  color: var(--dark-button);
+  width: 50%;
+  height: 50px;
+  cursor: pointer;
 }
 
-.checkout__link>button{
-    width: 100%;
+.checkout__button-submit {
+  background-color: var(--dark-button);
+  color: white;
+}
+.checkout__link {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+}
+
+.checkout__link > button {
+  width: 100%;
 }

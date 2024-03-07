@@ -8,8 +8,8 @@ export default function CartItem ({item}){
                     <p>Quantity 1</p>
                 </div>
                 <button className='cartItem__remove-button'>Remove</button>
-                <div className='cartItem__divider'></div>
             </div>            
+            <div className='cartItem__divider'></div>
         </>
     )
 }
