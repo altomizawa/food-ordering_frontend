@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 import bruschetta from '../../images/photo-1599387417822-5b7359f520be.jpg'
 
 export default function EditCartPopup(props) {
@@ -31,7 +33,7 @@ export default function EditCartPopup(props) {
                     <h3>TOTAL: US${calculateTotalPrice}</h3>
                     <div>
                         <button className='editCartPopup__button' onClick={handleEditCartPopup}>VOLTAR</button>
-                        <button className='editCartPopup__checkout-button'>CHECKOUT</button>
+                        <Link to="/checkout"><button className='editCartPopup__checkout-button'>CHECKOUT</button></Link>
                     </div>
 
                 </div>

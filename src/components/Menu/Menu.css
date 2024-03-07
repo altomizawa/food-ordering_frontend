@@ -99,7 +99,7 @@ hr {
   margin: auto;
 }
 
-.menu__footer-wrapper > button {
+.menu__checkout-button {
   height: 2rem;
   padding: 0.5rem 1rem;
   border-radius: 2rem;

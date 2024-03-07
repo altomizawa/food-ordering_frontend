@@ -6,6 +6,7 @@ import Home from '../Home/Home'
 import SignIn from '../SignIn/SignIn'
 import SignUp from '../SignUp/SignUp'
 import Menu from '../Menu/Menu'
+import Checkout from '../Checkout/Checkout'
 
 
 
@@ -20,6 +21,7 @@ function App() {
       <Route path='/signup' element={<SignUp />} />
       <Route element={<ProtectedRoute isLoggedIn={isLoggedIn} />}>
         <Route path='/menu' element={<Menu isLoggedIn={isLoggedIn} />} />
+        <Route path='/checkout' element={<Checkout isLoggedIn={isLoggedIn}/>} />
       </Route>
     </Routes>
   )

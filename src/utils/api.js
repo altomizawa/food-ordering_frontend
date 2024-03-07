@@ -35,9 +35,9 @@ class Api {
     return this._makeFetchRequest(`${BASE_URL}/menu/categories/${category}`);
   }
 
-  getAllCartItems() {
-    return this._makeFetchRequest(`${BASE_URL}/mycart`);
-  }
+  // getAllCartItems() {
+  //   return this._makeFetchRequest(`${BASE_URL}/mycart`);
+  // }
 
   addToCart(item) {
     return this._makeFetchRequest(`${BASE_URL}/mycart`, 'POST', {

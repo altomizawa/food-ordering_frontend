@@ -15,6 +15,9 @@
 @import url(./components/OurTradition/OurTradition.css);
 @import url(./components/MenuItem/MenuItem.css);
 @import url(./components/EditCartPopup/EditCartPopup.css);
+@import url(./components/Checkout/Checkout.css);
+@import url(./components/CartItem/CartItem.css);
+@import url(./components/OrderComplete/OrderComplete.css);
 
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;

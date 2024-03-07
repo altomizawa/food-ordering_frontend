@@ -1,0 +1,28 @@
+.cartItem__left-column{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+
+}
+
+.cartItem__remove-button{
+    padding: 0.5rem 1rem;
+
+}
+
+.cartItem__divider{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 1px;
+    background-color: var(--dark-button);
+}
+
+.cartItem__remove-button{
+    background-color: rgba(0,0,0,0);
+    border: 1px solid var(--dark-button);
+    border-radius: 20px;
+    font-weight: 200;
+    color: var(--dark-button)
+}

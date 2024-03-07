@@ -1,0 +1,39 @@
+[
+    {
+       
+        "name": "Bruschetta",
+        "category": "appetizers",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam natus…",
+        "price": 15,
+        "salePrice": 10,
+        "onSale": false,
+        "link": "https://images.unsplash.com/photo-1594978583693-8dfdfc93f052?q=80&w=14…"
+    },
+    {
+        "name": "Hawaiian Pizza",
+        "category": "pizzas",
+        "description": "A tropical twist on pizza with ham, pineapple, and mozzarella cheese.",
+        "price": 15,
+        "salePrice": 13,
+        "onSale": false,
+        "link": "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=1981&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      },
+      {
+        "name": "Margherita Pizza",
+        "category": "pizzas",
+        "description": "Classic Italian pizza topped with tomato sauce, mozzarella cheese, and fresh basil.",
+        "price": 12,
+        "salePrice": 10,
+        "onSale": false,
+        "link": "https://images.unsplash.com/photo-1598023696416-0193a0bcd302?q=80&w=2136&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      },
+      {
+        "name": "Ravioli Ricotta e Spinaci",
+        "category": "pastas",
+        "description": "Homemade ravioli filled with ricotta cheese and spinach served with marinara sauce.",
+        "price": 16,
+        "salePrice": 13,
+        "onSale": false,
+        "link": "https://images.unsplash.com/photo-1587740908075-9e245070dfaa?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      }
+]

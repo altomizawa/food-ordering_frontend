@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
-
+import { Link } from 'react-router-dom';
+import myCart from '../../database/mycart.json'
+import menu from '../../database/menu.json'
 
 import backgroundImage from '../../images/joao-vitor-duarte-k4Lt0CjUnb0-unsplash.jpg';
 import appetizersImg from '../../images/appetizers.jpg';
@@ -64,9 +66,13 @@ export default function Menu(props) {
     })
 
     //GET CURRENT ITEMS IN CART AND UPDATE CART
+    // const updateCart = () => {
+    //     api.getAllCartItems()
+    //     .then(items => setCurrentOrder(items))
+    // }
     const updateCart = () => {
-        api.getAllCartItems()
-        .then(items => setCurrentOrder(items))
+        console.log(myCart)
+        setCurrentOrder(myCart)
     }
 
     //Handle Item Detail Popup
@@ -157,9 +163,9 @@ export default function Menu(props) {
                     <div className='menu__footer-wrapper'>
                         <p>Current Order: {currentOrder.length} items</p>
                         <p>TOTAL: US${calculateTotalPrice()}</p>
-                        <button onClick={handleEditCartPopup} >Edit Cart</button>
+                        <button className='menu__checkout-button' onClick={handleEditCartPopup} >Edit Cart</button>
                         <p>or</p>
-                        <button>CHECKOUT</button>
+                        <Link to={'/checkout'}><button className='menu__checkout-button'>CHECKOUT</button></Link>
                     </div>
 
                 </div>
