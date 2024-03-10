@@ -11,11 +11,26 @@ export default function SignIn({setIsLoggedIn}){
   
     //Check if there's a token and redirect to menu if token=true
     useEffect(()=>{
-      if ( token ) {
-        setIsLoggedIn(true);
-        navigate('/menu');
-      }
+        tokenCheck();
+    //   if ( token ) {
+    //     setIsLoggedIn(true);
+    //     navigate('/menu');
+    //   }
     }),[]
+
+    // CHECK FOR TOKEN
+    const tokenCheck = () => {
+        const token = localStorage.getItem('token')
+        if(token) {
+            handleLogin(token);
+        }
+        return;
+    }
+
+    //HANDLE LOGIN
+    const handleLogin = (token) => {
+        console.log(`login in with ${token}`)
+    }
   
 
     const [formData, setFormData] = useState({

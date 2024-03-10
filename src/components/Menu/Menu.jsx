@@ -70,7 +70,6 @@ export default function Menu(props) {
     //     .then(items => setCurrentOrder(items))
     // }
     const updateCart = () => {
-        console.log(myCart)
         setCurrentOrder(myCart)
     }
 
@@ -109,10 +108,8 @@ export default function Menu(props) {
     //Render initial menu: Appetizers
     useEffect(() => {
         api.getCurrentCategoryMenu('appetizers').then((items) => {
-            console.log(items)
             setCurrentCategoryItems(items);
             setCurrentCategory(menuCategories[0])
-
         });
         updateCart();
     },[]);
