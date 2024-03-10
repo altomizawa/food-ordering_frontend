@@ -2,20 +2,15 @@ import {useEffect, useState} from 'react'
 import { Link, useNavigate, Navigate} from 'react-router-dom';
 import italiaLogo from '../../images/Italia_logo_only.svg'
 import FormInput from '../FormInput/FormInput';
+import { authorize, getContent } from '../../utils/auth';
 
 
 export default function SignIn({setIsLoggedIn}){
     const navigate = useNavigate();
 
-    const [token, setToken] = useState(localStorage.getItem('token'))
-  
-    //Check if there's a token and redirect to menu if token=true
+    // Check if there's a token and redirect to menu if token=true
     useEffect(()=>{
         tokenCheck();
-    //   if ( token ) {
-    //     setIsLoggedIn(true);
-    //     navigate('/menu');
-    //   }
     }),[]
 
     // CHECK FOR TOKEN
@@ -28,8 +23,16 @@ export default function SignIn({setIsLoggedIn}){
     }
 
     //HANDLE LOGIN
-    const handleLogin = (token) => {
-        console.log(`login in with ${token}`)
+    const handleLogin = async (token) => {
+        try{
+            const userData = await getContent(token)
+                console.log(userData)
+
+                // setUserData(data);
+                setIsLoggedIn(true);
+                navigate('/menu')
+        } catch {console.log('error')}
+        
     }
   
 
@@ -83,11 +86,17 @@ export default function SignIn({setIsLoggedIn}){
         });
       };
 
-    function handleSubmit(e){
-        e.preventDefault();
-        console.log(formData);   
-        setIsLoggedIn(true);
-        navigate('/menu')
+    async function handleSubmit(e){
+        try{
+            e.preventDefault();
+            const token = await authorize({email: formData.username, password: formData.password})
+            if(!token) {
+                return console.log('Error during login')
+            }
+            localStorage.setItem('token', token) // Store token in local Storage
+            handleLogin(token);
+        } catch(err) {console.log(`Error during login. Error:${err}`)}
+        
     }
 
     return(
