@@ -1,4 +1,5 @@
 import {useState, useEffect} from 'react'
+import { Link } from 'react-router-dom'
 import italiaLogo from '../../images/Italia_logo_only.svg'
 import FormInput from '../FormInput/FormInput'
 
@@ -112,6 +113,7 @@ export default function SignUp(){
 
                         <button className={isFormValid ? 'sign-in__button' : 'sign-in__button sign-in__button_inactive'}>Submit</button>
                     </form>
+                    <p>Already a member? <Link to="/signin" className='sign-up__link' id='sign-up__link'>Sign in now</Link></p>
                 </div>
             </div>
         </>

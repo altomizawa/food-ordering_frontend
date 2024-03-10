@@ -3,3 +3,7 @@
   cursor: pointer;
   color: var(--dark-background);
 }
+
+#sign-up__link {
+  color: black;
+}
