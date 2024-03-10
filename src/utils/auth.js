@@ -1,4 +1,4 @@
-import { BASE_URL } from '../components/constants';
+import { BASE_URL } from './constants';
 
 export const register = ({ password, email }) => {
   return fetch(`${BASE_URL}/signup`, {
