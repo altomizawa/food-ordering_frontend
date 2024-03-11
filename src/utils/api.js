@@ -9,6 +9,7 @@ class Api {
     const config = {
       method,
       headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
         'Content-Type': 'application/json',
       },
     };
@@ -35,12 +36,11 @@ class Api {
     return this._makeFetchRequest(`${BASE_URL}/menu/categories/${category}`);
   }
 
-  // getAllCartItems() {
-  //   return this._makeFetchRequest(`${BASE_URL}/mycart`);
-  // }
+  getAllCartItems() {
+    return this._makeFetchRequest(`${BASE_URL}/mycart`);
+  }
 
   addToCart(item) {
-    console.log(item.category);
     return this._makeFetchRequest(`${BASE_URL}/mycart`, 'POST', {
       category: item.category,
       name: item.name,
@@ -53,9 +53,7 @@ class Api {
   }
 
   removeFromCart(item) {
-    return this._makeFetchRequest(`${BASE_URL}/mycart`, 'DELETE', {
-      _id: item._id,
-    });
+    return this._makeFetchRequest(`${BASE_URL}/mycart`, 'DELETE', item);
   }
 }
 
