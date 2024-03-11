@@ -11,8 +11,7 @@ export default function Home(props) {
     // const {isLoggedIn} = props;
 
     const {userContextData, isLoggedIn} = useContext(UserContext)
-    console.log(userContextData, isLoggedIn)
-
+    
     return (
         <> 
             <Header isLoggedIn={isLoggedIn} />
