@@ -1,9 +1,12 @@
 import { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import italiaLogoBlack from '../../images/Italia_logo_dark.svg'
 import { UserContext } from "../Context/UserContext";
 
 export default function Navbar(props){
+    const navigate = useNavigate();
+
     const {userContextData, logout } = useContext(UserContext)
 
     const { changeCategory, menuCategories} = props;
@@ -14,8 +17,6 @@ export default function Navbar(props){
 
     const handleMenuClick = () => {
         openMenu();
-        console.log(isUserMenuOpen)
-
     }
 
     const openMenu = () => {
@@ -25,8 +26,14 @@ export default function Navbar(props){
     const closeMenu = () => {
         setIsUserMenuOpen(false)
     };
-  
-  
+
+    const handleLogout = () => {
+        localStorage.removeItem('token')
+        logout();
+        navigate('/')
+        
+
+    }
 
     const createMenu = (item) => {
         return (
@@ -37,13 +44,12 @@ export default function Navbar(props){
     return(
         <header className='navbar'>
             <div className={isUserMenuOpen ? 'navbar__profile' : 'navbar__profile navbar__profile_hidden'}>
-                <div className="navbar__container">
+                <div className='navbar__container'>
                     <button className='navbar__close-button' onClick={closeMenu}>close</button>
                     <img src="https://images.mubicdn.net/images/cast_member/2552/cache-207-1524922850/image-w856.jpg?size=800x"></img>
                     <ul>
-                        <li><a className="navbar__profile-link">my profile</a></li>
                         <li><a className="navbar__profile-link">past orders</a></li>
-                        <li><a className="navbar__profile-link">logout</a></li>
+                        <li><a className="navbar__profile-link" onClick={handleLogout}>logout</a></li>
                     </ul>
                 </div>
                 

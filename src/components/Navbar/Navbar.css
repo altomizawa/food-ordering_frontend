@@ -71,6 +71,10 @@
   transition: 500ms ease-in-out;
 }
 
+.navbar__profile_hidden {
+  right: -100vw;
+}
+
 .navbar__profile img {
   margin: 50px 0;
   width: 100px;
@@ -117,10 +121,6 @@
   width: 100%;
 }
 
-.navbar__profile_hidden {
-  right: -100vw;
-}
-
 .navbar__close-button {
   position: absolute;
   top: 0;
@@ -142,12 +142,19 @@
 }
 
 .navbar__container {
-  width: 20vw;
+  width: 300px;
   position: absolute;
   right: 0;
+  top: 0;
   height: 100vh;
   background-color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.navbar__profile-button > button {
+  color: white;
+  background-color: red;
+  padding: 0;
 }
