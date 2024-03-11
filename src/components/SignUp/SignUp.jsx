@@ -2,9 +2,13 @@ import {useState, useEffect} from 'react'
 import { Link } from 'react-router-dom'
 import italiaLogo from '../../images/Italia_logo_only.svg'
 import FormInput from '../FormInput/FormInput'
+import SuccessPopup from '../SuccessPopup/SuccessPopup'
 
+import { register } from '../../utils/auth'
 
 export default function SignUp(){
+    const [isPopupActive, setIsPopupActive] = useState(false)
+
     const [formData, setFormData] = useState({
         email: '',
         password: '',
@@ -86,14 +90,16 @@ export default function SignUp(){
 
     
     //Send Form
-    function handleSubmit(e){
+    const handleSubmit = async (e) =>{
         e.preventDefault()
+        setIsPopupActive(true)
         console.log(formData)
     }
 
     return(
         <>
             <div className='sign-in'>
+                <SuccessPopup isPopupActive={isPopupActive} />
                 <img src={italiaLogo} alt="italia restaurant logo" />
                 <div className='sign-in__modal'>
                     <h2>Sign Up</h2>
