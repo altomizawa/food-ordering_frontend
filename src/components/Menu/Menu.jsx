@@ -68,13 +68,10 @@ export default function Menu(props) {
         salePrice: 0
     })
 
-    //GET CURRENT ITEMS IN CART AND UPDATE CART
-    // const updateCart = () => {
-    //     api.getAllCartItems()
-    //     .then(items => setCurrentOrder(items))
-    // }
+    // GET CURRENT ITEMS IN CART AND UPDATE CART
     const updateCart = () => {
-        setCurrentOrder(myCart)
+        api.getAllCartItems()
+        .then(items => setCurrentOrder(items))
     }
 
     //Handle Item Detail Popup
@@ -92,7 +89,7 @@ export default function Menu(props) {
     //Remove Item from Cart
     const handleRemoveItem = (item) => {
         api.removeFromCart(item)
-        .then((item) => {updateCart()}) 
+        // .then((item) => {updateCart()}) 
     }
 
     //Calculate Total Price
