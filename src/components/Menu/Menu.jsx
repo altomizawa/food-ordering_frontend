@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useContext } from 'react'
 import { Link } from 'react-router-dom';
 import myCart from '../../database/mycart.json'
 
@@ -15,8 +15,12 @@ import Header from '../Header/Header'
 import MenuItem from '../MenuItem/MenuItem'
 import FoodCard from '../FoodCard/FoodCard'
 import EditCartPopup from '../EditCartPopup/EditCartPopup'
+import { UserContext } from '../Context/UserContext';
+
 
 export default function Menu(props) {
+    const {setUserContextData, userContextData} = useContext(UserContext)
+
     const {isLoggedIn} = props;
     const [currentCategoryItems, setCurrentCategoryItems] = useState([]);
     const [currentCategory, setCurrentCategory] = useState([{

@@ -1,11 +1,16 @@
-import {useEffect, useState} from 'react'
+import {useEffect, useState, useContext} from 'react'
 import { Link, useNavigate, Navigate} from 'react-router-dom';
 import italiaLogo from '../../images/Italia_logo_only.svg'
 import FormInput from '../FormInput/FormInput';
 import { authorize, getContent } from '../../utils/auth';
 
+import { UserContext } from '../Context/UserContext';
 
 export default function SignIn({setIsLoggedIn}){
+
+    // DEFINE USE CONTEXT VARIABLES
+    const { setUserContextData } = useContext(UserContext)
+
     const navigate = useNavigate();
 
     // Check if there's a token and redirect to menu if token=true
@@ -26,11 +31,9 @@ export default function SignIn({setIsLoggedIn}){
     const handleLogin = async (token) => {
         try{
             const userData = await getContent(token)
-                console.log(userData)
-
-                // setUserData(data);
-                setIsLoggedIn(true);
-                navigate('/menu')
+            setUserContextData(userData)
+            setIsLoggedIn(true);
+            navigate('/menu')
         } catch {console.log('error')}
         
     }

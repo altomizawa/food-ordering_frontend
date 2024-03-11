@@ -1,8 +1,13 @@
 import { Link } from 'react-router-dom'
+import { useContext } from 'react';
 import italiaLogo from '../../images/Italia_logo_only.svg'
 import italiaLogoBlack from '../../images/Italia_logo_dark.svg'
 
+import { UserContext } from '../Context/UserContext';
+
 export default function Header(props){
+    const {userContextData, setUserContextData} = useContext(UserContext)
+
     const {isLoggedIn, changeCategory, menuCategories} = props;
 
     const createMenu = (item) => {
@@ -20,7 +25,7 @@ export default function Header(props){
                ))}
             </ul>}
             {isLoggedIn && <div className='header__profile-button'>
-                <p>Hello, altomizawa</p>
+                <p>Hello, {userContextData.name}</p>
             </div>}
             {!isLoggedIn && <Link className='header__button' to='/signin'>ORDER NOW</Link>}
         </header>

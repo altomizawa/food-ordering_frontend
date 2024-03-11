@@ -5,12 +5,13 @@ import OurTradition from '../OurTradition/OurTradition'
 
 export default function Home(props) {
     const {isLoggedIn} = props;
+
     return (
-        <>
-           <Header isLoggedIn={isLoggedIn} />
-           <Hero /> 
-           <AboutUs />
-           <OurTradition />
+        <> 
+            <Header isLoggedIn={isLoggedIn} />
+            <Hero /> 
+            <AboutUs />
+            <OurTradition />
         </>
     )
 }

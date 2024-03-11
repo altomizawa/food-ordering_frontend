@@ -8,12 +8,10 @@ import SignUp from '../SignUp/SignUp'
 import Menu from '../Menu/Menu'
 import Checkout from '../Checkout/Checkout'
 
-
-
 function App() {
-
   const [isLoggedIn, setIsLoggedIn] = useState(false);
- 
+  
+
   return (
     <Routes>
       <Route path='/' element={<Home isLoggedIn={isLoggedIn} />}/>
