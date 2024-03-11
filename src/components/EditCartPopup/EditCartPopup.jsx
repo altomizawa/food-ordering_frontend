@@ -4,6 +4,7 @@ import bruschetta from '../../images/photo-1599387417822-5b7359f520be.jpg'
 
 export default function EditCartPopup(props) {
     const {currentOrder, handleEditCartPopup, handleRemoveItem, calculateTotalPrice} = props;
+    console.log(currentOrder)
 
     const ListItem = (props) => {
         const {item} = props
