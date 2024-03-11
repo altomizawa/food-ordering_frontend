@@ -1,0 +1,153 @@
+.navbar {
+  width: 100vw;
+  height: 10vh;
+  display: flex;
+  padding: 1rem 2rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar > img {
+  width: 5%;
+  margin-left: 4rem;
+  z-index: -2;
+}
+
+.navbar__categories {
+  display: flex;
+  width: 50%;
+  justify-content: space-between;
+  z-index: -2;
+}
+
+.navbar__category {
+  color: black;
+  list-style: none;
+  position: relative;
+  cursor: pointer;
+}
+
+.navbar__category::after {
+  content: '';
+  width: 0;
+  transition: 200ms ease-in-out;
+}
+
+.navbar__category:hover::after {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  background-color: var(--dark-background);
+  transition: 200ms ease-in-out;
+}
+
+.navbar__profile-button {
+  color: black;
+  border: 1px solid var(--dark-background);
+  padding: 0.5rem 1rem;
+  border-radius: 3rem;
+  margin-right: 5rem;
+  cursor: pointer;
+}
+
+.navbar__profile-button > p {
+  background-color: white;
+}
+
+.navbar__profile {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100vw;
+  height: 100vh;
+  backdrop-filter: blur(6px);
+  transition: 500ms ease-in-out;
+}
+
+.navbar__profile img {
+  margin: 50px 0;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.navbar__profile ul {
+  list-style: none;
+}
+
+.navbar__profile li {
+  color: black;
+  text-align: left;
+  line-height: 3;
+  font-size: 24px;
+  text-align: center;
+}
+
+/* .navbar__profile a:hover {
+  cursor: pointer;
+  color: grey;
+} */
+
+.navbar__profile-link {
+  position: relative;
+}
+
+.navbar__profile-link:hover {
+  cursor: pointer;
+  color: grey;
+}
+
+.navbar__profile-link:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background-color: grey;
+}
+.navbar__profile-link:hover {
+  width: 100%;
+}
+
+.navbar__profile_hidden {
+  right: -100vw;
+}
+
+.navbar__close-button {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: var(--dark-background);
+  background-color: white;
+  border: none;
+  width: 100px;
+  height: 60px;
+  font-size: 24px;
+  transform: translateX(-80px);
+  border-radius: 10px;
+  transition: 240ms;
+}
+
+.navbar__close-button:hover {
+  cursor: pointer;
+  color: grey;
+}
+
+.navbar__container {
+  width: 20vw;
+  position: absolute;
+  right: 0;
+  height: 100vh;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

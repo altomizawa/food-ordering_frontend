@@ -16,12 +16,12 @@ import MenuItem from '../MenuItem/MenuItem'
 import FoodCard from '../FoodCard/FoodCard'
 import EditCartPopup from '../EditCartPopup/EditCartPopup'
 import { UserContext } from '../Context/UserContext';
+import Navbar from '../Navbar/Navbar';
 
 
 export default function Menu(props) {
     const {setUserContextData, userContextData} = useContext(UserContext)
 
-    const {isLoggedIn} = props;
     const [currentCategoryItems, setCurrentCategoryItems] = useState([]);
     const [currentCategory, setCurrentCategory] = useState([{
         id: '',
@@ -139,7 +139,7 @@ export default function Menu(props) {
             <div className="menu">
                 <img className='menu__background' src={backgroundImage} alt="background image of paper texture" />
                
-                <Header isLoggedIn = {isLoggedIn} menuCategories={menuCategories} changeCategory={changeCategory}/>
+                <Navbar menuCategories={menuCategories} changeCategory={changeCategory}/>
 
                 <div className="menu__main">
                     <ul className='menu__items'>
