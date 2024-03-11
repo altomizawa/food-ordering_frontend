@@ -5,6 +5,7 @@ export default function FoodCard(props){
 
     const handleAddToCart = () =>{
         addToCart(item);
+        localStorage.setItem('cart', [{item}])
         handlePopup();
     }
 

@@ -40,6 +40,7 @@ class Api {
   // }
 
   addToCart(item) {
+    console.log(item.category);
     return this._makeFetchRequest(`${BASE_URL}/mycart`, 'POST', {
       category: item.category,
       name: item.name,
