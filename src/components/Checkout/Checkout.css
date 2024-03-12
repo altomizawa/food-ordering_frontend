@@ -66,4 +66,9 @@
 
 .checkout__link > button {
   width: 100%;
+  font-weight: 700;
+}
+
+.checkout__error-message {
+  font-family: roboto;
 }

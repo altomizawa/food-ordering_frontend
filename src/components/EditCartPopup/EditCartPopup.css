@@ -70,7 +70,6 @@
 
 .editCartPopup__item > button {
   margin-left: 30%;
-  font-family: 'Tenor Sans';
   padding: 0.5rem 1rem;
   border-radius: 2rem;
   background-color: var(--dark-background);

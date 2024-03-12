@@ -97,7 +97,6 @@ hr {
   justify-content: right;
   align-items: center;
   column-gap: 1rem;
-
   margin: auto;
 }
 
@@ -108,11 +107,6 @@ hr {
   border: none;
   color: white;
   border: 1px solid white;
-  font-family: 'Tenor Sans';
   cursor: pointer;
   background-color: rgba(0, 0, 0, 0);
-}
-
-.menu__footer-wrapper > p {
-  font-family: 'Tenor Sans';
 }
