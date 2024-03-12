@@ -1,8 +1,8 @@
 import { Link} from "react-router-dom";
 import { useState } from "react";
 
-import myCart from "../../database/mycart.json"
-import MenuItem from "../MenuItem/MenuItem"
+// import { handleRemoveItem } from "../../utils/handleCart";
+
 import CartItem from '../CartItem/CartItem'
 import OrderComplete from "../OrderComplete/OrderComplete";
 
@@ -21,14 +21,14 @@ export default function Checkout() {
         e.preventDefault();
         setIsOrderComplete(true)
     }
-
+    
     return(
-        <>  
+        <>
             <div className="checkout">
             <img className='checkout__background' src={backgroundImage} alt="background image of paper texture" />
                 <div className="checkout__left-column">
                     {cartFromLocalStorage.map((item) => (<CartItem key={item.name} item={item} />))}
-                    <h2>TOTAL:</h2>
+                    <h2>TOTAL: </h2>
                 </div>
                 <div className='checkout__right-column'>
                     <h1>COMPLETE YOUR ORDER</h1>
@@ -75,8 +75,8 @@ export default function Checkout() {
                 </div>
                 {isOrderComplete && <OrderComplete setIsOrderComplete={setIsOrderComplete}></OrderComplete>}
             </div>
-            
+
         </>
-       
+
     )
 }
