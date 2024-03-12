@@ -1,6 +1,5 @@
 import { useEffect, useState, useContext } from 'react'
 import { Link } from 'react-router-dom';
-import myCart from '../../database/mycart.json'
 
 import appetizersImg from '../../images/appetizers.jpg';
 import pastaImg from '../../images/carbonara.jpg';
@@ -10,7 +9,6 @@ import beverageImg from '../../images/beverage.jpg'
 
 
 import api from '../../utils/api'
-import Header from '../Header/Header'
 import MenuItem from '../MenuItem/MenuItem'
 import FoodCard from '../FoodCard/FoodCard'
 import EditCartPopup from '../EditCartPopup/EditCartPopup'
