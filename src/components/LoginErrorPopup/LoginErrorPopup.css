@@ -1,0 +1,44 @@
+.login-error__popup {
+  position: fixed;
+  top: -100vh;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 350ms ease-in-out;
+  z-index: 1;
+}
+
+.login-error__popup__wrapper {
+  width: 500px;
+  height: 300px;
+  background-color: var(--card-background-color);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 20px;
+}
+
+.login-error__popup__wrapper h2 {
+  font-size: 24px;
+  color: var(--lighter-background);
+}
+
+.login-error__popup__wrapper > button {
+  font-family: 'Tenor Sans';
+  background-color: var(--lighter-background);
+  font-size: 24px;
+  width: 80%;
+  height: 60px;
+  border: none;
+  border-radius: 10px;
+}
+
+.login-error__popup_active {
+  top: 0;
+}
