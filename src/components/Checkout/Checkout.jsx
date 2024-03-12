@@ -37,8 +37,8 @@ export default function Checkout() {
             <div className="checkout">
             <img className='checkout__background' src={backgroundImage} alt="background image of paper texture" />
                 <div className="checkout__left-column">
-                    {cart.map((item) => (<CartItem key={item.name} item={item} />))}
-                    <h2>TOTAL: {calculateTotalPrice()}</h2>
+                    {cart.length === 0 ? <h1 className='checkout__error-message'>There's nothing to buy yet</h1> : cart.map((item) => (<CartItem key={item.name} item={item} />)) }
+                    {cart.length >0 && <h2>TOTAL: {calculateTotalPrice()}</h2>}
                 </div>
                 <div className='checkout__right-column'>
                     <h1>COMPLETE YOUR ORDER</h1>
@@ -78,8 +78,8 @@ export default function Checkout() {
                             <input placeholder="Zip Code"></input>
                         </div>
                         <div className='checkout__payment-line'>
-                        <Link className='checkout__link' to="/menu"><button type='button' className="checkout__button" >CANCEL</button></Link>
-                        <button type='submit' className="checkout__button checkout__button-submit">SUBMIT</button>
+                        <Link className='checkout__link' to="/menu"><button type='button' className="checkout__button" >{cart.length>0 ? 'CANCEL' : 'BACK'}</button></Link>
+                        {cart.length>0 &&<button type='submit' className="checkout__button checkout__button-submit">SUBMIT</button>}
                         </div>
                     </form>
                 </div>
