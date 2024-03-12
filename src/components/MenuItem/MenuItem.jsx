@@ -1,6 +1,3 @@
-import FoodCard from '../FoodCard/FoodCard'
-
-
 export default function MenuItem({item, handlePopup}){
     return (
         <>

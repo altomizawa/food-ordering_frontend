@@ -5,8 +5,11 @@ export const UserContext = createContext({
 });
 
 export const UserProvider = ({ children }) => {
+  const cartFromLocalStorage = JSON.parse(localStorage.getItem('cart') || '[]');
+
   const [userContextData, setUserContextData] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [cart, setCart] = useState(cartFromLocalStorage)
 
   const logout = () => {
       setIsLoggedIn(false)
@@ -18,7 +21,7 @@ export const UserProvider = ({ children }) => {
 
 
   return (
-    <UserContext.Provider value={{ userContextData, setUserContextData, isLoggedIn, logout }}>
+    <UserContext.Provider value={{ userContextData, setUserContextData, isLoggedIn, logout, cart, setCart }}>
       {children}
     </UserContext.Provider>
   );

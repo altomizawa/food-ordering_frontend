@@ -1,4 +1,10 @@
+import { useContext } from "react"
+
+ import { UserContext } from "../Context/UserContext"
+
 export default function CartItem ({item}){
+    const {cart, setCart} = useContext(UserContext)
+
     return(
         <>
             <div className='cartItem__left-column'>

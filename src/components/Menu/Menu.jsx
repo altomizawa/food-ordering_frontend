@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useContext } from 'react'
 import { Link } from 'react-router-dom';
 
 import appetizersImg from '../../images/appetizers.jpg';
@@ -14,12 +14,13 @@ import FoodCard from '../FoodCard/FoodCard'
 import EditCartPopup from '../EditCartPopup/EditCartPopup'
 import Navbar from '../Navbar/Navbar';
 
-
+import { UserContext } from '../Context/UserContext';
 
 export default function Menu(props) {
-    const cartFromLocalStorage = JSON.parse(localStorage.getItem('cart')) // [];
+    // GET CART AND SETCART (USESTATE) FROM USER CONTEXT
+    const {cart, setCart} = useContext(UserContext);
+
     const [currentCategoryItems, setCurrentCategoryItems] = useState([]);
-    const [cart, setCart] = useState(cartFromLocalStorage);
     const [currentCategory, setCurrentCategory] = useState([{
         id: '',
         category: '',
@@ -64,18 +65,18 @@ export default function Menu(props) {
         salePrice: 0
     })
 
-    //Handle Item Detail Popup
+    // Handle Item Detail Popup
     const handlePopup = (item) => {
         setItemData(item)
         setIsPopupActive(prevState => !prevState)
     }
 
-    //Add Item from Cart
+    // Add Item from Cart
     function addToCart(item) {
         setCart([...cart, {...item}])
     }
 
-    //Remove Item from Cart
+    // Remove Item from Cart
     const handleRemoveItem = (itemToRemove) => {
         setCart(cart.filter(item => item !== itemToRemove))
     }
@@ -103,7 +104,6 @@ export default function Menu(props) {
     },[]);
 
     useEffect(()=>{
-        console.log(cart)
         localStorage.setItem('cart', JSON.stringify(cart))
     }),[cart]
 
