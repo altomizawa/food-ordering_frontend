@@ -100,7 +100,6 @@ export default function Menu(props) {
             setCurrentCategoryItems(items);
             setCurrentCategory(menuCategories[0])
         });
-        updateCart();
     },[]);
 
     useEffect(()=>{
