@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext } from 'react'
+import { useEffect, useState , useContext} from 'react'
 import { Link } from 'react-router-dom';
 
 import appetizersImg from '../../images/appetizers.jpg';
@@ -17,9 +17,11 @@ import Navbar from '../Navbar/Navbar';
 import { UserContext } from '../Context/UserContext';
 
 export default function Menu() {
-    // GET CART AND SETCART (USESTATE) FROM USER CONTEXT
-    const {cart, setCart} = useContext(UserContext);
+    const cartFromLocalStorage = JSON.parse(localStorage.getItem('cart'))
+    const {cart, setCart, handleRemoveItem} = useContext(UserContext)
 
+    // GET CART AND SETCART (USESTATE) FROM USER CONTEXT
+    // const [cart, setCart] = useState(cartFromLocalStorage)
     const [currentCategoryItems, setCurrentCategoryItems] = useState([]);
     const [currentCategory, setCurrentCategory] = useState([{
         id: '',
@@ -73,13 +75,21 @@ export default function Menu() {
 
     // Add Item from Cart
     function addToCart(item) {
-        setCart([...cart, {...item}])
+        const isItemRepeated = cartFromLocalStorage.some((itemInCart) => itemInCart === item);
+        if(isItemRepeated) {
+            return setIsEditCartOpen(false)
+        } else {
+            setCart([...cart, {...item}])
+            localStorage.setItem('cart', JSON.stringify(cart))
+        }
+        
     }
 
-    // Remove Item from Cart
-    const handleRemoveItem = (itemToRemove) => {
-        setCart(cart.filter(item => item !== itemToRemove))
-    }
+    // // Remove Item from Cart
+    // const handleRemoveItem = (itemToRemove) => {
+    //     setCart(cart.filter(item => item !== itemToRemove))
+    //     localStorage.setItem('cart', JSON.stringify(cart))
+    // }
 
     //Calculate Total Price
     function calculateTotalPrice() {
@@ -98,17 +108,18 @@ export default function Menu() {
         });
     },[]);
 
+    // MONITOR CART AND SEND IT TO LOCAL STORAGE
     useEffect(()=>{
         localStorage.setItem('cart', JSON.stringify(cart))
     }),[cart]
 
     //Fetch new Category
-    const changeCategory = (category) => {
+    const changeCategory = async (category) => {
         setCurrentCategory(category);
-        api.getCurrentCategoryMenu(category.category)
-        .then((items) => {
+        const items = await api.getCurrentCategoryMenu(category.category)
+        // .then((items) => {
             setCurrentCategoryItems(items);
-        })
+        // })
     }
 
 

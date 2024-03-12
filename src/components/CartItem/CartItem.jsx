@@ -3,7 +3,7 @@ import { useContext } from "react"
  import { UserContext } from "../Context/UserContext"
 
 export default function CartItem ({item}){
-    const {cart, setCart} = useContext(UserContext)
+    const {handleRemoveItem} = useContext(UserContext)
 
     return(
         <>
@@ -13,7 +13,7 @@ export default function CartItem ({item}){
                     <p>US${item.price}</p>
                     <p>Quantity 1</p>
                 </div>
-                <button className='cartItem__remove-button'>Remove</button>
+                <button className='cartItem__remove-button' onClick={()=>{handleRemoveItem(item)}}>Remove</button>
             </div>            
             <div className='cartItem__divider'></div>
         </>

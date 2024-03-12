@@ -1,7 +1,5 @@
 import { Link} from "react-router-dom";
-import { useState } from "react";
-
-// import { handleRemoveItem } from "../../utils/handleCart";
+import { useState, useContext } from "react";
 
 import CartItem from '../CartItem/CartItem'
 import OrderComplete from "../OrderComplete/OrderComplete";
@@ -12,8 +10,11 @@ import mastercardLogo from '../../images/mastercard-logo.png'
 import paypalLogo from '../../images/paypal-logo.png'
 import gpayLogo from '../../images/gpay-logo.png'
 
+import { UserContext } from "../Context/UserContext";
+
 export default function Checkout() {
-    const cartFromLocalStorage = JSON.parse(localStorage.getItem('cart'))
+    const {cart} = useContext(UserContext)
+
 
     const [isOrderComplete, setIsOrderComplete] = useState(false)
 
@@ -21,14 +22,23 @@ export default function Checkout() {
         e.preventDefault();
         setIsOrderComplete(true)
     }
+
+      //Calculate Total Price
+      function calculateTotalPrice() {
+        let totalPrice = 0;
+        cart.forEach(item => {
+          totalPrice += item.price;
+        });
+        return totalPrice;
+    }
     
     return(
         <>
             <div className="checkout">
             <img className='checkout__background' src={backgroundImage} alt="background image of paper texture" />
                 <div className="checkout__left-column">
-                    {cartFromLocalStorage.map((item) => (<CartItem key={item.name} item={item} />))}
-                    <h2>TOTAL: </h2>
+                    {cart.map((item) => (<CartItem key={item.name} item={item} />))}
+                    <h2>TOTAL: {calculateTotalPrice()}</h2>
                 </div>
                 <div className='checkout__right-column'>
                     <h1>COMPLETE YOUR ORDER</h1>
