@@ -1,7 +1,7 @@
 .editCartPopup {
   position: absolute;
   position: fixed;
-  top: 0;
+  top: -100%;
   left: 0;
   width: 100vw;
   height: 100vh;
@@ -10,6 +10,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: 350ms ease-in-out;
+}
+
+.editCartPopup_active {
+  top: 0;
 }
 
 .editCartPopup__card {

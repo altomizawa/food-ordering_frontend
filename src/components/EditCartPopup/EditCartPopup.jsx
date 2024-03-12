@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 
 import bruschetta from '../../images/photo-1599387417822-5b7359f520be.jpg'
 
 export default function EditCartPopup(props) {
-    const {currentOrder, handleEditCartPopup, handleRemoveItem, calculateTotalPrice} = props;
+    const {currentOrder, setIsEditCartOpen, handleRemoveItem, calculateTotalPrice, isEditCartOpen} = props;
 
     const ListItem = (props) => {
         const {item} = props
@@ -21,18 +22,21 @@ export default function EditCartPopup(props) {
     }
 
     return(
-       <div className='editCartPopup'>
+       <div className={isEditCartOpen ? 'editCartPopup editCartPopup_active' : 'editCartPopup'}>
             <div className='editCartPopup__card'>
                 <h2 className='editCartPopup__title'>Edit your order</h2>
                 <ul className='editCartPopup__items'>
                     {currentOrder.map((item) => (
-                        <ListItem key={item.id} item={item}/>
+                        <ListItem key={item._id} item={item}/>
                     ))}
                 </ul>
                 <div className="editCartPopup__footer">
                     <h3>TOTAL: US${calculateTotalPrice}</h3>
                     <div>
-                        <button className='editCartPopup__button' onClick={handleEditCartPopup}>VOLTAR</button>
+                        <button className='editCartPopup__button' onClick={() => {
+                            setIsEditCartOpen(false)
+                            console.log(isEditCartOpen)
+                            } }>VOLTAR</button>
                         <Link to="/checkout"><button className='editCartPopup__checkout-button'>CHECKOUT</button></Link>
                     </div>
 
