@@ -6,6 +6,7 @@
   align-items: center;
   column-gap: 4rem;
   font-family: 'Tenor Sans';
+  background-color: var(--card-background-color);
 }
 
 .checkout__background {

@@ -26,7 +26,7 @@ export default function Checkout() {
     return(
         <>  
             <div className="checkout">
-            <img className='checkout__background' src={backgroundImage} alt="background image of paper texture" />
+            {/* <img className='checkout__background' src={backgroundImage} alt="background image of paper texture" /> */}
                 <div className="checkout__left-column">
                     {myCart.map((item) => (<CartItem key={item.name} item={item} />))}
                     <h2>TOTAL:</h2>
