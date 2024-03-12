@@ -1,7 +1,4 @@
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
-
-import bruschetta from '../../images/photo-1599387417822-5b7359f520be.jpg'
 
 export default function EditCartPopup(props) {
     const {cart, setIsEditCartOpen, handleRemoveItem, calculateTotalPrice, isEditCartOpen} = props;
@@ -21,25 +18,34 @@ export default function EditCartPopup(props) {
         )
     }
 
+    const EmptyCart = () => {
+        return (
+            <div className='editCartPopup__empty-message'>
+                <h2>THERE'S NOTHING HERE</h2>
+                <p>Add some items and come back</p>
+            </div>
+        )
+    }
+
     return(
        <div className={isEditCartOpen ? 'editCartPopup editCartPopup_active' : 'editCartPopup'}>
             <div className='editCartPopup__card'>
                 <h2 className='editCartPopup__title'>Edit your order</h2>
                 <ul className='editCartPopup__items'>
-                    {cart.map((item) => (
-                        <ListItem key={item._id} item={item}/>
-                    ))}
+                    {cart.length === 0 ? EmptyCart() : 
+                        cart.map((item) => (
+                            <ListItem key={item._id} item={item}/>
+                        ))
+                    }
                 </ul>
                 <div className="editCartPopup__footer">
                     <h3>TOTAL: US${calculateTotalPrice}</h3>
                     <div>
                         <button className='editCartPopup__button' onClick={() => {
                             setIsEditCartOpen(false)
-                            console.log(isEditCartOpen)
                             } }>VOLTAR</button>
                         <Link to="/checkout"><button className='editCartPopup__checkout-button'>CHECKOUT</button></Link>
                     </div>
-
                 </div>
                 
             </div>
