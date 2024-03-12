@@ -5,6 +5,7 @@
   position: relative;
   overflow: hidden;
   font-family: 'Tenor Sans';
+  background-color: var(--card-background-color);
 }
 
 .menu__background {
@@ -52,6 +53,7 @@
 .menu__items > h2 {
   font-size: 4rem;
   display: none;
+  color: white;
 }
 
 .menu__category-image {

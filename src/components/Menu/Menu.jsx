@@ -2,7 +2,6 @@ import { useEffect, useState, useContext } from 'react'
 import { Link } from 'react-router-dom';
 import myCart from '../../database/mycart.json'
 
-import backgroundImage from '../../images/joao-vitor-duarte-k4Lt0CjUnb0-unsplash.jpg';
 import appetizersImg from '../../images/appetizers.jpg';
 import pastaImg from '../../images/carbonara.jpg';
 import pizzaImg from '../../images/margherita pizza.jpg';
@@ -128,17 +127,16 @@ export default function Menu(props) {
     return(
         <>
              {isPopupActive && <FoodCard handlePopup={handlePopup} item={itemData} addToCart={addToCart}/>}
-             {isEditCartOpen && <EditCartPopup
-                                handleEditCartPopup={handleEditCartPopup}
-                                currentOrder={currentOrder}
-                                calculateTotalPrice={calculateTotalPrice()}
-                                handleRemoveItem={handleRemoveItem}
-                                />}
+            <EditCartPopup
+                setIsEditCartOpen={setIsEditCartOpen}
+                currentOrder={currentOrder}
+                calculateTotalPrice={calculateTotalPrice()}
+                handleRemoveItem={handleRemoveItem}
+                isEditCartOpen={isEditCartOpen}
+            />
             
 
-            <div className="menu">
-                <img className='menu__background' src={backgroundImage} alt="background image of paper texture" />
-               
+            <div className="menu">               
                 <Navbar menuCategories={menuCategories} changeCategory={changeCategory}/>
 
                 <div className="menu__main">
@@ -161,7 +159,7 @@ export default function Menu(props) {
                     <div className='menu__footer-wrapper'>
                         <p>Current Order: {currentOrder.length} items</p>
                         <p>TOTAL: US${calculateTotalPrice()}</p>
-                        <button className='menu__checkout-button' onClick={handleEditCartPopup} >Edit Cart</button>
+                        <button className='menu__checkout-button' onClick={ () => {setIsEditCartOpen(true)} } >Edit Cart</button>
                         <p>or</p>
                         <Link to={'/checkout'}><button className='menu__checkout-button'>CHECKOUT</button></Link>
                     </div>
