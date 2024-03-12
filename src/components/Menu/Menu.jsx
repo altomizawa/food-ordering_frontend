@@ -16,7 +16,7 @@ import Navbar from '../Navbar/Navbar';
 
 import { UserContext } from '../Context/UserContext';
 
-export default function Menu(props) {
+export default function Menu() {
     // GET CART AND SETCART (USESTATE) FROM USER CONTEXT
     const {cart, setCart} = useContext(UserContext);
 
@@ -88,11 +88,6 @@ export default function Menu(props) {
           totalPrice += item.price;
         });
         return totalPrice;
-    }
-
-    //handle Edit Cart Popup
-    const handleEditCartPopup = (item) => {
-        setIsEditCartOpen(prevState => !prevState)
     }
 
     //Render initial menu: Appetizers

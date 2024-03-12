@@ -1,5 +1,5 @@
 import {useEffect, useState, useContext} from 'react'
-import { Link, useNavigate, Navigate} from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import italiaLogo from '../../images/Italia_logo_only.svg'
 import FormInput from '../FormInput/FormInput';
 import { authorize, getContent } from '../../utils/auth';
@@ -11,7 +11,7 @@ import { UserContext } from '../Context/UserContext';
 export default function SignIn({setIsLoggedIn}){
 
     // DEFINE USE CONTEXT VARIABLES
-    const { setUserContextData } = useContext(UserContext)
+    const { setUserContextData} = useContext(UserContext)
     const [isFormValid, setIsFormValid] = useState(false);
     const [isPopupActive, setIsPopupActive] = useState(false)
     const [formData, setFormData] = useState({
