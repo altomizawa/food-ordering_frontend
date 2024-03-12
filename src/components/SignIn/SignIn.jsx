@@ -4,19 +4,22 @@ import italiaLogo from '../../images/Italia_logo_only.svg'
 import FormInput from '../FormInput/FormInput';
 import { authorize, getContent } from '../../utils/auth';
 
+import LoginErrorPopup from '../LoginErrorPopup/LoginErrorPopup';
+
 import { UserContext } from '../Context/UserContext';
 
 export default function SignIn({setIsLoggedIn}){
 
     // DEFINE USE CONTEXT VARIABLES
     const { setUserContextData } = useContext(UserContext)
+    const [isFormValid, setIsFormValid] = useState(false);
+    const [isPopupActive, setIsPopupActive] = useState(false)
+    const [formData, setFormData] = useState({
+        username: '',
+        password: '', 
+    })
 
     const navigate = useNavigate();
-
-    // Check if there's a token and redirect to menu if token=true
-    useEffect(()=>{
-        tokenCheck();
-    }),[]
 
     // CHECK FOR TOKEN
     const tokenCheck = () => {
@@ -32,21 +35,15 @@ export default function SignIn({setIsLoggedIn}){
         try{
             const userData = await getContent(token)
             setUserContextData(userData)
-            setIsLoggedIn(true);
+            setIsLoggedIn(true)
             navigate('/menu')
         } catch {console.log('error')}
         
     }
   
 
-    const [formData, setFormData] = useState({
-        username: '',
-        password: '', 
-    })
-
+    
     //Validate form fields
-    const [isFormValid, setIsFormValid] = useState(false);
-
     const formValidation = () => {
         if (formData.username.length>3 && formData.password.length > 3) {
             setIsFormValid(true);
@@ -58,8 +55,6 @@ export default function SignIn({setIsLoggedIn}){
         const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return regex.test(email) ? '' : 'Please enter a valid email address.';}
     }
-
-    useEffect(formValidation),[formData]
 
     const inputs = [
         {
@@ -94,6 +89,7 @@ export default function SignIn({setIsLoggedIn}){
             e.preventDefault();
             const token = await authorize({email: formData.username, password: formData.password})
             if(!token) {
+                setIsPopupActive(true)
                 return console.log('Error during login')
             }
             localStorage.setItem('token', token) // Store token in local Storage
@@ -102,9 +98,27 @@ export default function SignIn({setIsLoggedIn}){
         
     }
 
+    const handlePopup = () => {
+        setIsPopupActive(false)
+        setFormData({
+            username: '',
+            password: '', 
+        })
+
+    }
+
+    // Check if there's a token and redirect to menu if token=true
+    useEffect(()=>{
+        tokenCheck();
+    }),[]
+
+    //validate form
+    useEffect(formValidation),[formData]
+
     return(
         <>
             <div className='sign-in'>
+                <LoginErrorPopup isPopupActive={isPopupActive} handlePopup={handlePopup}/>
                 <img src={italiaLogo} alt="italia restaurant logo" />
                 <div className='sign-in__modal'>
                     <h2>Enter your Account</h2>
