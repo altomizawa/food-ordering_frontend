@@ -43,11 +43,26 @@ export default function SignUp(){
         }
     }
 
+    const validateName = (name) => {
+        // if (name.length < 3) {
+        //     return 'Name has to be at least 3 characters long'
+        // }
+    }
+
     useEffect(formValidation),[formData]
 
 
     //Create Input object
     const inputs = [
+        {
+            id: 0, 
+            name: 'name',
+            type: 'text',
+            placeholder: 'Name', 
+            label: 'Name',
+            required: true,
+            errorMessage: validateName(formData.name)
+        },
         {
             id: 1, 
             name: 'email',
@@ -92,6 +107,7 @@ export default function SignUp(){
     //Send Form
     const handleSubmit = async (e) =>{
         e.preventDefault()
+        register(formData)
         setIsPopupActive(true)
         console.log(formData)
     }
