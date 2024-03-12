@@ -12,23 +12,22 @@ import mastercardLogo from '../../images/mastercard-logo.png'
 import paypalLogo from '../../images/paypal-logo.png'
 import gpayLogo from '../../images/gpay-logo.png'
 
-
 export default function Checkout() {
+    const cartFromLocalStorage = JSON.parse(localStorage.getItem('cart'))
 
     const [isOrderComplete, setIsOrderComplete] = useState(false)
 
     const handleFormSubmit = (e) => {
         e.preventDefault();
-        console.log('form sent')
         setIsOrderComplete(true)
     }
 
     return(
         <>  
             <div className="checkout">
-            {/* <img className='checkout__background' src={backgroundImage} alt="background image of paper texture" /> */}
+            <img className='checkout__background' src={backgroundImage} alt="background image of paper texture" />
                 <div className="checkout__left-column">
-                    {myCart.map((item) => (<CartItem key={item.name} item={item} />))}
+                    {cartFromLocalStorage.map((item) => (<CartItem key={item.name} item={item} />))}
                     <h2>TOTAL:</h2>
                 </div>
                 <div className='checkout__right-column'>

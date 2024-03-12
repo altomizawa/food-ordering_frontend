@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext } from 'react'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 
 import appetizersImg from '../../images/appetizers.jpg';
@@ -12,14 +12,14 @@ import api from '../../utils/api'
 import MenuItem from '../MenuItem/MenuItem'
 import FoodCard from '../FoodCard/FoodCard'
 import EditCartPopup from '../EditCartPopup/EditCartPopup'
-import { UserContext } from '../Context/UserContext';
 import Navbar from '../Navbar/Navbar';
 
 
-export default function Menu(props) {
-    const {setUserContextData, userContextData} = useContext(UserContext)
 
+export default function Menu(props) {
+    const cartFromLocalStorage = JSON.parse(localStorage.getItem('cart')) // [];
     const [currentCategoryItems, setCurrentCategoryItems] = useState([]);
+    const [cart, setCart] = useState(cartFromLocalStorage);
     const [currentCategory, setCurrentCategory] = useState([{
         id: '',
         category: '',
@@ -54,7 +54,6 @@ export default function Menu(props) {
         ]);
     const [isPopupActive, setIsPopupActive] = useState(false);
     const [isEditCartOpen, setIsEditCartOpen] = useState(false);
-    const [currentOrder, setCurrentOrder] = useState([]);
     const [itemData, setItemData] = useState({
         name: '',
         category: '',
@@ -65,12 +64,6 @@ export default function Menu(props) {
         salePrice: 0
     })
 
-    // GET CURRENT ITEMS IN CART AND UPDATE CART
-    const updateCart = () => {
-        api.getAllCartItems()
-        .then(items => setCurrentOrder(items))
-    }
-
     //Handle Item Detail Popup
     const handlePopup = (item) => {
         setItemData(item)
@@ -79,20 +72,18 @@ export default function Menu(props) {
 
     //Add Item from Cart
     function addToCart(item) {
-        api.addToCart(item)
-        updateCart()
+        setCart([...cart, {...item}])
     }
 
     //Remove Item from Cart
-    const handleRemoveItem = (item) => {
-        api.removeFromCart(item)
-        // .then((item) => {updateCart()}) 
+    const handleRemoveItem = (itemToRemove) => {
+        setCart(cart.filter(item => item !== itemToRemove))
     }
 
     //Calculate Total Price
     function calculateTotalPrice() {
         let totalPrice = 0;
-        currentOrder.forEach(item => {
+        cart.forEach(item => {
           totalPrice += item.price;
         });
         return totalPrice;
@@ -112,6 +103,11 @@ export default function Menu(props) {
         updateCart();
     },[]);
 
+    useEffect(()=>{
+        console.log(cart)
+        localStorage.setItem('cart', JSON.stringify(cart))
+    }),[cart]
+
     //Fetch new Category
     const changeCategory = (category) => {
         setCurrentCategory(category);
@@ -127,7 +123,7 @@ export default function Menu(props) {
              {isPopupActive && <FoodCard handlePopup={handlePopup} item={itemData} addToCart={addToCart}/>}
             <EditCartPopup
                 setIsEditCartOpen={setIsEditCartOpen}
-                currentOrder={currentOrder}
+                cart={cart}
                 calculateTotalPrice={calculateTotalPrice()}
                 handleRemoveItem={handleRemoveItem}
                 isEditCartOpen={isEditCartOpen}
@@ -155,7 +151,7 @@ export default function Menu(props) {
                 </div>
                 <div className='menu__footer'>
                     <div className='menu__footer-wrapper'>
-                        <p>Current Order: {currentOrder.length} items</p>
+                        <p>Current Order: {cart.length} items</p>
                         <p>TOTAL: US${calculateTotalPrice()}</p>
                         <button className='menu__checkout-button' onClick={ () => {setIsEditCartOpen(true)} } >Edit Cart</button>
                         <p>or</p>
