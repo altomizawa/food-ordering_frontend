@@ -1,13 +1,13 @@
 import { BASE_URL } from './constants';
 
-export const register = ({ password, email }) => {
-  return fetch(`${BASE_URL}/signup`, {
+export const register = ({ password, email, name }) => {
+  return fetch(`${BASE_URL}/register`, {
     method: 'POST',
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ email: email, password: password }),
+    body: JSON.stringify({ email: email, password: password, name: name }),
   })
     .then((response) => {
       if (response.status === 400) {
