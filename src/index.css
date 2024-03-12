@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Tenor+Sans&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+@import url(./vendor/normalize.css);
 @import url(./components/ErrorPage/ErrorPage.css);
 @import url(./components/App/App.css);
 @import url(./components/Navbar/Navbar.css);
@@ -22,6 +23,7 @@
 @import url(./components/OrderComplete/OrderComplete.css);
 @import url(./components/MyProfile/MyProfile.css);
 @import url(./components/SuccessPopup/SuccessPopup.css);
+@import url(./components/LoginErrorPopup/LoginErrorPopup.css);
 
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -43,6 +45,7 @@
   -moz-osx-font-smoothing: grayscale;
   width: 500px;
 }
+
 body {
   margin: 0;
   padding: 0;
