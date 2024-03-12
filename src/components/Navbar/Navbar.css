@@ -57,10 +57,6 @@
   cursor: pointer;
 }
 
-.navbar__profile-button > p {
-  background-color: white;
-}
-
 .navbar__profile {
   position: fixed;
   top: 0;
@@ -83,6 +79,7 @@
   object-fit: cover;
 }
 .navbar__profile ul {
+  margin-top: 50px;
   list-style: none;
 }
 
@@ -101,24 +98,23 @@
 
 .navbar__profile-link {
   position: relative;
-}
-
-.navbar__profile-link:hover {
   cursor: pointer;
-  color: grey;
 }
 
 .navbar__profile-link:after {
   content: '';
+  width: 0%;
+  transition: 200ms ease-in-out;
+}
+
+.navbar__profile-link:hover::after {
+  width: 100%;
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 0%;
   height: 2px;
-  background-color: grey;
-}
-.navbar__profile-link:hover {
-  width: 100%;
+  background-color: var(--dark-background);
+  transition: 200ms ease-in-out;
 }
 
 .navbar__close-button {
@@ -151,6 +147,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.navbar__profile-name {
+  font-family: 'Roboto';
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-top: -20px;
+  color: black;
 }
 
 .navbar__profile-button > button {

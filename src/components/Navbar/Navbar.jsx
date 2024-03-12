@@ -45,9 +45,11 @@ export default function Navbar(props){
         <header className='navbar'>
             <div className={isUserMenuOpen ? 'navbar__profile' : 'navbar__profile navbar__profile_hidden'}>
                 <div className='navbar__container'>
-                    <button className='navbar__close-button' onClick={closeMenu}>close</button>
+                    <button className='navbar__close-button' onClick={closeMenu}><p>close</p></button>
                     <img src="https://images.mubicdn.net/images/cast_member/2552/cache-207-1524922850/image-w856.jpg?size=800x"></img>
+                    <p className="navbar__profile-name">{userContextData.name}</p>
                     <ul>
+                        <li><a className="navbar__profile-link">Edit Profile</a></li>
                         <li><a className="navbar__profile-link">past orders</a></li>
                         <li><a className="navbar__profile-link" onClick={handleLogout}>logout</a></li>
                     </ul>
