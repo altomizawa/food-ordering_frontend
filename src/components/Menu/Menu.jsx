@@ -179,7 +179,7 @@ export default function Menu() {
                         <p>TOTAL: US${calculateTotalPrice()}</p>
                         <button className='menu__checkout-button' onClick={ () => {setIsEditCartOpen(true)} } >Edit Cart</button>
                         <p>or</p>
-                        <Link to={'/checkout'}><button className='menu__checkout-button'>CHECKOUT</button></Link>
+                        <Link to={'/checkout'}><button disabled className={currentCart.length!==0 ? 'menu__checkout-button' : 'menu__checkout-button menu__checkout-button_inactive'}>CHECKOUT</button></Link>
                     </div>
 
                 </div>

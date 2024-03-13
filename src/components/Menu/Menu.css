@@ -111,3 +111,10 @@ hr {
   cursor: pointer;
   background-color: rgba(0, 0, 0, 0);
 }
+
+.menu__checkout-button_inactive {
+  pointer-events: none;
+  cursor: none;
+  color: gray;
+  border: 1px solid grey;
+}
