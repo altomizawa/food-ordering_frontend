@@ -18,7 +18,7 @@ export default function EditCartPopup(props) {
             <li className='editCartPopup__item'>
                 <img src={item.link} />
                 <p><b>{item.name} </b><br></br>
-                    Quantity: 1 <br></br>
+                    Quantity: {item.quantity} <br></br>
                     Price: US${item.price}</p>
                 <button onClick={() => {handleRemoveItem(item)}}>Remove</button>
                 <div className='editCartPopup__divider'></div>
@@ -41,8 +41,8 @@ export default function EditCartPopup(props) {
             <div className='editCartPopup__card'>
                 <h2 className='editCartPopup__title'>Edit your order</h2>
                 <ul className='editCartPopup__items'>
-                    {cart.length === 0 ? EmptyCart() : 
-                        cart.map((item) => (
+                    {currentCart.length === 0 ? EmptyCart() : 
+                        currentCart.map((item) => (
                             <ListItem key={item._id} item={item}/>
                         ))
                     }

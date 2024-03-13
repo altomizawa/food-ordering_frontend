@@ -75,11 +75,11 @@ export default function Menu() {
     // Add Item from Cart
     function addToCart(itemToAdd) {
         setCurrentCart(currentCart => {
-            if (currentCart.find(item => item.id === itemToAdd.id) == null) {
+            if (currentCart.find(item => item._id === itemToAdd._id) == null) {
                 return [...currentCart, { ...itemToAdd, quantity: 1}]
             } else {
                 return currentCart.map(item => {
-                    if (item.id === itemToAdd.id) {
+                    if (item._id === itemToAdd._id) {
                         const quantity = item.quantity ? item.quantity : 0;
                         return {...item, quantity: quantity+1}
                     } else {
@@ -103,12 +103,13 @@ export default function Menu() {
     // // Remove Item from Cart
     function removeItemFromCart(itemToRemove) {
         setCurrentCart(currentCart => {
-            const itemFound = currentCart.find(item => item.id === itemToRemove.id);
+            const itemFound = currentCart.find(item => item._id === itemToRemove._id);
+            console.log(itemFound)
             if (itemFound.quantity === 1) {
-                return currentCart.filter(item => item.id !== itemToRemove.id);
+                return currentCart.filter(item => item._id !== itemToRemove._id);
             } else {
                 return currentCart.map(item => {
-                    if (item.id === itemToRemove.id) {
+                    if (item._id === itemToRemove._id) {
                         return {...item, quantity: item.quantity - 1};
                     } else {
                         return item;
@@ -116,7 +117,6 @@ export default function Menu() {
                 });
             }
         });
-        console.log(currentCart)
     }
     // const handleRemoveItem = (itemToRemove) => {
     //     setCart(cart.filter(item => item !== itemToRemove))
@@ -126,7 +126,7 @@ export default function Menu() {
     //Calculate Total Price
     function calculateTotalPrice() {
         let totalPrice = 0;
-        cart.forEach(item => {
+        currentCart.forEach(item => {
           totalPrice += item.price;
         });
         return totalPrice;
@@ -142,8 +142,8 @@ export default function Menu() {
 
     // MONITOR CART AND SEND IT TO LOCAL STORAGE
     useEffect(()=>{
-        localStorage.setItem('cart', JSON.stringify(cart))
-    }),[cart]
+        localStorage.setItem('cart', JSON.stringify(currentCart))
+    }),[currentCart]
 
     //Fetch new Category
     const changeCategory = async (category) => {
@@ -160,7 +160,6 @@ export default function Menu() {
              {isPopupActive && <FoodCard handlePopup={handlePopup} item={itemData} addToCart={addToCart}/>}
             <EditCartPopup
                 setIsEditCartOpen={setIsEditCartOpen}
-                cart={cart}
                 calculateTotalPrice={calculateTotalPrice()}
                 handleRemoveItem={removeItemFromCart}
                 isEditCartOpen={isEditCartOpen}
@@ -189,7 +188,7 @@ export default function Menu() {
                 </div>
                 <div className='menu__footer'>
                     <div className='menu__footer-wrapper'>
-                        <p>Current Order: {cart.length} items</p>
+                        <p>Current Order: {currentCart.length} items</p>
                         <p>TOTAL: US${calculateTotalPrice()}</p>
                         <button className='menu__checkout-button' onClick={ () => {setIsEditCartOpen(true)} } >Edit Cart</button>
                         <p>or</p>
