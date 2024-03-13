@@ -44,7 +44,8 @@
   list-style: none;
   width: 80%;
   height: 70%;
-  overflow: scroll;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .editCartPopup__item {
