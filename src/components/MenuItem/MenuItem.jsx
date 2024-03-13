@@ -2,14 +2,15 @@ export default function MenuItem({item, handlePopup}){
     return (
         <>
             <li className='menuItem'>
+                <p>{item.name}</p>
                 <div>
-                    <p>{item.name}</p>
-                    <p>US${item.price}</p>
+                    <p className="menuItem__price">US${item.price}</p>
+                    <button
+                        className="menuItem__button"
+                        value={item.name}
+                        onClick={()=>{handlePopup(item)}}    
+                    >view / add</button>
                 </div>
-                <button
-                    value={item.name}
-                    onClick={()=>{handlePopup(item)}}    
-                >View/Add</button>
             </li>
             <hr className='menuItem__line'/>
         </>

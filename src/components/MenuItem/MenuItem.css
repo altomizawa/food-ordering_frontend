@@ -7,20 +7,25 @@
 
 .menuItem > div {
   display: flex;
-  width: 100%;
   justify-content: space-between;
+  align-items: center;
   margin-right: 1rem;
 }
 
-.menuItem > button {
-  font-size: inherit;
+.menuItem__line {
+  opacity: 0.3;
+}
+.menuItem__price {
+  margin-right: 15px;
+}
+
+.menuItem__button {
+  font-family: 'Roboto' sans-serif;
+  font-size: 16px;
+  font-weight: 300;
   padding: 0.5rem 1rem;
   border-radius: 2rem;
   background-color: var(--dark-background);
   border: none;
   cursor: pointer;
-}
-
-.menuItem__line {
-  opacity: 0.3;
 }
