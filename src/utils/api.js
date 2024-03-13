@@ -36,6 +36,10 @@ class Api {
     return this._makeFetchRequest(`${BASE_URL}/menu/categories/${category}`);
   }
 
+  getItemById(id) {
+    return this._makeFetchRequest(`${BASE_URL}/menu/${id}`);
+  }
+
   getAllCartItems() {
     return this._makeFetchRequest(`${BASE_URL}/mycart`);
   }

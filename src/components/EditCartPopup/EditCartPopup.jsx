@@ -1,7 +1,16 @@
 import { Link } from 'react-router-dom';
 
+import api from '../../utils/api'
+
 export default function EditCartPopup(props) {
-    const {cart, setIsEditCartOpen, handleRemoveItem, calculateTotalPrice, isEditCartOpen} = props;
+    const {cart, setIsEditCartOpen, handleRemoveItem, calculateTotalPrice, isEditCartOpen, currentCart} = props;
+
+    // map each item and find in database
+    // currentCart.map( async (item) => {
+    //     const menuItem = await api.getItemById(item.id)
+    //     console.log(menuItem)
+    // })
+  
 
     const ListItem = (props) => {
         const {item} = props

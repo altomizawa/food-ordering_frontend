@@ -17,10 +17,9 @@ import Navbar from '../Navbar/Navbar';
 import { UserContext } from '../Context/UserContext';
 
 export default function Menu() {
-    const cartFromLocalStorage = JSON.parse(localStorage.getItem('cart'))
-    const {cart, setCart, handleRemoveItem} = useContext(UserContext)
+    const {cart, setCart, handleRemoveItem, currentCart, setCurrentCart} = useContext(UserContext)
 
-    const [currentCart, setCurrentCart] = useState([])
+    // const [currentCart, setCurrentCart] = useState([])
 
     const [currentCategoryItems, setCurrentCategoryItems] = useState([]);
     const [currentCategory, setCurrentCategory] = useState([{
@@ -74,14 +73,15 @@ export default function Menu() {
     }
 
     // Add Item from Cart
-    function addToCart({_id: id}) {
+    function addToCart(itemToAdd) {
         setCurrentCart(currentCart => {
-            if (currentCart.find(item => item.id === id) == null) {
-                return [...currentCart, { id, quantity: 1}]
+            if (currentCart.find(item => item.id === itemToAdd.id) == null) {
+                return [...currentCart, { ...itemToAdd, quantity: 1}]
             } else {
                 return currentCart.map(item => {
-                    if (item.id === id) {
-                        return {...item, quantity: item.quantity +1}
+                    if (item.id === itemToAdd.id) {
+                        const quantity = item.quantity ? item.quantity : 0;
+                        return {...item, quantity: quantity+1}
                     } else {
                         return item
                     }
@@ -101,14 +101,14 @@ export default function Menu() {
 
 
     // // Remove Item from Cart
-    function removeItemFromCart({_id: id}) {
+    function removeItemFromCart(itemToRemove) {
         setCurrentCart(currentCart => {
-            const itemToRemove = currentCart.find(item => item.id === id);
-            if (itemToRemove.quantity === 1) {
-                return currentCart.filter(item => item.id !== id);
+            const itemFound = currentCart.find(item => item.id === itemToRemove.id);
+            if (itemFound.quantity === 1) {
+                return currentCart.filter(item => item.id !== itemToRemove.id);
             } else {
                 return currentCart.map(item => {
-                    if (item.id === id) {
+                    if (item.id === itemToRemove.id) {
                         return {...item, quantity: item.quantity - 1};
                     } else {
                         return item;
@@ -164,6 +164,7 @@ export default function Menu() {
                 calculateTotalPrice={calculateTotalPrice()}
                 handleRemoveItem={removeItemFromCart}
                 isEditCartOpen={isEditCartOpen}
+                currentCart={currentCart}
             />
             
 

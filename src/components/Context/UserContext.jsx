@@ -10,6 +10,7 @@ export const UserProvider = ({ children }) => {
   const [userContextData, setUserContextData] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [cart, setCart] = useState(cartFromLocalStorage || '[]')
+  const [currentCart, setCurrentCart] = useState( cartFromLocalStorage || []);
 
 
   const logout = () => {
@@ -28,7 +29,7 @@ export const UserProvider = ({ children }) => {
 
 
   return (
-    <UserContext.Provider value={{ userContextData, setUserContextData, isLoggedIn, logout, cart, setCart, handleRemoveItem }}>
+    <UserContext.Provider value={{ userContextData, setUserContextData, isLoggedIn, logout, cart, setCart, handleRemoveItem, currentCart, setCurrentCart }}>
       {children}
     </UserContext.Provider>
   );
