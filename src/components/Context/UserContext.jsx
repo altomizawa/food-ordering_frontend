@@ -9,7 +9,6 @@ const cartFromLocalStorage = JSON.parse(localStorage.getItem('cart'))
 export const UserProvider = ({ children }) => {
   const [userContextData, setUserContextData] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false)
-  const [cart, setCart] = useState(cartFromLocalStorage || '[]')
   const [currentCart, setCurrentCart] = useState( cartFromLocalStorage || []);
 
 
@@ -21,15 +20,8 @@ export const UserProvider = ({ children }) => {
     setIsLoggedIn(true)
   }
 
-  // Remove Item from Cart
-  const handleRemoveItem = (itemToRemove) => {
-    setCart(cart.filter(item => item !== itemToRemove))
-    localStorage.setItem('cart', JSON.stringify(cart))
-  }
-
-
   return (
-    <UserContext.Provider value={{ userContextData, setUserContextData, isLoggedIn, logout, cart, setCart, handleRemoveItem, currentCart, setCurrentCart }}>
+    <UserContext.Provider value={{ userContextData, setUserContextData, isLoggedIn, logout, currentCart, setCurrentCart }}>
       {children}
     </UserContext.Provider>
   );

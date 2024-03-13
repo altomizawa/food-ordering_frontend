@@ -17,7 +17,7 @@ import Navbar from '../Navbar/Navbar';
 import { UserContext } from '../Context/UserContext';
 
 export default function Menu() {
-    const {cart, setCart, handleRemoveItem, currentCart, setCurrentCart} = useContext(UserContext)
+    const {currentCart, setCurrentCart} = useContext(UserContext)
 
     // const [currentCart, setCurrentCart] = useState([])
 
@@ -90,21 +90,11 @@ export default function Menu() {
         })
         console.log(currentCart)
     }
-    // function addToCart(item) {
-    //     const repeatedItem = cartFromLocalStorage.find((cartItem) => cartItem._id === item._id)
-    //     !repeatedItem ? setCart([...cart, {...item}]) : console.log(repeatedItem)    
-    // }
 
-    
- 
-
-
-
-    // // Remove Item from Cart
+    // Remove Item from Cart
     function removeItemFromCart(itemToRemove) {
         setCurrentCart(currentCart => {
             const itemFound = currentCart.find(item => item._id === itemToRemove._id);
-            console.log(itemFound)
             if (itemFound.quantity === 1) {
                 return currentCart.filter(item => item._id !== itemToRemove._id);
             } else {
@@ -118,10 +108,6 @@ export default function Menu() {
             }
         });
     }
-    // const handleRemoveItem = (itemToRemove) => {
-    //     setCart(cart.filter(item => item !== itemToRemove))
-    //     localStorage.setItem('cart', JSON.stringify(cart))
-    // }
 
     //Calculate Total Price
     function calculateTotalPrice() {
@@ -161,7 +147,8 @@ export default function Menu() {
             <EditCartPopup
                 setIsEditCartOpen={setIsEditCartOpen}
                 calculateTotalPrice={calculateTotalPrice()}
-                handleRemoveItem={removeItemFromCart}
+                addToCart={addToCart}
+                removeItemFromCart={removeItemFromCart}
                 isEditCartOpen={isEditCartOpen}
                 currentCart={currentCart}
             />
