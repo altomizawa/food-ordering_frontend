@@ -88,7 +88,7 @@
   color: black;
   text-align: left;
   line-height: 3;
-  font-size: 24px;
+  font-size: 18px;
   text-align: center;
 }
 
@@ -127,7 +127,7 @@
   border: none;
   width: 100px;
   height: 60px;
-  font-size: 24px;
+  font-size: 18px;
   transform: translateX(-80px);
   border-radius: 10px;
   transition: 240ms;
