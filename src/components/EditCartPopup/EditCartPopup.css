@@ -137,3 +137,23 @@
   font-weight: 400;
   color: var(--dark-background);
 }
+
+.editCartPopup__quantity-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 10px;
+}
+
+.editCartPopup__quantity-button {
+  width: 40px;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+}
+
+.editCartPopup__quantity-wrapper p {
+  color: black;
+  font-size: 1rem;
+}

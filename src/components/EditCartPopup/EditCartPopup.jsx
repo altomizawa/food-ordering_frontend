@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import api from '../../utils/api'
 
 export default function EditCartPopup(props) {
-    const {cart, setIsEditCartOpen, handleRemoveItem, calculateTotalPrice, isEditCartOpen, currentCart} = props;
+    const {setIsEditCartOpen, addToCart, removeItemFromCart, calculateTotalPrice, isEditCartOpen, currentCart} = props;
 
     // map each item and find in database
     // currentCart.map( async (item) => {
@@ -18,9 +18,13 @@ export default function EditCartPopup(props) {
             <li className='editCartPopup__item'>
                 <img src={item.link} />
                 <p><b>{item.name} </b><br></br>
-                    Quantity: {item.quantity} <br></br>
+                    {/* Quantity: {item.quantity} <br></br> */}
                     Price: US${item.price}</p>
-                <button onClick={() => {handleRemoveItem(item)}}>Remove</button>
+                <div className='editCartPopup__quantity-wrapper'>
+                    <button className='editCartPopup__quantity-button' onClick={() => {removeItemFromCart(item)}}>-</button>
+                    <p>{item.quantity}</p>
+                    <button className='editCartPopup__quantity-button' onClick={() => {addToCart(item)}}>+</button>
+                </div>
                 <div className='editCartPopup__divider'></div>
             </li>
 
