@@ -75,6 +75,7 @@ hr {
 }
 
 .menu__right-column > h2 {
+  font-weight: 400;
   font-size: 4rem;
   text-align: left;
   position: absolute;
