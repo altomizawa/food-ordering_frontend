@@ -20,8 +20,8 @@ export default function Menu() {
     const cartFromLocalStorage = JSON.parse(localStorage.getItem('cart'))
     const {cart, setCart, handleRemoveItem} = useContext(UserContext)
 
-    // GET CART AND SETCART (USESTATE) FROM USER CONTEXT
-    // const [cart, setCart] = useState(cartFromLocalStorage)
+    const [currentCart, setCurrentCart] = useState([])
+
     const [currentCategoryItems, setCurrentCategoryItems] = useState([]);
     const [currentCategory, setCurrentCategory] = useState([{
         id: '',
@@ -74,18 +74,50 @@ export default function Menu() {
     }
 
     // Add Item from Cart
-    function addToCart(item) {
-        const isItemRepeated = cartFromLocalStorage.some((itemInCart) => itemInCart === item);
-        if(isItemRepeated) {
-            return setIsEditCartOpen(false)
-        } else {
-            setCart([...cart, {...item}])
-            localStorage.setItem('cart', JSON.stringify(cart))
-        }
-        
+    function addToCart({_id: id}) {
+        setCurrentCart(currentCart => {
+            if (currentCart.find(item => item.id === id) == null) {
+                return [...currentCart, { id, quantity: 1}]
+            } else {
+                return currentCart.map(item => {
+                    if (item.id === id) {
+                        return {...item, quantity: item.quantity +1}
+                    } else {
+                        return item
+                    }
+                })
+            }
+        })
+        console.log(currentCart)
     }
+    // function addToCart(item) {
+    //     const repeatedItem = cartFromLocalStorage.find((cartItem) => cartItem._id === item._id)
+    //     !repeatedItem ? setCart([...cart, {...item}]) : console.log(repeatedItem)    
+    // }
+
+    
+ 
+
+
 
     // // Remove Item from Cart
+    function removeItemFromCart({_id: id}) {
+        setCurrentCart(currentCart => {
+            const itemToRemove = currentCart.find(item => item.id === id);
+            if (itemToRemove.quantity === 1) {
+                return currentCart.filter(item => item.id !== id);
+            } else {
+                return currentCart.map(item => {
+                    if (item.id === id) {
+                        return {...item, quantity: item.quantity - 1};
+                    } else {
+                        return item;
+                    }
+                });
+            }
+        });
+        console.log(currentCart)
+    }
     // const handleRemoveItem = (itemToRemove) => {
     //     setCart(cart.filter(item => item !== itemToRemove))
     //     localStorage.setItem('cart', JSON.stringify(cart))
@@ -130,7 +162,7 @@ export default function Menu() {
                 setIsEditCartOpen={setIsEditCartOpen}
                 cart={cart}
                 calculateTotalPrice={calculateTotalPrice()}
-                handleRemoveItem={handleRemoveItem}
+                handleRemoveItem={removeItemFromCart}
                 isEditCartOpen={isEditCartOpen}
             />
             
