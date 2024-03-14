@@ -20,7 +20,7 @@ export default function Menu() {
     const {currentCart, setCurrentCart} = useContext(UserContext)
 
     // const [currentCart, setCurrentCart] = useState([])
-
+    const [selectedCategory, setSelectedCategory] = useState()
     const [currentCategoryItems, setCurrentCategoryItems] = useState([]);
     const [currentCategory, setCurrentCategory] = useState([{
         id: '',
@@ -31,27 +31,27 @@ export default function Menu() {
             {
                 id: 1,
                 category: 'appetizers',
-                image: '../../images/appetizers.jpg'
+                image: appetizersImg
             },
             {
                 id: 2,
                 category: 'pastas',
-                image: {pastaImg}
+                image: pastaImg
             },
             {
                 id: 3,
                 category: 'pizzas',
-                image: {pizzaImg}
+                image: pizzaImg
             },
             {
                 id: 4,
                 category: 'desserts',
-                image: {dessertImg}
+                image: dessertImg
             },
             {
                 id: 5,
                 category: 'beverages',
-                image: {beverageImg}
+                image: beverageImg
             },
         ]);
     const [isPopupActive, setIsPopupActive] = useState(false);
@@ -109,15 +109,6 @@ export default function Menu() {
         });
     }
 
-    //Calculate Total Price
-    function calculateTotalPrice() {
-        let totalPrice = 0;
-        currentCart.forEach(item => {
-          totalPrice += item.price;
-        });
-        return totalPrice;
-    }
-
     //Render initial menu: Appetizers
     useEffect(() => {
         api.getCurrentCategoryMenu('appetizers').then((items) => {
@@ -133,13 +124,32 @@ export default function Menu() {
 
     //Fetch new Category
     const changeCategory = async (category) => {
+        //FIND CURRENT CATEGORY AND SET IT IMAGE
+        setSelectedCategory(menuCategories.find((item)=> item.category === category.category))
+        console.log(selectedCategory.image)
+
         setCurrentCategory(category);
         const items = await api.getCurrentCategoryMenu(category.category)
-        // .then((items) => {
-            setCurrentCategoryItems(items);
-        // })
+        setCurrentCategoryItems(items);
     }
 
+    //Calculate Total Price
+    function calculateTotalPrice() {
+        let totalPrice = 0;
+        currentCart.forEach((item) => {
+        totalPrice += item.price * item.quantity;
+        });
+        return totalPrice;
+    }
+
+    //Calculate Items in Cart
+    function calculateCartQuantity() {
+        let quantity = 0;
+        currentCart.forEach((item) => {
+            quantity += 1 * item.quantity;
+            });
+            return quantity;
+    }
 
     return(
         <>
@@ -170,16 +180,16 @@ export default function Menu() {
                     </ul>
                     <div className='menu__right-column'>
                         <h2>{currentCategory.category}</h2>
-                        <img className='menu__category-image' src={appetizersImg} alt="picture of a plate of italian bruschetta" />
+                        <img className='menu__category-image' src={selectedCategory ? selectedCategory.image : appetizersImg} alt="picture of a plate of italian bruschetta" />
                     </div>
                 </div>
                 <div className='menu__footer'>
                     <div className='menu__footer-wrapper'>
-                        <p>Current Order: {currentCart.length} items</p>
+                        <p>Current Order: {calculateCartQuantity()} items</p>
                         <p>TOTAL: US${calculateTotalPrice()}</p>
                         <button className='menu__checkout-button' onClick={ () => {setIsEditCartOpen(true)} } >Edit Cart</button>
                         <p>or</p>
-                        <Link to={'/checkout'}><button disabled className={currentCart.length!==0 ? 'menu__checkout-button' : 'menu__checkout-button menu__checkout-button_inactive'}>CHECKOUT</button></Link>
+                        <Link to={'/checkout'}><button className={currentCart.length!==0 ? 'menu__checkout-button' : 'menu__checkout-button menu__checkout-button_inactive'}>CHECKOUT</button></Link>
                     </div>
 
                 </div>
