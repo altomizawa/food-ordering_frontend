@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import italiaLogoBlack from '../../images/Italia_logo_dark.svg'
 import accountIcon from '../../images/account-icon.svg'
-import { UserContext } from "../Context/UserContext";
 
 export default function Navbar(props){
     const navigate = useNavigate();

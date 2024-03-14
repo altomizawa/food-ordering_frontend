@@ -6,13 +6,13 @@ import { authorize, getContent } from '../../utils/auth';
 
 import LoginErrorPopup from '../LoginErrorPopup/LoginErrorPopup';
 
-import { UserContext } from '../Context/UserContext';
-
-export default function SignIn(){
+import { AuthContext } from '../Context/AuthContext';
+export default function SignIn(props){
+    const {handleLogin} = props;
 
     // DEFINE USE CONTEXT VARIABLES
-    const [isLoggedIn, setIsLoggedIn] = useState(false)
-    const {setUserContextData} = useContext(UserContext)
+    const {state} = useContext(AuthContext)
+    console.log(state)
     const [isFormValid, setIsFormValid] = useState(false);
     const [isPopupActive, setIsPopupActive] = useState(false)
     const [formData, setFormData] = useState({
@@ -20,33 +20,8 @@ export default function SignIn(){
         password: '', 
     })
 
-    const user = null
     const navigate = useNavigate();
-    
 
-    // CHECK FOR TOKEN
-    const tokenCheck = () => {
-        const token = localStorage.getItem('token')
-        if(token) {
-            handleLogin(token);
-        }
-        return;
-    }
-
-    //HANDLE LOGIN
-    const handleLogin = async (token) => {
-        try{
-            const userData = await getContent(token)
-            user = userData
-            // setUserContextData(userData)
-            setIsLoggedIn(true)
-            // navigate('/menu')
-        } catch {console.log('error')}
-        
-    }
-  
-
-    
     //Validate form fields
     const formValidation = () => {
         if (formData.username.length>3 && formData.password.length > 3) {
@@ -98,6 +73,7 @@ export default function SignIn(){
             }
             localStorage.setItem('token', token) // Store token in local Storage
             handleLogin(token);
+            navigate('/menu')
         } catch(err) {console.log(`Error during login. Error:${err}`)}
         
     }
@@ -113,11 +89,11 @@ export default function SignIn(){
 
     // Check if there's a token and redirect to menu if token=true
     useEffect(()=>{
-        tokenCheck();
-    }),[]
+        state ? console.log(state) : console.log('not logged in')
+    },[])
 
     //validate form
-    useEffect(formValidation),[formData]
+    useEffect(formValidation, [formData])
 
     return(
         <>

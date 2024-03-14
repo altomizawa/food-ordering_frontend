@@ -10,7 +10,6 @@ import mastercardLogo from '../../images/mastercard-logo.png'
 import paypalLogo from '../../images/paypal-logo.png'
 import gpayLogo from '../../images/gpay-logo.png'
 
-import { UserContext } from "../Context/UserContext";
 
 export default function Checkout() {
     const {currentCart} = useContext(UserContext)

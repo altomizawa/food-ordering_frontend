@@ -1,6 +1,5 @@
 import { useContext } from "react"
 
- import { UserContext } from "../Context/UserContext"
 
 export default function CartItem ({item}){
     const {handleRemoveItem, currentCart} = useContext(UserContext)

@@ -5,7 +5,6 @@ import Hero from '../Hero/Hero'
 import AboutUs from '../AboutUs/AboutUs'
 import OurTradition from '../OurTradition/OurTradition'
 
-import { UserContext } from '../Context/UserContext'
 import { AuthContext } from '../Context/AuthContext'
 export default function Home() {
     // const {isLoggedIn} = props;

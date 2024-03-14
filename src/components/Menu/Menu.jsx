@@ -13,11 +13,10 @@ import MenuItem from '../MenuItem/MenuItem'
 import FoodCard from '../FoodCard/FoodCard'
 import EditCartPopup from '../EditCartPopup/EditCartPopup'
 import Navbar from '../Navbar/Navbar';
-
-import { UserContext } from '../Context/UserContext';
+import { AuthContext } from '../Context/AuthContext';
 
 export default function Menu() {
-    const {currentCart, setCurrentCart} = useContext(UserContext)
+    const {cart, currentCart} = useContext(AuthContext)
 
     // const [currentCart, setCurrentCart] = useState([])
     const [selectedCategory, setSelectedCategory] = useState()

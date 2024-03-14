@@ -42,7 +42,7 @@ export const authorize = ({ email, password }) => {
     .catch((err) => console.log(err));
 };
 
-export const getContent = (token) => {
+export const getContent = async (token) => {
   if (!token || typeof token !== 'string') {
     throw new Error('400 - The provided token is in the wrong format');
   }

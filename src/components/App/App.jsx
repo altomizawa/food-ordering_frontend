@@ -1,5 +1,5 @@
 import {Route, Routes } from 'react-router-dom'
-// import { useContext, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
 import Home from '../Home/Home'
@@ -8,49 +8,44 @@ import SignUp from '../SignUp/SignUp'
 import Menu from '../Menu/Menu'
 import Checkout from '../Checkout/Checkout'
 import ErrorPage from '../ErrorPage/ErrorPage'
+import * as auth from '../../utils/auth'
 
-// import { AuthContext } from '../Context/AuthContext'
-// import { UserContext } from '../Context/UserContext'
+import { AuthContext } from '../Context/AuthContext'
 
-// import { getContent } from '../../utils/auth'
+const cartFromLocalStorage = JSON.parse(localStorage.getItem('cart'));
 
 function App() {
-  // const [isLoggedIn, setIsLoggedIn] = useState(false)
-  // const { setUserContextData} = useContext(UserContext)
-  // const loggedUser = null;
+  const [user, setUser] = useState(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [cart, currentCart] = useState(cartFromLocalStorage)
+  const [token, setToken] = useState(localStorage.getItem('token' || null))
 
-//   // CHECK FOR TOKEN
-//   const tokenCheck = () => {
-//     // const token = localStorage.getItem('token')
-//     const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjVmMzAwMjFlNWMxOTZkOWU2MTYxNDY2IiwiZW1haWwiOiJhbHlzc29udG9taXphd2FAaG90bWFpbC5jb20iLCJpYXQiOjE3MTA0MjU4MjgsImV4cCI6MTcxMDQ0MzgyOH0.NDCmy855n4hNdUWFd7ahFxj0_YO1_sB9FQKuIIfPids'
-//     if(token) {
-//       handleLogin(token);
-//     }
-//     return;
-// }
+  // CHECK IF THERE'S A TOKEN
+  function tokenCheck() {
+    if(token) {
+      handleLogin();
+    } else {console.log('no token')}
 
-//   //HANDLE LOGIN
-//   const handleLogin = async (token) => {
-//       try{
-//           const userData = await getContent(token)
-//           console.log(userData)
-//           loggedUser = userData;
-//           // sendToContext(userData)
-//           // setUserContextData(userData)
-//           // setIsLoggedIn(true)
-//       } catch {console.log('error')}
-//   }
+  }
 
-//   // CHECK OF EXISTING TOKEN
-//   useEffect(() => {
-//     tokenCheck();
-//   }),[]
+  // Handle successful login
+  const handleLogin = async () => {
+    try {
+      const data = await auth.getContent(token)
+      setUser(data);
+      setIsLoggedIn(true);
+    } catch (err) {console.log(err)}
+  }
+
+  useEffect(() =>{
+    tokenCheck();
+  },[])
 
   return (
-    // <AuthContext.Provider value={isLoggedIn}>
+    <AuthContext.Provider value={{state: isLoggedIn, user: user, cart: cart}}>
       <Routes>
         <Route path='/' element={<Home />}/>
-        <Route path='/signin' element={<SignIn />} />
+        <Route path='/signin' element={<SignIn handleLogin={handleLogin} />} />
         <Route path='/signup' element={<SignUp />} />
         <Route element={<ProtectedRoute />}>
           <Route path='/menu' element={<Menu />} />
@@ -59,7 +54,7 @@ function App() {
         <Route path='*' element={<ErrorPage />} />
         <Route path='/404' element={<ErrorPage />} />
       </Routes>
-    // </AuthContext.Provider>
+    </AuthContext.Provider>
   )
 }
 
