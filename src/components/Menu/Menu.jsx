@@ -86,7 +86,6 @@ export default function Menu() {
                 })
             }
         })
-        console.log(cart)
     }
 
     // Remove Item from Cart
