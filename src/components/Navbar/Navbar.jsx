@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import italiaLogoBlack from '../../images/Italia_logo_dark.svg'
+import accountIcon from '../../images/account-icon.svg'
 import { UserContext } from "../Context/UserContext";
 
 export default function Navbar(props){
@@ -63,7 +64,8 @@ export default function Navbar(props){
                ))}
             </ul>
             <div className='navbar__profile-button'>
-                <button onClick={handleMenuClick}>Hello, {userContextData.name}</button>
+                <button className='navbar__profile-name' onClick={handleMenuClick}>Hello, {userContextData.name}</button>
+                <button className='navbar__profile-icon' onClick={handleMenuClick}><img src={accountIcon} /></button>
             </div>
         </header>
     )

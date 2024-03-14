@@ -118,3 +118,60 @@ hr {
   color: gray;
   border: 1px solid grey;
 }
+
+@media (max-width: 768px) {
+  .menu__items {
+    margin-top: 50px;
+    margin-right: 0rem;
+    max-width: 100%;
+    width: 100vw;
+    padding-inline: 10%;
+  }
+
+  .menu__items > li {
+    width: 100%;
+    margin: auto;
+  }
+
+  .menu__right-column > h2 {
+    font-size: 3rem;
+    position: relative;
+    transform: rotate(0deg);
+    bottom: 0;
+    left: 0;
+  }
+
+  .menu__main {
+    flex-direction: column-reverse;
+    margin-top: 5rem;
+    align-items: center;
+  }
+
+  .menu__category-image {
+    width: 100%;
+    height: 200px;
+    margin: auto;
+  }
+
+  .menu__right-column {
+    width: 85%;
+    padding-inline: 1rem;
+    margin: auto;
+  }
+
+  .menu__footer-wrapper {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 640px) {
+  .menu__right-column {
+    padding-inline: 0;
+  }
+  .menu__right-column > h2 {
+    font-size: 2rem;
+  }
+  .menu__right-column > img {
+    height: 150px;
+  }
+}

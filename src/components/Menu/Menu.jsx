@@ -187,7 +187,7 @@ export default function Menu() {
                     <div className='menu__footer-wrapper'>
                         <p>Current Order: {calculateCartQuantity()} items</p>
                         <p>TOTAL: US${calculateTotalPrice()}</p>
-                        <button className='menu__checkout-button' onClick={ () => {setIsEditCartOpen(true)} } >Edit Cart</button>
+                        <button className='menu__checkout-button' onClick={ () => {setIsEditCartOpen(true)} } >CART</button>
                         <p>or</p>
                         <Link to={'/checkout'}><button className={currentCart.length!==0 ? 'menu__checkout-button' : 'menu__checkout-button menu__checkout-button_inactive'}>CHECKOUT</button></Link>
                     </div>
