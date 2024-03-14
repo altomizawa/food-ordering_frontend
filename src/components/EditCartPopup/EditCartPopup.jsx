@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 
 export default function EditCartPopup(props) {
-    const {setIsEditCartOpen, addToCart, removeItemFromCart, calculateTotalPrice, isEditCartOpen, currentCart} = props;  
+    const {setIsEditCartOpen, addToCart, removeFromCart, calculateTotalPrice, isEditCartOpen, currentCart} = props;  
 
     const ListItem = (props) => {
         const {item} = props
@@ -13,7 +13,7 @@ export default function EditCartPopup(props) {
                     {/* Quantity: {item.quantity} <br></br> */}
                     Price: US${item.price}</p>
                 <div className='editCartPopup__quantity-wrapper'>
-                    <button className='editCartPopup__quantity-button' onClick={() => {removeItemFromCart(item)}}>-</button>
+                    <button className='editCartPopup__quantity-button' onClick={() => {removeFromCart(item)}}>-</button>
                     <p>{item.quantity}</p>
                     <button className='editCartPopup__quantity-button'onClick={() => {addToCart(item)}}>+</button>
                 </div>

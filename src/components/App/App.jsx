@@ -17,11 +17,11 @@ const cartFromLocalStorage = JSON.parse(localStorage.getItem('cart'));
 function App() {
   const [user, setUser] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false)
-  const [cart, currentCart] = useState(cartFromLocalStorage)
+  const [cart, setCart] = useState(cartFromLocalStorage)
   const [token, setToken] = useState(localStorage.getItem('token' || null))
 
   // CHECK IF THERE'S A TOKEN
-  function tokenCheck() {
+  async function tokenCheck() {
     if(token) {
       handleLogin();
     } else {console.log('no token')}
@@ -42,12 +42,12 @@ function App() {
   },[])
 
   return (
-    <AuthContext.Provider value={{state: isLoggedIn, user: user, cart: cart}}>
+    <AuthContext.Provider value={{isLoggedIn: isLoggedIn, user: user, cart: cart, setCart: setCart, tokenCheck: tokenCheck}}>
       <Routes>
         <Route path='/' element={<Home />}/>
-        <Route path='/signin' element={<SignIn handleLogin={handleLogin} />} />
+        <Route path='/signin' element={<SignIn />} />
         <Route path='/signup' element={<SignUp />} />
-        <Route element={<ProtectedRoute />}>
+        <Route element={<ProtectedRoute isLoggedIn={isLoggedIn}/>}>
           <Route path='/menu' element={<Menu />} />
           <Route path='/checkout' element={<Checkout />} />
         </Route>

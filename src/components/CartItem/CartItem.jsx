@@ -1,9 +1,4 @@
-import { useContext } from "react"
-
-
 export default function CartItem ({item}){
-    const {handleRemoveItem, currentCart} = useContext(UserContext)
-
     return(
         <>
             <div className='cartItem__left-column'>

@@ -6,19 +6,20 @@ import { authorize, getContent } from '../../utils/auth';
 
 import LoginErrorPopup from '../LoginErrorPopup/LoginErrorPopup';
 
-import { AuthContext } from '../Context/AuthContext';
-export default function SignIn(props){
-    const {handleLogin} = props;
+import { AuthContext, } from '../Context/AuthContext';
+export default function SignIn(){
 
-    // DEFINE USE CONTEXT VARIABLES
-    const {state} = useContext(AuthContext)
-    console.log(state)
+    // SET USESTATE VARIABLES
     const [isFormValid, setIsFormValid] = useState(false);
     const [isPopupActive, setIsPopupActive] = useState(false)
     const [formData, setFormData] = useState({
         username: '',
         password: '', 
     })
+
+    // DEFINE USE CONTEXT VARIABLES
+    const {isLoggedIn, tokenCheck} = useContext(AuthContext)
+
 
     const navigate = useNavigate();
 
@@ -72,7 +73,7 @@ export default function SignIn(props){
                 return console.log('Error during login')
             }
             localStorage.setItem('token', token) // Store token in local Storage
-            handleLogin(token);
+            tokenCheck();
             navigate('/menu')
         } catch(err) {console.log(`Error during login. Error:${err}`)}
         
@@ -89,7 +90,7 @@ export default function SignIn(props){
 
     // Check if there's a token and redirect to menu if token=true
     useEffect(()=>{
-        state ? console.log(state) : console.log('not logged in')
+        tokenCheck();
     },[])
 
     //validate form

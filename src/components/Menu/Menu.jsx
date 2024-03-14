@@ -16,9 +16,8 @@ import Navbar from '../Navbar/Navbar';
 import { AuthContext } from '../Context/AuthContext';
 
 export default function Menu() {
-    const {cart, currentCart} = useContext(AuthContext)
+    const {cart, setCart} = useContext(AuthContext)
 
-    // const [currentCart, setCurrentCart] = useState([])
     const [selectedCategory, setSelectedCategory] = useState()
     const [currentCategoryItems, setCurrentCategoryItems] = useState([]);
     const [currentCategory, setCurrentCategory] = useState([{
@@ -73,7 +72,7 @@ export default function Menu() {
 
     // Add Item from Cart
     function addToCart(itemToAdd) {
-        setCurrentCart(currentCart => {
+        setCart(currentCart => {
             if (currentCart.find(item => item._id === itemToAdd._id) == null) {
                 return [...currentCart, { ...itemToAdd, quantity: 1}]
             } else {
@@ -87,12 +86,12 @@ export default function Menu() {
                 })
             }
         })
-        console.log(currentCart)
+        console.log(cart)
     }
 
     // Remove Item from Cart
-    function removeItemFromCart(itemToRemove) {
-        setCurrentCart(currentCart => {
+    function removeFromCart(itemToRemove) {
+        setCart(currentCart => {
             const itemFound = currentCart.find(item => item._id === itemToRemove._id);
             if (itemFound.quantity === 1) {
                 return currentCart.filter(item => item._id !== itemToRemove._id);
@@ -118,8 +117,8 @@ export default function Menu() {
 
     // MONITOR CART AND SEND IT TO LOCAL STORAGE
     useEffect(()=>{
-        localStorage.setItem('cart', JSON.stringify(currentCart))
-    }),[currentCart]
+        localStorage.setItem('cart', JSON.stringify(cart))
+    }),[cart]
 
     //Fetch new Category
     const changeCategory = async (category) => {
@@ -135,7 +134,7 @@ export default function Menu() {
     //Calculate Total Price
     function calculateTotalPrice() {
         let totalPrice = 0;
-        currentCart.forEach((item) => {
+        cart.forEach((item) => {
         totalPrice += item.price * item.quantity;
         });
         return totalPrice;
@@ -144,7 +143,7 @@ export default function Menu() {
     //Calculate Items in Cart
     function calculateCartQuantity() {
         let quantity = 0;
-        currentCart.forEach((item) => {
+        cart.forEach((item) => {
             quantity += 1 * item.quantity;
             });
             return quantity;
@@ -157,9 +156,9 @@ export default function Menu() {
                 setIsEditCartOpen={setIsEditCartOpen}
                 calculateTotalPrice={calculateTotalPrice()}
                 addToCart={addToCart}
-                removeItemFromCart={removeItemFromCart}
+                removeFromCart={removeFromCart}
                 isEditCartOpen={isEditCartOpen}
-                currentCart={currentCart}
+                currentCart={cart}
             />
             
 
@@ -188,7 +187,7 @@ export default function Menu() {
                         <p>TOTAL: US${calculateTotalPrice()}</p>
                         <button className='menu__checkout-button' onClick={ () => {setIsEditCartOpen(true)} } >CART</button>
                         <p>or</p>
-                        <Link to={'/checkout'}><button className={currentCart.length!==0 ? 'menu__checkout-button' : 'menu__checkout-button menu__checkout-button_inactive'}>CHECKOUT</button></Link>
+                        <Link to={'/checkout'}><button className={cart.length!==0 ? 'menu__checkout-button' : 'menu__checkout-button menu__checkout-button_inactive'}>CHECKOUT</button></Link>
                     </div>
 
                 </div>
