@@ -8,10 +8,11 @@ import LoginErrorPopup from '../LoginErrorPopup/LoginErrorPopup';
 
 import { UserContext } from '../Context/UserContext';
 
-export default function SignIn({setIsLoggedIn}){
+export default function SignIn(){
 
     // DEFINE USE CONTEXT VARIABLES
-    const { setUserContextData} = useContext(UserContext)
+    const [isLoggedIn, setIsLoggedIn] = useState(false)
+    const {setUserContextData} = useContext(UserContext)
     const [isFormValid, setIsFormValid] = useState(false);
     const [isPopupActive, setIsPopupActive] = useState(false)
     const [formData, setFormData] = useState({
@@ -19,7 +20,9 @@ export default function SignIn({setIsLoggedIn}){
         password: '', 
     })
 
+    const user = null
     const navigate = useNavigate();
+    
 
     // CHECK FOR TOKEN
     const tokenCheck = () => {
@@ -34,9 +37,10 @@ export default function SignIn({setIsLoggedIn}){
     const handleLogin = async (token) => {
         try{
             const userData = await getContent(token)
-            setUserContextData(userData)
+            user = userData
+            // setUserContextData(userData)
             setIsLoggedIn(true)
-            navigate('/menu')
+            // navigate('/menu')
         } catch {console.log('error')}
         
     }

@@ -7,15 +7,15 @@ import OurTradition from '../OurTradition/OurTradition'
 
 import { UserContext } from '../Context/UserContext'
 import { AuthContext } from '../Context/AuthContext'
-export default function Home(props) {
+export default function Home() {
     // const {isLoggedIn} = props;
 
-    // const {userContextData, isLoggedIn} = useContext(UserContext)
-    const {isLoggedIn} = useContext(AuthContext);
+    // // const {userContextData, isLoggedIn} = useContext(UserContext)
+    // const {isLoggedIn} = useContext(AuthContext);
 
     return (
         <> 
-            <Header isLoggedIn={isLoggedIn} />
+            <Header />
             <Hero /> 
             <AboutUs />
             <OurTradition />
