@@ -38,7 +38,7 @@ export default function Checkout() {
             <img className='checkout__background' src={backgroundImage} alt="background image of paper texture" />
                 <div className="checkout__left-column">
                     {currentCart.length === 0 ? <h1 className='checkout__error-message'>There's nothing to buy yet</h1> : currentCart.map((item) => (<CartItem key={item.name} item={item} />)) }
-                    {currentCart.length >0 && <h2>TOTAL: {calculateTotalPrice()}</h2>}
+                    {currentCart.length >0 && <h2>TOTAL: US${calculateTotalPrice()}</h2>}
                 </div>
                 <div className='checkout__right-column'>
                     <h1>COMPLETE YOUR ORDER</h1>

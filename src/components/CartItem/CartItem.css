@@ -39,3 +39,8 @@
   background-color: var(--dark-button);
   color: white;
 }
+
+.carItem__price-wrapper {
+  display: flex;
+  column-gap: 15px;
+}
