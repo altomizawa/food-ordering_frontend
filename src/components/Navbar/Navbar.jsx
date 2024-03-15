@@ -12,7 +12,7 @@ export default function Navbar(props){
     const navigate = useNavigate();
 
     // const { logout } = useContext(UserContext)
-    const {user, setIsLoggedIn} = useContext(AuthContext)
+    const {user, setUser, setIsLoggedIn} = useContext(AuthContext)
 
     const { changeCategory, menuCategories} = props;
 

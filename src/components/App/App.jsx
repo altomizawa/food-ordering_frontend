@@ -44,7 +44,7 @@ function App() {
   },[])
 
   return (
-    <AuthContext.Provider value={{isLoggedIn: isLoggedIn, setIsLoggedIn: setIsLoggedIn, user: user, cart: cart, setCart: setCart, handleLogin: handleLogin}}>
+    <AuthContext.Provider value={{isLoggedIn: isLoggedIn, setIsLoggedIn: setIsLoggedIn, user: user, setUser: setUser,cart: cart, setCart: setCart, handleLogin: handleLogin}}>
       <Routes>
         <Route path='/' element={<Home />}/>
         <Route path='/signin' element={<SignIn />} />

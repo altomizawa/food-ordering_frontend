@@ -59,6 +59,14 @@ class Api {
   removeFromCart(item) {
     return this._makeFetchRequest(`${BASE_URL}/mycart`, 'DELETE', item);
   }
+
+  editProfileName(name, currentUser) {
+    return this._makeFetchRequest(
+      `${BASE_URL}/users/${currentUser._id}`,
+      'PATCH',
+      { name: name }
+    );
+  }
 }
 
 const api = new Api();

@@ -1,5 +1,6 @@
 import { useState, useContext } from "react"
 
+import api from "../../utils/api";
 import { AuthContext } from "../Context/AuthContext";
 
 export default function MyProfile(props) {
@@ -15,9 +16,9 @@ export default function MyProfile(props) {
     const handleSubmit = (e) => {
         e.preventDefault();
         // SEND CHANGE TO SERVER
-
+        api.editProfileName(nameInput, user)
         // UPDATE PROFILE CONTEXT
-        console.log(nameInput)
+        .then((updatedUser) => setUser(updatedUser))
         // RESET FIELD
         setNameInput('')        
         // CLOSE FORM
