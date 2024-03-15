@@ -24,6 +24,7 @@
 @import url(./components/MyProfile/MyProfile.css);
 @import url(./components/SuccessPopup/SuccessPopup.css);
 @import url(./components/LoginErrorPopup/LoginErrorPopup.css);
+@import url(./components/MyProfile/MyProfile.css);
 
 :root {
   font-family: 'Tenor Sans', Helvetica, Arial, sans-serif;

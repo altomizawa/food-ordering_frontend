@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import italiaLogoBlack from '../../images/Italia_logo_dark.svg'
 import accountIcon from '../../images/account-icon.svg'
 
+import MyProfile from "../MyProfile/MyProfile";
 import { AuthContext } from "../Context/AuthContext";
 
 
@@ -17,6 +18,9 @@ export default function Navbar(props){
 
     //Control user menu
     const [isUserMenuOpen, setIsUserMenuOpen] = useState(false)
+    
+    // SET isEditProfileActive
+    const [isEditProfileActive, setIsEditProfileActive] = useState(false)
    
 
     const handleMenuClick = () => {
@@ -29,6 +33,7 @@ export default function Navbar(props){
 
     const closeMenu = () => {
         setIsUserMenuOpen(false)
+        setIsEditProfileActive(false)
     };
 
     const handleLogout = () => {
@@ -51,9 +56,10 @@ export default function Navbar(props){
                 <div className='navbar__container'>
                     <button className='navbar__close-button' onClick={closeMenu}><p>close</p></button>
                     <img src="https://images.mubicdn.net/images/cast_member/2552/cache-207-1524922850/image-w856.jpg?size=800x"></img>
-                    <p className="navbar__profile-name">{user.name}</p>
+                    {!isEditProfileActive && <p className="navbar__profile-name">{user.name}</p>}
+                    <MyProfile isEditProfileActive={isEditProfileActive} setIsEditProfileActive={setIsEditProfileActive} />}
                     <ul>
-                        <li><a className="navbar__profile-link">edit profile</a></li>
+                        <li><a className="navbar__profile-link" onClick={() => setIsEditProfileActive(true)}>edit profile</a></li>
                         <li><a className="navbar__profile-link">past orders</a></li>
                         <li><a className="navbar__profile-link" onClick={handleLogout}>logout</a></li>
                     </ul>
@@ -66,7 +72,7 @@ export default function Navbar(props){
                 createMenu(category)
                ))}
             </ul>
-            <div className='navbar__profile-button'>
+            <div className='navbar__profile-button-wrapper'>
                 <button className='navbar__profile-name' onClick={handleMenuClick}>Hello, {user.name}</button>
                 <button className='navbar__profile-icon' onClick={handleMenuClick}><img src={accountIcon} /></button>
             </div>

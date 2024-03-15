@@ -1,0 +1,30 @@
+.myProfile {
+  height: 0px;
+  overflow: hidden;
+  transition: 250ms ease-in-out;
+}
+
+.myProfile__input {
+  border: 1px solid grey;
+  text-align: center;
+}
+
+.myProfile__button-wrapper {
+  display: flex;
+  justify-content: center;
+  column-gap: 20px;
+}
+
+.myProfile__button {
+  background-color: black;
+  font-family: Roboto;
+  font-size: 16px;
+  border: none;
+  padding: 0.5em 1em;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.myProfile_active {
+  height: 100px;
+}
