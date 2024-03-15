@@ -6,7 +6,7 @@ import { authorize, getContent } from '../../utils/auth';
 
 import LoginErrorPopup from '../LoginErrorPopup/LoginErrorPopup';
 
-import { AuthContext, } from '../Context/AuthContext';
+import { AuthContext } from '../Context/AuthContext';
 export default function SignIn(){
 
     // SET USESTATE VARIABLES
@@ -18,7 +18,7 @@ export default function SignIn(){
     })
 
     // DEFINE USE CONTEXT VARIABLES
-    const {isLoggedIn, tokenCheck} = useContext(AuthContext)
+    const {isLoggedIn, handleLogin} = useContext(AuthContext)
 
 
     const navigate = useNavigate();
@@ -73,8 +73,8 @@ export default function SignIn(){
                 return console.log('Error during login')
             }
             localStorage.setItem('token', token) // Store token in local Storage
-            tokenCheck();
-            navigate('/menu')
+            handleLogin('fromSignInPage');
+            
         } catch(err) {console.log(`Error during login. Error:${err}`)}
         
     }
@@ -90,7 +90,8 @@ export default function SignIn(){
 
     // Check if there's a token and redirect to menu if token=true
     useEffect(()=>{
-        tokenCheck();
+        console.log(isLoggedIn)
+        isLoggedIn ? navigate('/menu') : () => {return}
     },[])
 
     //validate form

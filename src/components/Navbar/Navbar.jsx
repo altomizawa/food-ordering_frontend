@@ -11,7 +11,7 @@ export default function Navbar(props){
     const navigate = useNavigate();
 
     // const { logout } = useContext(UserContext)
-    const {user} = useContext(AuthContext)
+    const {user, setIsLoggedIn} = useContext(AuthContext)
 
     const { changeCategory, menuCategories} = props;
 
@@ -33,7 +33,7 @@ export default function Navbar(props){
 
     const handleLogout = () => {
         localStorage.removeItem('token')
-        // logout();
+        setIsLoggedIn(false);
         navigate('/')
         
 

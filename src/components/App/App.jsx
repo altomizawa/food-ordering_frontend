@@ -1,4 +1,4 @@
-import {Route, Routes } from 'react-router-dom'
+import {Route, Routes, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
@@ -15,10 +15,11 @@ import { AuthContext } from '../Context/AuthContext'
 const cartFromLocalStorage = JSON.parse(localStorage.getItem('cart'));
 
 function App() {
+  const navigate = useNavigate();
   const [user, setUser] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [cart, setCart] = useState(cartFromLocalStorage)
-  const [token, setToken] = useState(localStorage.getItem('token' || null))
+  const [token, setToken] = useState(localStorage.getItem('token'))
 
   // CHECK IF THERE'S A TOKEN
   async function tokenCheck() {
@@ -29,11 +30,12 @@ function App() {
   }
 
   // Handle successful login
-  const handleLogin = async () => {
+  const handleLogin = async (fromPage) => {
     try {
       const data = await auth.getContent(token)
       setUser(data);
       setIsLoggedIn(true);
+      fromPage === 'fromSignInPage' ? navigate('/menu') : () => {return}
     } catch (err) {console.log(err)}
   }
 
@@ -42,7 +44,7 @@ function App() {
   },[])
 
   return (
-    <AuthContext.Provider value={{isLoggedIn: isLoggedIn, user: user, cart: cart, setCart: setCart, tokenCheck: tokenCheck}}>
+    <AuthContext.Provider value={{isLoggedIn: isLoggedIn, setIsLoggedIn: setIsLoggedIn, user: user, cart: cart, setCart: setCart, handleLogin: handleLogin}}>
       <Routes>
         <Route path='/' element={<Home />}/>
         <Route path='/signin' element={<SignIn />} />
