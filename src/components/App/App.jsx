@@ -8,6 +8,7 @@ import SignUp from '../SignUp/SignUp'
 import Menu from '../Menu/Menu'
 import Checkout from '../Checkout/Checkout'
 import ErrorPage from '../ErrorPage/ErrorPage'
+
 import * as auth from '../../utils/auth'
 
 import { AuthContext } from '../Context/AuthContext'

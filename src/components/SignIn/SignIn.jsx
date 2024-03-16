@@ -1,14 +1,16 @@
 import {useEffect, useState, useContext} from 'react'
 import { Link, useNavigate } from 'react-router-dom';
+
+//IMPORT IMAGES
 import italiaLogo from '../../images/Italia_logo_only.svg'
+
+// IMPORT COMPONENTS
 import FormInput from '../FormInput/FormInput';
 import { authorize, getContent } from '../../utils/auth';
-
 import LoginErrorPopup from '../LoginErrorPopup/LoginErrorPopup';
-
 import { AuthContext } from '../Context/AuthContext';
-export default function SignIn(){
 
+export default function SignIn(){
     // SET USESTATE VARIABLES
     const [isFormValid, setIsFormValid] = useState(false);
     const [isPopupActive, setIsPopupActive] = useState(false)
