@@ -5,8 +5,13 @@
 }
 
 .myProfile__input {
-  border: 1px solid grey;
+  /* border: 1px solid grey; */
+  background-color: lightgray;
   text-align: center;
+}
+
+.myProfile__input::-moz-focus-inner {
+  border: 3px solid red;
 }
 
 .myProfile__button-wrapper {

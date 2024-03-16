@@ -29,8 +29,13 @@ export default function MyProfile(props) {
         <form onSubmit={handleSubmit} className={isEditProfileActive ? 'myProfile myProfile_active' : 'myProfile'}>
             <input className='myProfile__input' placeholder={user.name} onChange={handleInputChange} value={nameInput}></input>
             <div className='myProfile__button-wrapper'>
-                <button onClick={() => {setIsEditProfileActive(false)}} className="myProfile__button">cancel</button>
-                <button className="myProfile__button">submit</button>
+                <button type="button" onClick={() => {
+                    // CLOSE EDIT MODE
+                    setIsEditProfileActive(false)
+                    // RESET FIELD
+                    setNameInput('')  
+                    }} className="myProfile__button">cancel</button>
+                <button type="submit" className="myProfile__button">submit</button>
             </div>
         </form>
         
