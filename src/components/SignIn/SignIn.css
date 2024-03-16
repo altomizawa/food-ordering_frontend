@@ -34,6 +34,7 @@
   text-transform: uppercase;
   font-size: 1.5rem;
   color: var(--dark-background);
+  text-align: center;
 }
 
 form {
@@ -86,4 +87,16 @@ span {
 
 input:invalid ~ span {
   display: block;
+}
+
+@media (max-width: 768px) {
+  .sign-in > img {
+    width: 150px;
+  }
+}
+
+@media (max-width: 640px) {
+  .sign-in__modal {
+    width: 85%;
+  }
 }
