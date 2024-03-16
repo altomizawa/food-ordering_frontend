@@ -67,6 +67,14 @@ class Api {
       { name: name }
     );
   }
+
+  editProfilePhoto(name, currentUser) {
+    return this._makeFetchRequest(
+      `${BASE_URL}/users/${currentUser._id}`,
+      'PATCH',
+      { name: name }
+    );
+  }
 }
 
 const api = new Api();
