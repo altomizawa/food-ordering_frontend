@@ -181,13 +181,16 @@ export default function Menu() {
                     </div>
                 </div>
                 <div className='menu__footer'>
-                    <div className='menu__footer-wrapper'>
-                        <p>Current Order: {calculateCartQuantity()} items</p>
-                        <p>TOTAL: US${calculateTotalPrice()}</p>
-                        <button className='menu__checkout-button' onClick={ () => {setIsEditCartOpen(true)} } >CART</button>
-                        <p>or</p>
-                        <Link to={'/checkout'}><button className={cart.length!==0 ? 'menu__checkout-button' : 'menu__checkout-button menu__checkout-button_inactive'}>CHECKOUT</button></Link>
-                    </div>
+                        <div className='menu__footer-wrapper'>
+                            <p>Cart: {calculateCartQuantity()} items</p>
+                            <p>TOTAL: US${calculateTotalPrice()}</p>
+                        </div>
+                        <div className='menu__footer-wrapper'>
+                            <button className='menu__checkout-button' onClick={ () => {setIsEditCartOpen(true)} } >CART</button>
+                            <p>or</p>
+                            <Link to={'/checkout'}><button className={cart.length!==0 ? 'menu__checkout-button' : 'menu__checkout-button menu__checkout-button_inactive'}>CHECKOUT</button></Link>
+                        </div>
+
 
                 </div>
             </div>

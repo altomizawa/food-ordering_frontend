@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import italiaLogoBlack from '../../images/Italia_logo_dark.svg'
 import accountIcon from '../../images/account-icon.svg'
 
-
+import MyProfile from "../MyProfile/MyProfile";
 import { AuthContext } from "../Context/AuthContext";
 import Sidebar from "../Sidebar/Sidebar";
 
@@ -13,7 +13,7 @@ export default function Navbar(props){
     const navigate = useNavigate();
 
     // const { logout } = useContext(UserContext)
-    const {user, setIsLoggedIn} = useContext(AuthContext)
+    const {user, setUser, setIsLoggedIn} = useContext(AuthContext)
 
     const { changeCategory, menuCategories} = props;
 
@@ -53,7 +53,7 @@ export default function Navbar(props){
 
     return(
         <header className='navbar'>
-           <Sidebar isUserMenuOpen={isUserMenuOpen} closeMenu={closeMenu} user={user} setIsEditProfileActive={setIsEditProfileActive} handleLogout={handleLogout} isEditProfileActive={isEditProfileActive} />
+           <Sidebar isUserMenuOpen={isUserMenuOpen} closeMenu={closeMenu} user={user} setIsEditProfileActive={setIsEditProfileActive} handleLogout={handleLogout} isEditProfileActive={isEditProfileActive}/>
             <img src={italiaLogoBlack} alt="italia restaurant logo" />
             <ul className='navbar__categories'>
                {menuCategories.map((category) => (

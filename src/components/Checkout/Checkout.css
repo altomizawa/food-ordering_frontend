@@ -72,3 +72,65 @@
 .checkout__error-message {
   font-family: roboto;
 }
+
+.checkout__total {
+  font-size: 1.2rem;
+}
+
+@media (max-width: 1024px) {
+  input {
+    width: 100%;
+  }
+
+  .checkout {
+    padding-block: 100px;
+    flex-direction: column-reverse;
+    /* align-items: center; */
+    overflow: scroll;
+    row-gap: 100px;
+    height: auto;
+  }
+
+  .checkout__left-column,
+  .checkout__right-column {
+    width: 60%;
+    color: black;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .checkout__payment-line {
+    flex-wrap: wrap;
+    row-gap: 1rem;
+    justify-content: center;
+  }
+
+  .checkout__payment-h2 {
+    text-align: center;
+  }
+
+  .checkout__right-column > h1 {
+    text-align: center;
+  }
+  .checkout__payment-logos {
+    justify-content: center;
+  }
+
+  .checkout__payment-buttons {
+    margin-top: 1rem;
+    flex-wrap: nowrap;
+  }
+
+  .checkout__personal-details {
+    width: 100%;
+  }
+}
+
+@media (max-width: 640px) {
+  .checkout__left-column,
+  .checkout__right-column {
+    width: 80%;
+  }
+}

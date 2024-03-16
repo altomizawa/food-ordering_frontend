@@ -26,6 +26,7 @@
 @import url(./components/LoginErrorPopup/LoginErrorPopup.css);
 @import url(./components/MyProfile/MyProfile.css);
 @import url(./components/Preloader/Preloader.css);
+@import url(./components/Sidebar/Sidebar.css);
 
 :root {
   font-family: 'Tenor Sans', Helvetica, Arial, sans-serif;
