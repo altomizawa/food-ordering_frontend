@@ -1,28 +1,11 @@
 import { Link } from 'react-router-dom';
 
+import EditCartListItem from '../EditCartListItem/EditCartListItem';
+
 
 export default function EditCartPopup(props) {
     const {setIsEditCartOpen, addToCart, removeFromCart, calculateTotalPrice, isEditCartOpen, currentCart} = props;  
-
-    const ListItem = (props) => {
-        const {item} = props
-        return(
-            <li className='editCartPopup__item'>
-                <img src={item.link} />
-                <p><b>{item.name} </b><br></br>
-                    {/* Quantity: {item.quantity} <br></br> */}
-                    Price: US${item.price}</p>
-                <div className='editCartPopup__quantity-wrapper'>
-                    <button className='editCartPopup__quantity-button' onClick={() => {removeFromCart(item)}}>-</button>
-                    <p>{item.quantity}</p>
-                    <button className='editCartPopup__quantity-button'onClick={() => {addToCart(item)}}>+</button>
-                </div>
-                <div className='editCartPopup__divider'></div>
-            </li>
-
-        )
-    }
-
+    
     const EmptyCart = () => {
         return (
             <div className='editCartPopup__empty-message'>
@@ -39,7 +22,7 @@ export default function EditCartPopup(props) {
                 <ul className='editCartPopup__items'>
                     {currentCart.length === 0 ? EmptyCart() : 
                         currentCart.map((item) => (
-                            <ListItem key={item._id} item={item}/>
+                            <EditCartListItem key={item._id} item={item} removeFromCart={removeFromCart} addToCart={addToCart} />
                         ))
                     }
                 </ul>
