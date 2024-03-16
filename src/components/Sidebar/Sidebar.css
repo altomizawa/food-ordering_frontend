@@ -38,6 +38,11 @@
   text-align: center;
 }
 
+.sidebar__profile-name {
+  color: black;
+  font-weight: 500;
+}
+
 /* .sidebar__profile a:hover {
     cursor: pointer;
     color: grey;

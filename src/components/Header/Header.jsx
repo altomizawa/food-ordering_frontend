@@ -4,7 +4,7 @@ import italiaLogo from '../../images/Italia_logo_only.svg'
 export default function Header(){
     return(
         <header className='header'>
-            <img src={italiaLogo} alt="italia restaurant logo" />
+            <img className='header__logo' src={italiaLogo} alt="italia restaurant logo" />
             <Link className='header__button' to='/signin'>ORDER NOW</Link>
         </header>
     )

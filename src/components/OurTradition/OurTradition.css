@@ -1,6 +1,6 @@
 .ourTradition {
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   z-index: 10;
   position: relative;
   overflow: hidden;
@@ -24,9 +24,25 @@
   width: 40%;
   font-family: 'Tenor Sans';
   line-height: 2rem;
+  padding-block: 4rem;
+  margin-bottom: 10vh;
 }
 
 .ourTradition__container > h2,
 .ourTradition__container > hr {
   margin-bottom: 2rem;
+}
+
+@media (max-width: 768px) {
+  .ourTradition__background {
+    object-position: 30%;
+  }
+
+  .hero__image {
+    object-position: 30%;
+  }
+
+  .hero__wrapper {
+    width: 50%;
+  }
 }

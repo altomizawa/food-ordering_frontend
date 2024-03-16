@@ -61,7 +61,7 @@ export default function Navbar(props){
                ))}
             </ul>
             <div className='navbar__profile-button-wrapper'>
-                <button className='navbar__profile-name' onClick={handleMenuClick}>Hello, {user.name}</button>
+                <button className='navbar__profile-button' onClick={handleMenuClick}>Hello, {user.name}</button>
                 <button className='navbar__profile-icon' onClick={handleMenuClick}><img src={accountIcon} /></button>
             </div>
         </header>
