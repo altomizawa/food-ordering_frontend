@@ -70,7 +70,7 @@ export default function Menu() {
         setIsPopupActive(prevState => !prevState)
     }
 
-    // Add Item from Cart
+    // Add Item to Cart
     function addToCart(itemToAdd) {
         setCart(currentCart => {
             if (currentCart.find(item => item._id === itemToAdd._id) == null) {
