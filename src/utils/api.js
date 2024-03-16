@@ -68,11 +68,11 @@ class Api {
     );
   }
 
-  editProfilePhoto(name, currentUser) {
+  editProfilePhoto(avatar, currentUser) {
     return this._makeFetchRequest(
-      `${BASE_URL}/users/${currentUser._id}`,
+      `${BASE_URL}/users/${currentUser._id}/avatar`,
       'PATCH',
-      { name: name }
+      { avatar: avatar }
     );
   }
 }
