@@ -107,9 +107,3 @@
     color: black;
   }
 }
-
-@media (max-width: 640px) {
-  .sidebar__profile-name {
-    display: none;
-  }
-}
