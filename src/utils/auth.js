@@ -11,7 +11,7 @@ export const register = ({ password, email, name }) => {
   })
     .then((response) => {
       if (response.status === 400) {
-        throw new Error('400 - One of the fields is incorrect');
+        throw new Error('400 - User already in Databse. Login now.');
       }
       return response.json();
     })

@@ -5,11 +5,14 @@ import FormInput from '../FormInput/FormInput'
 import SuccessPopup from '../SuccessPopup/SuccessPopup'
 
 import { register } from '../../utils/auth'
+import validator from 'validator'
 
 export default function SignUp(){
     const [isPopupActive, setIsPopupActive] = useState(false)
+    const [popupMessageStatus, setPopupMessageStatus] = useState(null)
 
     const [formData, setFormData] = useState({
+        name: '',
         email: '',
         password: '',
         confirmPassword: '',
@@ -19,9 +22,9 @@ export default function SignUp(){
     const [isFormValid, setIsFormValid] = useState(false);
 
     const formValidation = () => {
-        if (formData.password === formData.confirmPassword && formData.email.length>0) {
+        if (formData.password === formData.confirmPassword && validateEmail(formData.email)==='' && validateName(formData.name)==='' && validatePassword(formData.password)==='') {
             setIsFormValid(true);
-        } else {setIsFormValid(false);}
+        } else {setIsFormValid(false)}
     }
 
     const validatePasswordMatch = () => {
@@ -44,10 +47,14 @@ export default function SignUp(){
     }
 
     const validateName = (name) => {
-        // if (name.length < 3) {
-        //     return 'Name has to be at least 3 characters long'
-        // }
-    }
+        if (validator.isEmpty(name)) {
+         return ''
+        } else if (!validator.isLength(name, {min: 2, max: 30})) {
+            return 'Name must be between 2 and 30 characters.'
+        } else if (!validator.isAlpha(name, 'en-US', { ignore: ' -'})) {
+            return 'Name can only contain letters and spaces'
+        } else {return ''}
+    };
 
     useEffect(formValidation),[formData]
 
@@ -108,14 +115,23 @@ export default function SignUp(){
     const handleSubmit = async (e) =>{
         e.preventDefault()
         register(formData)
-        setIsPopupActive(true)
-        console.log(formData)
+        .then((data)=>{
+            setPopupMessageStatus(true)
+            setIsPopupActive(true)
+            })
+            .catch((err) => {
+                console.log('User already exists in database');
+                setPopupMessageStatus(false)
+                setIsPopupActive(true)
+                console.log(err)
+            })
+        // 
     }
 
     return(
         <>
             <div className='sign-in'>
-                <SuccessPopup isPopupActive={isPopupActive} />
+                <SuccessPopup isPopupActive={isPopupActive} popupMessageStatus={popupMessageStatus}/>
                 <img src={italiaLogo} alt="italia restaurant logo" />
                 <div className='sign-in__modal'>
                     <h2>Sign Up</h2>
@@ -130,9 +146,6 @@ export default function SignUp(){
                                 errorMessage={input.errorMessage}
                             />)
                         )}              
-                        {/* <a className='sign-up__show-password'
-                            onClick={showPassword}>Show password</a> */}
-
                         <button className={isFormValid ? 'sign-in__button' : 'sign-in__button sign-in__button_inactive'}>Submit</button>
                     </form>
                     <p>Already a member? <Link to="/signin" className='sign-up__link' id='sign-up__link'>Sign in now</Link></p>
