@@ -25,18 +25,18 @@ function App() {
   // CHECK IF THERE'S A TOKEN
   async function tokenCheck() {
     if(token) {
-      handleLogin('home', token);
+      handleLogin();
     } else {console.log('no token')}
 
   }
 
   // Handle successful login
-  const handleLogin = async (fromPage, token) => {
+  const handleLogin = async () => {
     try {
-      const data = await auth.getContent(token)
+      const data = await auth.getContent(localStorage.getItem('token'))
       setUser(data);
       setIsLoggedIn(true);
-      fromPage === 'fromSignInPage' ? navigate('/menu') : () => {console.log('forom hoe')}
+      navigate('/menu')
     } catch (err) {console.log(err)}
   }
 
@@ -45,10 +45,10 @@ function App() {
   },[])
 
   return (
-    <AuthContext.Provider value={{isLoggedIn: isLoggedIn, setIsLoggedIn: setIsLoggedIn, user: user, setUser: setUser,cart: cart, setCart: setCart, handleLogin: handleLogin}}>
+    <AuthContext.Provider value={{isLoggedIn: isLoggedIn, setIsLoggedIn: setIsLoggedIn, user: user, setUser: setUser,cart: cart, setCart: setCart}}>
       <Routes>
         <Route path='/' element={<Home />}/>
-        <Route path='/signin' element={<SignIn />} />
+        <Route path='/signin' element={<SignIn handleLogin={handleLogin} setToken={setToken} />} />
         <Route path='/signup' element={<SignUp />} />
         <Route element={<ProtectedRoute isLoggedIn={isLoggedIn}/>}>
           <Route path='/menu' element={<Menu />} />
