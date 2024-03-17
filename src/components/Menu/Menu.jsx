@@ -123,7 +123,6 @@ export default function Menu() {
     const changeCategory = async (category) => {
         //FIND CURRENT CATEGORY AND SET IT IMAGE
         setSelectedCategory(menuCategories.find((item)=> item.category === category.category))
-        console.log(selectedCategory.image)
 
         setCurrentCategory(category);
         const items = await api.getCurrentCategoryMenu(category.category)
