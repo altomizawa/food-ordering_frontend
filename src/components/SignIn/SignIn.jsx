@@ -75,7 +75,7 @@ export default function SignIn(){
                 return console.log('Error during login')
             }
             localStorage.setItem('token', token) // Store token in local Storage
-            handleLogin('fromSignInPage');
+            handleLogin('fromSignInPage', token);
             
         } catch(err) {console.log(`Error during login. Error:${err}`)}
         

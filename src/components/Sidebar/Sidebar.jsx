@@ -1,13 +1,29 @@
+import { useState } from "react";
 import MyProfile from "../MyProfile/MyProfile";
+import MyAvatar from "../MyAvatar/MyAvatar";
+import editPencil from '../../images/editPencil.svg'
 
 export default function Sidebar(props) {
-    const {isUserMenuOpen, closeMenu, user, setIsEditProfileActive, handleLogout, isEditProfileActive} = props;
+    const {
+        isUserMenuOpen,
+        closeMenu,
+        user,
+        setIsEditProfileActive,
+        handleLogout,
+        isEditProfileActive,
+        isEditAvatarActive,
+        setIsEditAvatarActive} = props;
+
     return(
         <>
             <div className={isUserMenuOpen ? 'sidebar__profile' : 'sidebar__profile sidebar__profile_hidden'}>
                 <div className='sidebar__container'>
                     <button className='sidebar__close-button' onClick={closeMenu}><p>close</p></button>
-                    <img src="https://images.mubicdn.net/images/cast_member/2552/cache-207-1524922850/image-w856.jpg?size=800x"></img>
+                    <div className="sidebar__avatar-wrapper">
+                        {/* <img className="sidebar__edit-pencil" src={editPencil}></img> */}
+                        <img className='sidebar__profile-pic' onClick={() => {setIsEditAvatarActive(true)}} src={user.avatar}></img>                   
+                    </div>
+                    <MyAvatar isEditAvatarActive={isEditAvatarActive} setIsEditAvatarActive={setIsEditAvatarActive} />
                     {!isEditProfileActive && <p className="sidebar__profile-name">{user.name}</p>}
                     <MyProfile isEditProfileActive={isEditProfileActive} setIsEditProfileActive={setIsEditProfileActive} />
                     <ul>

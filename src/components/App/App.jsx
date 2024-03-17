@@ -25,18 +25,18 @@ function App() {
   // CHECK IF THERE'S A TOKEN
   async function tokenCheck() {
     if(token) {
-      handleLogin();
+      handleLogin('home', token);
     } else {console.log('no token')}
 
   }
 
   // Handle successful login
-  const handleLogin = async (fromPage) => {
+  const handleLogin = async (fromPage, token) => {
     try {
       const data = await auth.getContent(token)
       setUser(data);
       setIsLoggedIn(true);
-      fromPage === 'fromSignInPage' ? navigate('/menu') : () => {return}
+      fromPage === 'fromSignInPage' ? navigate('/menu') : () => {console.log('forom hoe')}
     } catch (err) {console.log(err)}
   }
 

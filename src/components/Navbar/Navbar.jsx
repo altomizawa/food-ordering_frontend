@@ -22,6 +22,9 @@ export default function Navbar(props){
     
     // SET isEditProfileActive
     const [isEditProfileActive, setIsEditProfileActive] = useState(false)
+
+    //SET isEditAvatarActive
+    const [isEditAvatarActive, setIsEditAvatarActive] = useState(false)
    
 
     const handleMenuClick = () => {
@@ -53,7 +56,15 @@ export default function Navbar(props){
 
     return(
         <header className='navbar'>
-           <Sidebar isUserMenuOpen={isUserMenuOpen} closeMenu={closeMenu} user={user} setIsEditProfileActive={setIsEditProfileActive} handleLogout={handleLogout} isEditProfileActive={isEditProfileActive}/>
+           <Sidebar
+           isUserMenuOpen={isUserMenuOpen}
+           closeMenu={closeMenu} user={user}
+           setIsEditProfileActive={setIsEditProfileActive}
+           handleLogout={handleLogout}
+           isEditProfileActive={isEditProfileActive}
+           isEditAvatarActive = {isEditAvatarActive}
+           setIsEditAvatarActive = {setIsEditAvatarActive}
+            />
             <img src={italiaLogoBlack} alt="italia restaurant logo" />
             <ul className='navbar__categories'>
                {menuCategories.map((category) => (

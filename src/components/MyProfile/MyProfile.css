@@ -30,6 +30,11 @@
   cursor: pointer;
 }
 
+.myProfile__button_inactive {
+  background-color: lightgray;
+  pointer-events: none;
+}
+
 .myProfile_active {
-  height: 100px;
+  height: 150px;
 }

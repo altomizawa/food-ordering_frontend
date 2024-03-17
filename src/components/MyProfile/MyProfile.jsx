@@ -4,7 +4,7 @@ import api from "../../utils/api";
 import { AuthContext } from "../Context/AuthContext";
 
 export default function MyProfile(props) {
-    const [nameInput, setNameInput] = useState(null);
+    const [nameInput, setNameInput] = useState('');
     const {user, setUser} = useContext(AuthContext);
 
     const {isEditProfileActive, setIsEditProfileActive} = props;
