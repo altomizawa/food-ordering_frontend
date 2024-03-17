@@ -18,7 +18,6 @@ export default function MyProfile(props) {
     
         if (validator.isEmpty(nameInput)) {
             setIsFormValid(false);
-          errorsObj.name = 'Name is required';
         } else if (!validator.isLength(nameInput, { min: 2, max: 30 })) {
             setIsFormValid(false);
           errorsObj.name = 'Name must be between 2 and 30 characters';
