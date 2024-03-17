@@ -21,12 +21,17 @@
    d) If the user checks out, he gets a confirmation message and the localStorage is emptied.
    e) The sidebar is used for seeing User profile and editing it. Editing includes profile name and picture.
 
-##SCRIPTS
+## SCRIPTS
+
 To start the project:
 npm run dev
 
 To build:
 npm run build
+
+## IMPORTANT
+
+The backend server is running on a FREE tier of Render, so when you run the app the first access can delay 50 seconds or more, but after that, all the requests will be processed immediately.
 
 ## TECHNOLOGIES
 
