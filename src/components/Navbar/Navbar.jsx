@@ -35,7 +35,7 @@ export default function Navbar(props){
         setIsUserMenuOpen(true)
     };
 
-    const closeMenu = () => {
+    const closeMenu = (e) => {
         setIsUserMenuOpen(false)
         setIsEditProfileActive(false)
     };
@@ -44,8 +44,14 @@ export default function Navbar(props){
         localStorage.removeItem('token')
         setIsLoggedIn(false);
         navigate('/')
-        
+    }
 
+    const closeModal = (e) => {
+        const modal = document.querySelector('.sidebar__profile')
+        if(e.target === modal) {
+            return closeMenu()
+        }
+        return
     }
 
     const createMenu = (item) => {
@@ -64,6 +70,7 @@ export default function Navbar(props){
            isEditProfileActive={isEditProfileActive}
            isEditAvatarActive = {isEditAvatarActive}
            setIsEditAvatarActive = {setIsEditAvatarActive}
+           closeModal={closeModal}
             />
             <img src={italiaLogoBlack} alt="italia restaurant logo" />
             <ul className='navbar__categories'>

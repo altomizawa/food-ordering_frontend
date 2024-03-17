@@ -4,7 +4,7 @@ import EditCartListItem from '../EditCartListItem/EditCartListItem';
 
 
 export default function EditCartPopup(props) {
-    const {setIsEditCartOpen, addToCart, removeFromCart, calculateTotalPrice, isEditCartOpen, currentCart} = props;  
+    const {setIsEditCartOpen, addToCart, removeFromCart, calculateTotalPrice, isEditCartOpen, currentCart, closeModal} = props;  
     
     const EmptyCart = () => {
         return (
@@ -16,7 +16,7 @@ export default function EditCartPopup(props) {
     }
 
     return(
-       <div className={isEditCartOpen ? 'editCartPopup editCartPopup_active' : 'editCartPopup'}>
+       <div onClick={closeModal} className={isEditCartOpen ? 'editCartPopup editCartPopup_active' : 'editCartPopup'}>
             <div className='editCartPopup__card'>
                 <h2 className='editCartPopup__title'>Edit your order</h2>
                 <ul className='editCartPopup__items'>

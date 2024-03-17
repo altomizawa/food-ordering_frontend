@@ -147,9 +147,20 @@ export default function Menu() {
             return quantity;
     }
 
+    // CLOSE FOOD CARD MODAL
+    const closeModal = (e) => {
+        const foodCard = document.querySelector('.foodCard')
+        const editCartPopup = document.querySelector('.editCartPopup')
+        console.log(e.target)
+        if(e.target === foodCard || e.target === editCartPopup) {
+            setIsEditCartOpen(false)
+            return setIsPopupActive(false)
+        } else return
+    }
+
     return(
         <>
-             {isPopupActive && <FoodCard handlePopup={handlePopup} item={itemData} addToCart={addToCart}/>}
+             {isPopupActive && <FoodCard handlePopup={handlePopup} item={itemData} addToCart={addToCart} closeModal={closeModal}/>}
             <EditCartPopup
                 setIsEditCartOpen={setIsEditCartOpen}
                 calculateTotalPrice={calculateTotalPrice()}
@@ -157,6 +168,7 @@ export default function Menu() {
                 removeFromCart={removeFromCart}
                 isEditCartOpen={isEditCartOpen}
                 currentCart={cart}
+                closeModal={closeModal}
             />
             
 
