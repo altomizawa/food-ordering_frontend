@@ -151,7 +151,6 @@ export default function Menu() {
     const closeModal = (e) => {
         const foodCard = document.querySelector('.foodCard')
         const editCartPopup = document.querySelector('.editCartPopup')
-        console.log(e.target)
         if(e.target === foodCard || e.target === editCartPopup) {
             setIsEditCartOpen(false)
             return setIsPopupActive(false)
