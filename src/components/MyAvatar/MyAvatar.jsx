@@ -1,7 +1,10 @@
 import { useState, useContext, useEffect } from "react"
 
+import validator from 'validator';
+
 import api from "../../utils/api";
 import { AuthContext } from "../Context/AuthContext";
+
 
 export default function MyAvatar(props) {
     const [linkInput, setLinkInput] = useState('');
@@ -16,19 +19,18 @@ export default function MyAvatar(props) {
 
     const validateFields = () => {
         setLinkInputError('');
-        if (linkInput.length>0 && linkInput.length <11) {
+        if (linkInput.length>0 && !validator.isURL(linkInput)) {
+            setIsFormValid(false)
            return setLinkInputError('Insert a valid http image address')
-        } else {return setIsFormValid(true)}
+        } if (validator.isURL(linkInput)) {setIsFormValid(true)} else {return setIsFormValid(false)}
     }
 
     const handleInputChange = (e) => {
         setLinkInput(e.target.value)
-        validateFields()
     }
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(isFormValid)
         // // SEND CHANGE TO SERVER
         api.editProfilePhoto(linkInput, user)
         // UPDATE PROFILE CONTEXT
@@ -38,9 +40,9 @@ export default function MyAvatar(props) {
         // CLOSE FORM
         setIsEditAvatarActive(false)
     }
-    // useEffect(() => {
-    //     validateFields();
-    // }, [linkInput])
+    useEffect(() => {
+        validateFields();
+    }, [linkInput])
 
 
     return (
@@ -54,7 +56,7 @@ export default function MyAvatar(props) {
                     // RESET FIELD
                     setLinkInput('')  
                     }} className="myProfile__button">cancel</button>
-                <button type="submit" className="myProfile__button">change</button>
+                <button type="submit" className={isFormValid ? "myProfile__button" : 'myProfile__button myProfile__button_inactive'}>change</button>
             </div>
         </form>
         
