@@ -22,7 +22,7 @@ export default function Sidebar(props) {
                     <button className='sidebar__close-button' onClick={closeMenu}><p>close</p></button>
                     <div className="sidebar__avatar-wrapper">
                         {/* <img className="sidebar__edit-pencil" src={editPencil}></img> */}
-                        <img className='sidebar__profile-pic' onClick={() => {setIsEditAvatarActive(true)}} src={user.avatar}></img>                   
+                        <img className='sidebar__profile-pic' alt='profile picture' onClick={() => {setIsEditAvatarActive(true)}} src={user.avatar}></img>                   
                     </div>
                     <MyAvatar isEditAvatarActive={isEditAvatarActive} setIsEditAvatarActive={setIsEditAvatarActive} />
                     {!isEditProfileActive && <p className="sidebar__profile-name">{user.name}</p>}
