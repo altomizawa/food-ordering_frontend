@@ -7,6 +7,7 @@ export default function Sidebar(props) {
     const {
         isUserMenuOpen,
         closeMenu,
+        closeModal,
         user,
         setIsEditProfileActive,
         handleLogout,
@@ -16,7 +17,7 @@ export default function Sidebar(props) {
 
     return(
         <>
-            <div className={isUserMenuOpen ? 'sidebar__profile' : 'sidebar__profile sidebar__profile_hidden'}>
+            <div onClick={closeModal} className={isUserMenuOpen ? 'sidebar__profile' : 'sidebar__profile sidebar__profile_hidden'}>
                 <div className='sidebar__container'>
                     <button className='sidebar__close-button' onClick={closeMenu}><p>close</p></button>
                     <div className="sidebar__avatar-wrapper">

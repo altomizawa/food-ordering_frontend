@@ -1,7 +1,9 @@
+import { useEffect } from 'react';
+
 import bruschetta from '../../images/mike-van-den-bos-F4qVqfkG2Aw-unsplash.jpg'
 
 export default function FoodCard(props){
-    const {handlePopup, item, addToCart} = props;
+    const {handlePopup, item, addToCart, closeModal} = props;
 
     const handleAddToCart = () =>{
         addToCart(item);
@@ -9,7 +11,7 @@ export default function FoodCard(props){
     }
 
     return(
-        <div className="foodCard">
+        <div onClick={closeModal} className="foodCard">
             <div className="foodCard__popup">
                 <img src={item.link} alt="" />
                 <div>
