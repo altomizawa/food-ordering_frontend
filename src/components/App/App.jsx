@@ -19,7 +19,7 @@ function App() {
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false)
-  const [cart, setCart] = useState(cartFromLocalStorage)
+  const [cart, setCart] = useState(cartFromLocalStorage ? cartFromLocalStorage : [])
   const [token, setToken] = useState(localStorage.getItem('token'))
 
   // CHECK IF THERE'S A TOKEN

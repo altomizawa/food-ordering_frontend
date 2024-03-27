@@ -13,7 +13,7 @@ export default function FoodCard(props){
     return(
         <div onClick={closeModal} className="foodCard">
             <div className="foodCard__popup">
-                <img src={item.link} alt="" />
+                <img src={item.link} alt={item.name} />
                 <div>
                     <h3>{item.name}</h3>
                     <p>{item.description}</p>
