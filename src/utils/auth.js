@@ -46,7 +46,6 @@ export const getContent = async (token) => {
   if (!token || typeof token !== 'string') {
     throw new Error('400 - The provided token is in the wrong format');
   }
-
   return fetch(`${BASE_URL}/users/me`, {
     method: 'GET',
     headers: {
