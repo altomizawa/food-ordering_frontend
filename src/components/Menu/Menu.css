@@ -137,7 +137,8 @@ hr {
   font-size: 2.5rem;
   font-weight: 700;
   text-transform: uppercase;
-  color: gray
+  color: gray;
+  cursor: pointer;
 }
 
 .menu__category-menu_active{
@@ -202,6 +203,17 @@ hr {
     column-gap: 1rem;
     padding-right: 10vw;
   }
+
+  /* Hide scrollbar for Chrome, Safari and Opera */
+.menu__right-column_mobile::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.menu__right-column_mobile {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
 }
 
 
