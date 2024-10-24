@@ -1,11 +1,15 @@
 import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { AuthContext } from '../Context/AuthContext';
+import './EditCartPopup.css';
+
 
 import EditCartListItem from '../EditCartListItem/EditCartListItem';
 
 
 export default function EditCartPopup(props) {
     const {setIsEditCartOpen, addToCart, removeFromCart, calculateTotalPrice, isEditCartOpen, currentCart, closeModal} = props;  
-    
+    const {cart} = useContext(AuthContext)
     const EmptyCart = () => {
         return (
             <div className='editCartPopup__empty-message'>
@@ -32,7 +36,7 @@ export default function EditCartPopup(props) {
                         <button className='editCartPopup__button' onClick={() => {
                             setIsEditCartOpen(false)
                             } }>VOLTAR</button>
-                        <Link to="/checkout"><button className='editCartPopup__checkout-button'>CHECKOUT</button></Link>
+                        <Link to="/checkout" className={`${cart.length===0 && 'editCartPopup__checkout-button-wrapper'}`}><button className={`editCartPopup__checkout-button ${cart.length===0 && 'editCartPopup__checkout-button_inactive'}`}>CHECKOUT</button></Link>
                     </div>
                 </div>
                 

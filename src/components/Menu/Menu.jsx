@@ -200,7 +200,7 @@ export default function Menu() {
                         <div className='menu__footer-wrapper'>
                             <button className='menu__checkout-button' onClick={ () => {setIsEditCartOpen(true)} } >CART</button>
                             <p>or</p>
-                            <Link to={'/checkout'}><button className={cart.length!==0 ? 'menu__checkout-button' : 'menu__checkout-button menu__checkout-button_inactive'}>CHECKOUT</button></Link>
+                            <Link to={'/checkout'} className={`${cart.length===0 && 'menu__checkout-button-wrapper_inactive'}`}><button className={cart.length!==0 ? 'menu__checkout-button' : 'menu__checkout-button menu__checkout-button_inactive'}>CHECKOUT</button></Link>
                         </div>
                 </div>
             </div>

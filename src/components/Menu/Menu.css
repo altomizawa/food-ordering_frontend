@@ -144,6 +144,10 @@ hr {
   color: darkslategray;
 }
 
+.menu__checkout-button-wrapper_inactive{
+  pointer-events: none;
+}
+
 
 
 /* ------------------ MEDIA QUERIES ----------------------- */
