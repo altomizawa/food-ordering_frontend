@@ -30,7 +30,7 @@ To build:
 npm run build
 
 ## LIVE VIEW
-To view the live website, visit: www.italianrestaurant.fairuse.org
+To view the live website, visit: https://italiarestaurant.netlify.app/
 
 ## SCREENSHOTS
 Home page
