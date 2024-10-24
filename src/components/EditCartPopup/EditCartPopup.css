@@ -89,7 +89,11 @@
 }
 
 .editCartPopup__checkout-button_inactive {
-  opacity: 0.3;
+  pointer-events: none;
+  cursor: none;
+  color: gray;
+  border: 1px solid grey;
+  background-color: transparent;
 }
 
 .editCartPopup__checkout-button-wrapper{
