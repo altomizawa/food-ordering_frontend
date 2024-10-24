@@ -2,7 +2,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
 @import url(./vendor/normalize.css);
 @import url(./components/ErrorPage/ErrorPage.css);
-@import url(./components/App/App.css);
 @import url(./components/Navbar/Navbar.css);
 @import url(./components/Footer/Footer.css);
 @import url(./components/Header/Header.css);

@@ -6,7 +6,7 @@ import pastaImg from '../../images/carbonara.jpg';
 import pizzaImg from '../../images/margherita pizza.jpg';
 import dessertImg from '../../images/cannoli.jpg';
 import beverageImg from '../../images/beverage.jpg'
-
+import './Menu.css'
 
 import api from '../../utils/api'
 import MenuItem from '../MenuItem/MenuItem'
@@ -186,7 +186,9 @@ export default function Menu() {
                         ))}
                     </ul>
                     <div className='menu__right-column'>
-                        <h2>{currentCategory.category}</h2>
+                        <div className='menu__right-column_mobile'>
+                            {menuCategories.map((item) => <li key={item.id} onClick={() => {changeCategory(item)}} className={`menu__category-menu ${item.category===currentCategory.category && 'menu__category-menu_active'}`}>{item.category}</li>)}
+                        </div>
                         <img className='menu__category-image' src={selectedCategory ? selectedCategory.image : appetizersImg} alt="picture of a plate of italian bruschetta" />
                     </div>
                 </div>
@@ -200,8 +202,6 @@ export default function Menu() {
                             <p>or</p>
                             <Link to={'/checkout'}><button className={cart.length!==0 ? 'menu__checkout-button' : 'menu__checkout-button menu__checkout-button_inactive'}>CHECKOUT</button></Link>
                         </div>
-
-
                 </div>
             </div>
         </>

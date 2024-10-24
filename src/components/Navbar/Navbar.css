@@ -114,23 +114,24 @@
   }
 
   .navbar {
-    justify-content: space-between;
     padding-inline: 3rem;
   }
 
   .navbar > img {
-    display: none;
+    width: 50px;
   }
 
   .navbar__categories {
     width: 100%;
     margin-right: 24px;
+    display: none;
   }
 }
 
 @media (max-width: 640px) {
   .navbar {
     padding-inline: 30px;
+
   }
   .navbar__profile-button {
     border: none;
@@ -145,6 +146,7 @@
   }
 
   .navbar__categories {
+    display: none;
     justify-content: left;
     overflow-x: scroll;
     column-gap: 2rem;
