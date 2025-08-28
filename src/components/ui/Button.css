@@ -13,9 +13,9 @@
 }
 
 .custom-button--secondary {
-  border: none;
-  background-color: var(--dark-button);
-  color: white;
+  border: 1px solid var(--dark-button);
+  background-color: transparent;
+  color: var(--dark-button);
 }
 
 .custom-button--tertiary {

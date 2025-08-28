@@ -56,7 +56,7 @@ export default function MyProfile(props) {
             <input className='myProfile__input' placeholder={user.name} onChange={handleInputChange} value={nameInput}></input>
             <p style={{color: 'red', textAlign: 'center', fontSize: '0.8rem'}}>{errors.name}</p>
             <div className='myProfile__button-wrapper'>
-                <Button type="button" variant="tertiary" onClick={() => {
+                <Button type="button" variant="secondary" onClick={() => {
                     // CLOSE EDIT MODE
                     setIsEditProfileActive(false)
                     // RESET FIELD
