@@ -1,5 +1,6 @@
 import { useState, useContext, useEffect } from "react"
 
+import Button from '../ui/Button';
 import validator from "validator";
 import api from "../../utils/api";
 import { AuthContext } from "../Context/AuthContext";
@@ -55,13 +56,13 @@ export default function MyProfile(props) {
             <input className='myProfile__input' placeholder={user.name} onChange={handleInputChange} value={nameInput}></input>
             <p style={{color: 'red', textAlign: 'center', fontSize: '0.8rem'}}>{errors.name}</p>
             <div className='myProfile__button-wrapper'>
-                <button type="button" onClick={() => {
+                <Button type="button" variant="tertiary" onClick={() => {
                     // CLOSE EDIT MODE
                     setIsEditProfileActive(false)
                     // RESET FIELD
                     setNameInput('')  
-                    }} className="myProfile__button">cancel</button>
-                <button type="submit" className={isFormValid ? "myProfile__button" : 'myProfile__button myProfile__button_inactive'}>submit</button>
+                    }}>cancel</Button>
+                <Button type="submit" variant='primary'className={isFormValid ? "myProfile__button" : 'myProfile__button myProfile__button_inactive'}>submit</Button>
             </div>
         </form>
         

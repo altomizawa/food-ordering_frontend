@@ -1,10 +1,9 @@
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
 import italiaLogoBlack from '../../images/Italia_logo_dark.svg'
 import accountIcon from '../../images/account-icon.svg'
+import Button from '../ui/Button';
 
-import MyProfile from "../MyProfile/MyProfile";
 import { AuthContext } from "../Context/AuthContext";
 import Sidebar from "../Sidebar/Sidebar";
 
@@ -79,7 +78,9 @@ export default function Navbar(props){
                ))}
             </ul>
             <div className='navbar__profile-button-wrapper'>
-                <button className='navbar__profile-button' onClick={handleMenuClick}>Hello, {user.name}</button>
+                <Button variant='secondary' onClick={handleMenuClick}>
+                    Hello, {user.name}
+                </Button>
                 <button className='navbar__profile-icon' onClick={handleMenuClick}><img src={accountIcon} /></button>
             </div>
         </header>

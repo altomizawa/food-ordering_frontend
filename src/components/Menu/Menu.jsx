@@ -15,7 +15,9 @@ import EditCartPopup from '../EditCartPopup/EditCartPopup'
 import Navbar from '../Navbar/Navbar';
 import { AuthContext } from '../Context/AuthContext';
 
+
 export default function Menu() {
+
     const {cart, setCart} = useContext(AuthContext)
 
     const [selectedCategory, setSelectedCategory] = useState()

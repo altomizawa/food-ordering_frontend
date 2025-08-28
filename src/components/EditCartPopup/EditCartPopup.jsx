@@ -1,8 +1,8 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from '../Context/AuthContext';
 import './EditCartPopup.css';
-
+import Button from '../ui/Button';
 
 import EditCartListItem from '../EditCartListItem/EditCartListItem';
 
@@ -10,6 +10,8 @@ import EditCartListItem from '../EditCartListItem/EditCartListItem';
 export default function EditCartPopup(props) {
     const {setIsEditCartOpen, addToCart, removeFromCart, calculateTotalPrice, isEditCartOpen, currentCart, closeModal} = props;  
     const {cart} = useContext(AuthContext)
+    const navigate = useNavigate();
+    
     const EmptyCart = () => {
         return (
             <div className='editCartPopup__empty-message'>
@@ -33,10 +35,13 @@ export default function EditCartPopup(props) {
                 <div className="editCartPopup__footer">
                     <h3>TOTAL: US${calculateTotalPrice}</h3>
                     <div>
-                        <button className='editCartPopup__button' onClick={() => {
+                        <Button variant='tertiary' onClick={() => {
                             setIsEditCartOpen(false)
-                            } }>VOLTAR</button>
-                        <Link to="/checkout" className={`${cart.length===0 && 'editCartPopup__checkout-button-wrapper'}`}><button className={`editCartPopup__checkout-button ${cart.length===0 && 'editCartPopup__checkout-button_inactive'}`}>CHECKOUT</button></Link>
+                        }} type='button'>VOLTAR</Button>
+                        <Button variant='quaternary' onClick={() => {
+                            console.log('checkout')
+                            navigate('/checkout')
+                        }} type='button'>CHECKOUT</Button>
                     </div>
                 </div>
                 
