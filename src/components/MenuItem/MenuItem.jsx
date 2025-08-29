@@ -1,3 +1,5 @@
+import Button from '../ui/Button'
+
 export default function MenuItem({item, handlePopup}){
     return (
         <>
@@ -5,11 +7,9 @@ export default function MenuItem({item, handlePopup}){
                 <p>{item.name}</p>
                 <div>
                     <p className="menuItem__price">US${item.price}</p>
-                    <button
-                        className="menuItem__button"
-                        value={item.name}
-                        onClick={()=>{handlePopup(item)}}    
-                    >view / add</button>
+                    <Button onClick={() => handlePopup(item)} variant='primary'>
+                        view / add 
+                    </Button>
                 </div>
             </li>
             <hr className='menuItem__line'/>

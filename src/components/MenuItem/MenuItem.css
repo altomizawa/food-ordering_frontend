@@ -28,4 +28,5 @@
   background-color: var(--dark-background);
   border: none;
   cursor: pointer;
+  color: white
 }

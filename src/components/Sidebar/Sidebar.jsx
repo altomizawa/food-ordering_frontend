@@ -1,7 +1,6 @@
-import { useState } from "react";
 import MyProfile from "../MyProfile/MyProfile";
 import MyAvatar from "../MyAvatar/MyAvatar";
-import editPencil from '../../images/editPencil.svg'
+import { useEffect } from 'react';
 
 export default function Sidebar(props) {
     const {
@@ -14,6 +13,20 @@ export default function Sidebar(props) {
         isEditProfileActive,
         isEditAvatarActive,
         setIsEditAvatarActive} = props;
+    
+
+    useEffect(() => {
+        const handleEscToClose = (e) => {
+            if (e.key === "Escape") {
+                closeMenu();
+            }
+        };
+
+        document.addEventListener("keydown", handleEscToClose);
+        return () => {
+            document.removeEventListener("keydown", handleEscToClose);
+        };
+    }, [closeMenu]);
 
     return(
         <>
@@ -22,7 +35,7 @@ export default function Sidebar(props) {
                     <button className='sidebar__close-button' onClick={closeMenu}><p>close</p></button>
                     <div className="sidebar__avatar-wrapper">
                         {/* <img className="sidebar__edit-pencil" src={editPencil}></img> */}
-                        <img className='sidebar__profile-pic' onClick={() => {setIsEditAvatarActive(true)}} src={user.avatar}></img>                   
+                        <img className='sidebar__profile-pic' alt='profile picture' onClick={() => {setIsEditAvatarActive(true)}} src={user.avatar}></img>                   
                     </div>
                     <MyAvatar isEditAvatarActive={isEditAvatarActive} setIsEditAvatarActive={setIsEditAvatarActive} />
                     {!isEditProfileActive && <p className="sidebar__profile-name">{user.name}</p>}
