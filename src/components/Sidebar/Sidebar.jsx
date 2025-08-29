@@ -1,7 +1,6 @@
-import { useState } from "react";
 import MyProfile from "../MyProfile/MyProfile";
 import MyAvatar from "../MyAvatar/MyAvatar";
-import editPencil from '../../images/editPencil.svg'
+import { useEffect } from 'react';
 
 export default function Sidebar(props) {
     const {
@@ -14,6 +13,20 @@ export default function Sidebar(props) {
         isEditProfileActive,
         isEditAvatarActive,
         setIsEditAvatarActive} = props;
+    
+
+    useEffect(() => {
+        const handleEscToClose = (e) => {
+            if (e.key === "Escape") {
+                closeMenu();
+            }
+        };
+
+        document.addEventListener("keydown", handleEscToClose);
+        return () => {
+            document.removeEventListener("keydown", handleEscToClose);
+        };
+    }, [closeMenu]);
 
     return(
         <>

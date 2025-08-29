@@ -6,6 +6,7 @@
   height: 100vh;
   backdrop-filter: blur(6px);
   transition: 500ms ease-in-out;
+  z-index: 1000;
 }
 
 .sidebar__profile_hidden {
